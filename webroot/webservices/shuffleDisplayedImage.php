@@ -21,10 +21,9 @@ file_put_contents($file, $current.  date("F j, Y, g:i a")."\n"
 //::TODO:: use config file for DB connection
 //$db = new SQL(Config::$mysql);
 $imageshuffle = new AHAImageShuffle();
-#$imageshuffle->moveImageFromDisplayingToSkylined($_REQUEST['guid']);
-$retguid = $imageshuffle->getNextImageToDisplay();
+$returl = $imageshuffle->getNextImageToDisplay();
 
-echo json_encode(array('imageurl'=>$retguid));
+echo json_encode(array('imageurl'=>$returl));
 
 ?>
 
