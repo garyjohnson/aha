@@ -1,0 +1,63 @@
+body, html {
+	margin: 0px;
+	padding: 0px;
+	background-color: #ccc;
+}
+
+#menu {
+	background-color: #333;
+	width: 100%;
+	height: 25px;
+	color: #fff;
+}
+
+#pendingCount {
+	display: inline-block;
+}
+
+#approveButton {
+	height: 25px;
+	display: inline-block;
+	background-color: #10bc00;
+	padding: 0px 15px;
+	font-weight: bold;
+}
+
+#denyButton {
+	float: right;
+	margin-right: 10px;
+	height: 25px;
+	display: inline-block;
+	background-color: #ce0000;
+	padding: 0px 15px;
+	font-weight: bold;
+}
+
+.right, .right a {
+	float: right;
+	padding-right: 5px;
+	color: #fff;
+}
+
+.button {
+	color: #fff;
+	text-shadow: 1px 1px 1px #333;
+	cursor: pointer;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: moz-none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+#imageList {
+	position: relative;
+}
+
+.deniedOverlay {
+	width: 150px;
+	height: 150px;
+	position: absolute;
+	background-color: rgba(255,0,0,0.5);
+}

@@ -19,13 +19,22 @@ $images = $sql->fetchAll(MYSQLI_ASSOC);
 <html>
 	<head>
 		<title>Image Approval</title>
+		<link href="/approval/approval.css" rel="stylesheet" type="text/css" />
+		<script src="/source/jquery-1.10.2.min.js"></script>
+		<script src="/approval/approval.js"></script>
 	</head>
 	<body>
-		<div>There are <?php echo $count; ?> pending images. <a href="/approval/login.php?logout">Logout</a></div>
+		<div id="menu">
+			<div class="button" id="approveButton">Approve All <span id="pendingCount">(<?php echo $count; ?>)</span></div>
+			<div class="right"><a href="/approval/login.php?logout">Logout</a></div>
+			<div class="button" id="denyButton">Deny Selected</div>
+		</div>
+		<div id="imageList">
 <?
 foreach($images as $i) {
-	echo "<img src='/images/{$i["guid"]}_{$i["device"]}.jpg' />";
+	echo "<img src='/images/{$i["guid"]}.jpg' width='150' height='150' class='images' id='{$i["guid"]}' />";
 }
 ?>
+		</div>
 	</body>
 </html>
