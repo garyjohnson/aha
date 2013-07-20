@@ -35,4 +35,9 @@
     _buttonRetry.hidden = true;
 }
 
+- (IBAction)handleRetry:(id)sender {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:UPLOADPROGRESSCONTROLLER_RETRY_SELECTED object:nil userInfo:nil];
+}
+
 @end
