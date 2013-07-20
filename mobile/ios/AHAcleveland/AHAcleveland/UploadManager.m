@@ -32,7 +32,7 @@ static UploadManager *sharedSingleton = nil;
     
 }
 
-#define UPLOAD_SERVICE_URL @"http://172.16.0.160:8888/GiveCamp/webroot/webservices/uploadimage.php"
+
 
 
 
@@ -47,15 +47,15 @@ static UploadManager *sharedSingleton = nil;
     NSString* placeholderPath = [fileStorageDirectory stringByAppendingPathComponent:@"placeholder.jpg"];
     
     
-    NSURL* url = [NSURL URLWithString:placeholderPath];
+    NSURL* url = [NSURL fileURLWithPath:placeholderPath];
    
     
-    [self uploadImage:url withEmail:email andDeviceId:deviceId];
+    [self uploadImageUrl:url withEmail:email andDeviceId:deviceId];
     
 }
 
 
--(void)uploadImage:(NSURL*)imageUrl withEmail:(NSString*)emailAddress andDeviceId:(NSString*)device
+-(void)uploadImageUrl:(NSURL*)imageUrl withEmail:(NSString*)emailAddress andDeviceId:(NSString*)device
 {
     
     NSData* imageData = [self retrieveImageData:imageUrl];
@@ -134,7 +134,9 @@ static UploadManager *sharedSingleton = nil;
  */
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
     
-    NSLog(@"%@" , error);
+    [[NSNotificationCenter defaultCenter] postNotificationName:UPLOAD_FAIL object:nil userInfo:nil];
+    
+    NSLog(@"upload failed");
 }
 
 /*
@@ -143,7 +145,9 @@ static UploadManager *sharedSingleton = nil;
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection{
     
 
-    NSLog(@"did finish");
+    [[NSNotificationCenter defaultCenter] postNotificationName:UPLOAD_FAIL object:nil userInfo:nil];
+    
+    NSLog(@"upload finished successfully");
 }
 
 
