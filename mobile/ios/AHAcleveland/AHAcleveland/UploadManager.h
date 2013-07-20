@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@interface UploadManager : NSObject
+@interface UploadManager : NSObject <NSURLConnectionDelegate>
 
+
++ (UploadManager*)instance;
+
+
+-(void)uploadImage:(NSURL*)imageUrl withEmail:(NSString*)emailAddress andDeviceId:(NSString*)device;
+
+-(void)testUpload;
 @end
