@@ -27,14 +27,14 @@ $db = new SQL($host = "localhost", $user = "ahauser", $pass = "hahafunny1!", $db
 $shuffleOutguid=$_REQUEST['guid'];
 if ($shuffleOutguid)
 {
-    $shuffleOutSQL='UPDATE images SET status=3 WHERE guid=?';
+    $shuffleOutSQL='UPDATE images SET status=' . AHAConstants::STATUS_SKYLINED . ' WHERE guid=?';
     $params = array(':guid' => $shuffleOutguid);
     $stmt=$db->prepare($shuffleOutSQL);
     $stmt->bind_param('s', $shuffleOutguid);
     $stmt->execute();
 }
 
-$resultSet = $db->select('images', 'guid', 'WHERE status=1 order by timestamp asc LIMIT 1');
+$resultSet = $db->select('images', 'guid', 'WHERE status=' . AHAConstants::STATUS_APPROVED . ' order by timestamp asc LIMIT 1');
 if($row = $db->fetch())
 {
    $retguid = $row['guid'];
@@ -42,7 +42,7 @@ if($row = $db->fetch())
 
 if ($retguid)
 {
-    $shuffleInSQL='UPDATE images SET status=2 WHERE guid=?';
+    $shuffleInSQL='UPDATE images SET status=' . AHAConstants::STATUS_DISPLAYING . ' WHERE guid=?';
     $stmt=$db->prepare($shuffleInSQL);
     $stmt->bind_param('s', $retguid);
     $stmt->execute();
