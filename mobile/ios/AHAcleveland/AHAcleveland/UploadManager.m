@@ -124,14 +124,23 @@ static UploadManager *sharedSingleton = nil;
     return data;
 }
 
+-(void)connection:(NSURLConnection *)connection didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
+{
+    NSMutableDictionary* userInfo = [NSMutableDictionary dictionary];
+    
+    [userInfo setValue:[NSNumber numberWithInt:totalBytesWritten] forKey:UPLOAD_TOTALBYTESSOFAR];
+    [userInfo setValue:[NSNumber numberWithInt:totalBytesExpectedToWrite] forKey:UPLOAD_TOTALBYTESEXPECTED];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:UPLOAD_PROGRESS object:nil userInfo:userInfo];
+    
+    NSLog(@"progress sent");
+}
 
 
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
     
 }
-/*
- if there is an error occured, this method will be called by connection
- */
+
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
     
     [[NSNotificationCenter defaultCenter] postNotificationName:UPLOAD_FAIL object:nil userInfo:nil];
@@ -139,9 +148,7 @@ static UploadManager *sharedSingleton = nil;
     NSLog(@"upload failed");
 }
 
-/*
- if data is successfully received, this method will be called by connection
- */
+
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection{
     
 

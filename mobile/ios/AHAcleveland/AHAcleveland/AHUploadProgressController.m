@@ -10,6 +10,10 @@
     self = [super initWithNibName:@"AHUploadProgressView" bundle:nil];
     if (self) {
         
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(handleUploadProgress:)
+                                                     name:UPLOAD_PROGRESS
+                                                   object:nil];
         
     }
     return self;
@@ -42,6 +46,18 @@
     _buttonRetry.hidden = true;
     _buttonDeclineRetry.hidden = true;
 }
+
+-(void)handleUploadProgress:(NSNotification*)notification
+{
+    NSDictionary* userInfo = notification.userInfo;
+    
+    
+    int totalExpectedBytes = [userInfo[UPLOAD_TOTALBYTESEXPECTED] intValue];
+    int bytesSoFar = [userInfo[UPLOAD_TOTALBYTESSOFAR] intValue];
+    
+    
+}
+
 
 - (IBAction)handleRetry:(id)sender {
     
