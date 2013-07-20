@@ -13,8 +13,8 @@ UIImagePickerController *imagePickerController;
 AHCameraOverlayController *overlayController;
 UploadManager *uploadManager;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+- (id)init{
+    self = [super initWithNibName:@"AHImagePickerView" bundle:nil];
     if (self) {
         uploadManager = [[UploadManager alloc] init];
     }
@@ -45,7 +45,7 @@ UploadManager *uploadManager;
 }
 
 - (void)showCameraNotAvailableError {
-    [[[UIAlertView alloc] initWithTitle:@"Error!" message:@"Camera not available." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Camera not available. This app requires a camera to function properly." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
 }
 
 - (void)initializeImagePicker {
@@ -82,35 +82,51 @@ UploadManager *uploadManager;
 
     [self saveImageToImageLibraryIfAllowed:croppedImage];
 
+    NSString *workingDir= [self getWorkingImagesPath];
+    NSString *fileName= [self getTemporaryFileName];
+
+    NSError *saveError;
+    [self saveImage:croppedImage toPath:workingDir withFileName:fileName error:&saveError];
+
+    if(saveError != nil)
+        return;
+
+    NSString *filePath = [workingDir stringByAppendingPathComponent:fileName];
+    [uploadManager uploadImageUrl:[NSURL fileURLWithPath:filePath] withEmail:@"gary@gjtt.com" andDeviceId:@"myDeviceId"];
+    [[[UIAlertView alloc] initWithTitle:@"We did it!" message:@"The image was successfully uploaded." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+}
+
+- (NSString *)getTemporaryFileName {
+    NSString *guid = [[NSProcessInfo processInfo] globallyUniqueString];
+    return [guid stringByAppendingString:@".jpg"];
+}
+
+- (NSString *)getWorkingImagesPath {
     NSArray* documentDirs = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString* docDir = [documentDirs objectAtIndex:0];
-    NSString* workingDir = [docDir stringByAppendingPathComponent:@"AHAcleveland"];
+    return [docDir stringByAppendingPathComponent:@"AHAcleveland"];
+}
 
-    NSString *guid = [[NSProcessInfo processInfo] globallyUniqueString];
-    NSString *fileName = [guid stringByAppendingString:@".jpg"];
-    NSString *filePath = [workingDir stringByAppendingPathComponent:fileName];
+- (void)saveImage:(UIImage *)image toPath:(NSString *)path withFileName:(NSString *)fileName error:(NSError**)error {
 
-    NSError *createDirError;
-    if(![[NSFileManager defaultManager] fileExistsAtPath:workingDir]) {
-        [[NSFileManager defaultManager] createDirectoryAtPath:workingDir withIntermediateDirectories:NO attributes:nil error:&createDirError];
+    NSString *filePath = [path stringByAppendingPathComponent:fileName];
+
+    if(![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:NO attributes:nil error:error];
     }
 
-    if(createDirError != nil){
-        [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Failed to create dir in documents" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    if(&error != nil){
+        [[[UIAlertView alloc] initWithTitle:@"Error" message:@"An error occurred writing image. Please notify the application publisher." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         return;
     }
 
-    NSData *jpgData = UIImageJPEGRepresentation(croppedImage, 1);
-    NSError *error;
-    [jpgData writeToFile:filePath options:NSDataWritingFileProtectionComplete error:&error];
-    if(error != nil){
-        [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Failed to write to documents" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    NSData *jpgData = UIImageJPEGRepresentation(image, 1);
+    [jpgData writeToFile:filePath options:NSDataWritingFileProtectionComplete error:error];
+
+    if(&error != nil){
+        [[[UIAlertView alloc] initWithTitle:@"Error" message:@"An error occurred writing image. Please notify the application publisher." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         return;
     }
-
-    [uploadManager uploadImageUrl:[NSURL fileURLWithPath:filePath] withEmail:@"gary@gjtt.com" andDeviceId:@"nopenopenope"];
-    [[[UIAlertView alloc] initWithTitle:@"We did it!" message:filePath delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-
 }
 
 - (void)saveImageToImageLibraryIfAllowed:(UIImage *)image {
