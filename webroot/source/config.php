@@ -6,7 +6,7 @@ class Config {
 		"pass"=>"hahafunny1!",
 		"db"=>"aha",
 		"prefix"=>"",
-		"debug"=>true
+		"debug"=>false
 	);
 }
 ?>
