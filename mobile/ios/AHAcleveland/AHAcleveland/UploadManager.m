@@ -145,7 +145,7 @@ static UploadManager *sharedSingleton = nil;
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection{
     
 
-    [[NSNotificationCenter defaultCenter] postNotificationName:UPLOAD_FAIL object:nil userInfo:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:UPLOAD_SUCCESS object:nil userInfo:nil];
     
     NSLog(@"upload finished successfully");
 }

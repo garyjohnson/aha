@@ -2,6 +2,7 @@
 #import "AHCameraOverlayController.h"
 #import "AssetsLibrary/AssetsLibrary.h"
 #import "UploadManager.h"
+#import "AHUploadProgressController.h"
 
 @interface AHImagePickerController ()
 
@@ -12,13 +13,21 @@
 UIImagePickerController *imagePickerController;
 AHCameraOverlayController *overlayController;
 UploadManager *uploadManager;
+AHUploadProgressController *uploadProgressController;
 
-- (id)init{
+- (id)init {
     self = [super initWithNibName:@"AHImagePickerView" bundle:nil];
     if (self) {
         uploadManager = [[UploadManager alloc] init];
+        uploadProgressController = [[AHUploadProgressController alloc] init];
+        [self subscribeToUploadEvents];
     }
     return self;
+}
+
+-(void)subscribeToUploadEvents {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onUploadSuccess) name:UPLOAD_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onUploadFail) name:UPLOAD_FAIL object:nil];
 }
 
 - (NSUInteger)supportedInterfaceOrientations {
@@ -76,24 +85,21 @@ UploadManager *uploadManager;
 
 - (void)onUsePhotoPressed {
     UIImage *image = overlayController.reviewImage;
-
     CGRect cropRect = [self getImageCropBounds:image];
     UIImage *croppedImage = [self cropImage:image toBounds:cropRect];
 
     [self saveImageToImageLibraryIfAllowed:croppedImage];
+    [self saveAndUploadImage:croppedImage];
 
-    NSString *workingDir= [self getWorkingImagesPath];
-    NSString *fileName= [self getTemporaryFileName];
+}
 
-    NSError *saveError;
-    [self saveImage:croppedImage toPath:workingDir withFileName:fileName error:&saveError];
-
-    if(saveError != nil)
-        return;
-
-    NSString *filePath = [workingDir stringByAppendingPathComponent:fileName];
-    [uploadManager uploadImageUrl:[NSURL fileURLWithPath:filePath] withEmail:@"gary@gjtt.com" andDeviceId:@"myDeviceId"];
-    [[[UIAlertView alloc] initWithTitle:@"We did it!" message:@"The image was successfully uploaded." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+- (UIImage*)unrotateImage:(UIImage*)image {
+    CGSize size = image.size;
+    UIGraphicsBeginImageContext(size);
+    [image drawInRect:CGRectMake(0,0,size.width ,size.height)];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
 }
 
 - (NSString *)getTemporaryFileName {
@@ -102,35 +108,38 @@ UploadManager *uploadManager;
 }
 
 - (NSString *)getWorkingImagesPath {
-    NSArray* documentDirs = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString* docDir = [documentDirs objectAtIndex:0];
+    NSArray *documentDirs = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docDir = [documentDirs objectAtIndex:0];
     return [docDir stringByAppendingPathComponent:@"AHAcleveland"];
 }
 
-- (void)saveImage:(UIImage *)image toPath:(NSString *)path withFileName:(NSString *)fileName error:(NSError**)error {
+- (void)saveImage:(UIImage *)image toPath:(NSString *)path withFileName:(NSString *)fileName error:(NSError **)error {
 
     NSString *filePath = [path stringByAppendingPathComponent:fileName];
 
-    if(![[NSFileManager defaultManager] fileExistsAtPath:path]) {
-        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:NO attributes:nil error:error];
+    NSError *createDirError;
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:NO attributes:nil error:&createDirError];
     }
 
-    if(&error != nil){
+    if (createDirError != nil) {
+        *error = [NSError errorWithDomain:@"AHAcleveland" code:100 userInfo:nil];
         [[[UIAlertView alloc] initWithTitle:@"Error" message:@"An error occurred writing image. Please notify the application publisher." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         return;
     }
 
     NSData *jpgData = UIImageJPEGRepresentation(image, 1);
-    [jpgData writeToFile:filePath options:NSDataWritingFileProtectionComplete error:error];
+    NSError *writeFileError;
+    [jpgData writeToFile:filePath options:NSDataWritingFileProtectionComplete error:&writeFileError];
 
-    if(&error != nil){
+    if (writeFileError != nil) {
+        *error = [NSError errorWithDomain:@"AHAcleveland" code:100 userInfo:nil];
         [[[UIAlertView alloc] initWithTitle:@"Error" message:@"An error occurred writing image. Please notify the application publisher." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         return;
     }
 }
 
 - (void)saveImageToImageLibraryIfAllowed:(UIImage *)image {
-    ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
     [[[ALAssetsLibrary alloc] init] writeImageToSavedPhotosAlbum:[image CGImage]
                                                      orientation:(ALAssetOrientation) [image imageOrientation]
                                                  completionBlock:^(NSURL *assetURL, NSError *error) {
@@ -161,6 +170,37 @@ UploadManager *uploadManager;
 
 - (void)onTossPhotoPressed {
     [overlayController clearReviewImage];
+}
+
+- (void)saveAndUploadImage:(UIImage *)image {
+    NSString *workingDir = [self getWorkingImagesPath];
+    NSString *fileName = [self getTemporaryFileName];
+
+    image = [self unrotateImage:image];
+
+    NSError *saveError;
+    [self saveImage:image toPath:workingDir withFileName:fileName error:&saveError];
+
+    if (saveError != nil)
+        return;
+
+
+    [self showUploadProgress];
+    NSString *filePath = [workingDir stringByAppendingPathComponent:fileName];
+    [uploadManager uploadImageUrl:[NSURL fileURLWithPath:filePath] withEmail:@"gary@gjtt.com" andDeviceId:@"myDeviceId"];
+}
+
+-(void)showUploadProgress {
+    [uploadProgressController updateDisplay];
+    [self presentViewController:uploadProgressController animated:YES completion:nil];
+}
+
+-(void)onUploadSuccess{
+    //[uploadProgressController setForSuccess];
+}
+
+-(void)onUploadFail{
+    [uploadProgressController setForError];
 }
 
 @end
