@@ -148,7 +148,6 @@ UploadManager *uploadManager;
 }
 
 - (void)saveImageToImageLibraryIfAllowed:(UIImage *)image {
-    ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
     [[[ALAssetsLibrary alloc] init] writeImageToSavedPhotosAlbum:[image CGImage]
                                                      orientation:(ALAssetOrientation) [image imageOrientation]
                                                  completionBlock:^(NSURL *assetURL, NSError *error) {
