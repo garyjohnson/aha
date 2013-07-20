@@ -27,6 +27,12 @@ else
 // - Save metadata to the database
 // -------------------------------------------
 
-$db = new SQL(Config::$mysql);
+//::TODO:: use config file for DB connection
+//$db = new SQL(Config::$mysql);
+$db = new SQL($host = "localhost", $user = "ahauser", $pass = "hahafunny1!", $db = "aha", $prefix = "", $debug = FALSE);
+
+$db->insert('images', array('guid'=>$_FILES["file"]["name"],'device'=>$_REQUEST['device'],'status'=>'0'));
 var_dump($db);exit();
 ?>
+?>
+
