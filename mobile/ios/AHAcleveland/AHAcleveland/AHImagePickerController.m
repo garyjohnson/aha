@@ -1,6 +1,7 @@
 #import "AHImagePickerController.h"
 #import "AHCameraOverlayController.h"
 #import "AssetsLibrary/AssetsLibrary.h"
+#import "UploadManager.h"
 
 @interface AHImagePickerController ()
 
@@ -10,16 +11,17 @@
 
 UIImagePickerController *imagePickerController;
 AHCameraOverlayController *overlayController;
+UploadManager *uploadManager;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-
+        uploadManager = [[UploadManager alloc] init];
     }
     return self;
 }
 
--(NSUInteger)supportedInterfaceOrientations {
+- (NSUInteger)supportedInterfaceOrientations {
     return UIInterfaceOrientationMaskPortrait;
 }
 
@@ -75,18 +77,53 @@ AHCameraOverlayController *overlayController;
 - (void)onUsePhotoPressed {
     UIImage *image = overlayController.reviewImage;
 
-    CGRect cropRect= [self getImageCropBounds:image];
-    UIImage *croppedImage= [self cropImage:image toBounds:cropRect];
+    CGRect cropRect = [self getImageCropBounds:image];
+    UIImage *croppedImage = [self cropImage:image toBounds:cropRect];
 
+    [self saveImageToImageLibraryIfAllowed:croppedImage];
+
+    NSArray* documentDirs = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString* docDir = [documentDirs objectAtIndex:0];
+    NSString* workingDir = [docDir stringByAppendingPathComponent:@"AHAcleveland"];
+
+    NSString *guid = [[NSProcessInfo processInfo] globallyUniqueString];
+    NSString *fileName = [guid stringByAppendingString:@".jpg"];
+    NSString *filePath = [workingDir stringByAppendingPathComponent:fileName];
+
+    NSError *createDirError;
+    if(![[NSFileManager defaultManager] fileExistsAtPath:workingDir]) {
+        [[NSFileManager defaultManager] createDirectoryAtPath:workingDir withIntermediateDirectories:NO attributes:nil error:&createDirError];
+    }
+
+    if(createDirError != nil){
+        [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Failed to create dir in documents" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        return;
+    }
+
+    NSData *jpgData = UIImageJPEGRepresentation(croppedImage, 1);
+    NSError *error;
+    [jpgData writeToFile:filePath options:NSDataWritingFileProtectionComplete error:&error];
+    if(error != nil){
+        [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Failed to write to documents" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        return;
+    }
+
+    [uploadManager uploadImageUrl:[NSURL fileURLWithPath:filePath] withEmail:@"gary@gjtt.com" andDeviceId:@"nopenopenope"];
+    [[[UIAlertView alloc] initWithTitle:@"We did it!" message:filePath delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+
+}
+
+- (void)saveImageToImageLibraryIfAllowed:(UIImage *)image {
     ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
-    [[[ALAssetsLibrary alloc] init] writeImageToSavedPhotosAlbum:[croppedImage CGImage]
-                                                     orientation:(ALAssetOrientation)[croppedImage imageOrientation]
-                                                 completionBlock:^(NSURL *assetURL, NSError *error){
-        if (error != NULL)
-            [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Failed to write" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-        else
-            [[[UIAlertView alloc] initWithTitle:@"We did it!" message:[assetURL absoluteString] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-    }];
+    [[[ALAssetsLibrary alloc] init] writeImageToSavedPhotosAlbum:[image CGImage]
+                                                     orientation:(ALAssetOrientation) [image imageOrientation]
+                                                 completionBlock:^(NSURL *assetURL, NSError *error) {
+         if (error != nil) {
+             [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Failed to write" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+             return;
+         }
+
+     }];
 }
 
 - (UIImage *)cropImage:(UIImage *)image toBounds:(CGRect)cropRect {
@@ -100,10 +137,10 @@ AHCameraOverlayController *overlayController;
     CGRect imagePreviewBounds = [overlayController getImagePreviewBounds];
     CGRect viewportBounds = [overlayController getImageViewportBounds];
     CGFloat x = (viewportBounds.origin.x / imagePreviewBounds.size.width) * image.size.width;
-    CGFloat y = (viewportBounds.origin.y  / imagePreviewBounds.size.height) * image.size.height;
+    CGFloat y = (viewportBounds.origin.y / imagePreviewBounds.size.height) * image.size.height;
     CGFloat width = (viewportBounds.size.width / imagePreviewBounds.size.width) * image.size.width;
     CGFloat height = (viewportBounds.size.height / imagePreviewBounds.size.height) * image.size.height;
-    return CGRectMake(y,x,width,height);
+    return CGRectMake(y, x, width, height);
 }
 
 - (void)onTossPhotoPressed {
