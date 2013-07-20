@@ -24,7 +24,7 @@ $imageshuffle = new AHAImageShuffle();
 #$imageshuffle->moveImageFromDisplayingToSkylined($_REQUEST['guid']);
 $retguid = $imageshuffle->getNextImageToDisplay();
 
-echo json_encode(array('guid'=>$retguid));
+echo json_encode(array('imageurl'=>$retguid));
 
 ?>
 
