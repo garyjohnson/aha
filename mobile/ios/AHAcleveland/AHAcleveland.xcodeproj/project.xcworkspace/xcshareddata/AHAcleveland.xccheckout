@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>B77E8437-D9DE-42A9-A40A-8183DBB2B151</string>
+	<key>IDESourceControlProjectName</key>
+	<string>AHAcleveland</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>2193DE6A-B14F-44B8-80AA-6DF8393FE838</key>
+		<string>ssh://github.com/mikekvintus/aha.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>mobile/ios/AHAcleveland/AHAcleveland.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>2193DE6A-B14F-44B8-80AA-6DF8393FE838</key>
+		<string>../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/mikekvintus/aha.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>2193DE6A-B14F-44B8-80AA-6DF8393FE838</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>2193DE6A-B14F-44B8-80AA-6DF8393FE838</string>
+			<key>IDESourceControlWCCName</key>
+			<string>aha</string>
+		</dict>
+	</array>
+</dict>
+</plist>
