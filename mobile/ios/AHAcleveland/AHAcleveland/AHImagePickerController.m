@@ -2,6 +2,7 @@
 #import "AHCameraOverlayController.h"
 #import "AssetsLibrary/AssetsLibrary.h"
 #import "UploadManager.h"
+#import "AHUploadProgressController.h"
 
 @interface AHImagePickerController ()
 
@@ -12,13 +13,21 @@
 UIImagePickerController *imagePickerController;
 AHCameraOverlayController *overlayController;
 UploadManager *uploadManager;
+AHUploadProgressController *uploadProgressController;
 
 - (id)init {
     self = [super initWithNibName:@"AHImagePickerView" bundle:nil];
     if (self) {
         uploadManager = [[UploadManager alloc] init];
+        uploadProgressController = [[AHUploadProgressController alloc] init];
+        [self subscribeToUploadEvents];
     }
     return self;
+}
+
+-(void)subscribeToUploadEvents {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onUploadSuccess) name:UPLOAD_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onUploadFail) name:UPLOAD_FAIL object:nil];
 }
 
 - (NSUInteger)supportedInterfaceOrientations {
@@ -82,23 +91,6 @@ UploadManager *uploadManager;
     [self saveImageToImageLibraryIfAllowed:croppedImage];
     [self saveAndUploadImage:croppedImage];
 
-}
-
-- (void)saveAndUploadImage:(UIImage *)image {
-    NSString *workingDir = [self getWorkingImagesPath];
-    NSString *fileName = [self getTemporaryFileName];
-
-    image = [self unrotateImage:image];
-
-    NSError *saveError;
-    [self saveImage:image toPath:workingDir withFileName:fileName error:&saveError];
-
-    if (saveError != nil)
-        return;
-
-    NSString *filePath = [workingDir stringByAppendingPathComponent:fileName];
-    [uploadManager uploadImageUrl:[NSURL fileURLWithPath:filePath] withEmail:@"gary@gjtt.com" andDeviceId:@"myDeviceId"];
-    [[[UIAlertView alloc] initWithTitle:@"We did it!" message:@"The image was successfully uploaded." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
 }
 
 - (UIImage*)unrotateImage:(UIImage*)image {
@@ -178,6 +170,37 @@ UploadManager *uploadManager;
 
 - (void)onTossPhotoPressed {
     [overlayController clearReviewImage];
+}
+
+- (void)saveAndUploadImage:(UIImage *)image {
+    NSString *workingDir = [self getWorkingImagesPath];
+    NSString *fileName = [self getTemporaryFileName];
+
+    image = [self unrotateImage:image];
+
+    NSError *saveError;
+    [self saveImage:image toPath:workingDir withFileName:fileName error:&saveError];
+
+    if (saveError != nil)
+        return;
+
+
+    [self showUploadProgress];
+    NSString *filePath = [workingDir stringByAppendingPathComponent:fileName];
+    [uploadManager uploadImageUrl:[NSURL fileURLWithPath:filePath] withEmail:@"gary@gjtt.com" andDeviceId:@"myDeviceId"];
+}
+
+-(void)showUploadProgress {
+    [uploadProgressController updateDisplay];
+    [self presentViewController:uploadProgressController animated:YES completion:nil];
+}
+
+-(void)onUploadSuccess{
+    //[uploadProgressController setForSuccess];
+}
+
+-(void)onUploadFail{
+    [uploadProgressController setForError];
 }
 
 @end
