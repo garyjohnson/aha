@@ -26,7 +26,6 @@
 		4FEF849E179A1B1C00EA9242 /* SecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FEF849C179A1B1C00EA9242 /* SecondViewController.xib */; };
 		4FEF84A5179A2AE400EA9242 /* Test2View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FEF84A4179A2AE400EA9242 /* Test2View.xib */; };
 		4FEF84A8179A2CDA00EA9242 /* UploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF84A7179A2CDA00EA9242 /* UploadManager.m */; };
-		8C5B7C56179A299A0087ECCE /* TestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C5B7C55179A299A0087ECCE /* TestView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,7 +55,6 @@
 		4FEF84A4179A2AE400EA9242 /* Test2View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Test2View.xib; sourceTree = "<group>"; };
 		4FEF84A6179A2CDA00EA9242 /* UploadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadManager.h; sourceTree = "<group>"; };
 		4FEF84A7179A2CDA00EA9242 /* UploadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadManager.m; sourceTree = "<group>"; };
-		8C5B7C55179A299A0087ECCE /* TestView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +114,6 @@
 				4FEF8499179A1B1C00EA9242 /* FirstViewController.xib */,
 				4FEF849C179A1B1C00EA9242 /* SecondViewController.xib */,
 				4FEF847A179A1B1C00EA9242 /* Supporting Files */,
-				8C5B7C55179A299A0087ECCE /* TestView.xib */,
 				4FEF84A4179A2AE400EA9242 /* Test2View.xib */,
 				4FEF84A6179A2CDA00EA9242 /* UploadManager.h */,
 				4FEF84A7179A2CDA00EA9242 /* UploadManager.m */,
@@ -193,7 +190,6 @@
 				4FEF8486179A1B1C00EA9242 /* Default.png in Resources */,
 				4FEF8488179A1B1C00EA9242 /* Default@2x.png in Resources */,
 				4FEF848A179A1B1C00EA9242 /* Default-568h@2x.png in Resources */,
-				8C5B7C56179A299A0087ECCE /* TestView.xib in Resources */,
 				4FEF848F179A1B1C00EA9242 /* first.png in Resources */,
 				4FEF8491179A1B1C00EA9242 /* first@2x.png in Resources */,
 				4FEF8496179A1B1C00EA9242 /* second.png in Resources */,
