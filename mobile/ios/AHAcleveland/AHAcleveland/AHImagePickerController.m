@@ -6,9 +6,9 @@
 
 @interface AHImagePickerController ()
 
-@property (retain, readwrite, nonatomic) UIImagePickerController *imagePickerController;
-@property (retain, readwrite, nonatomic)AHCameraOverlayController *overlayController;
-@property (retain, readwrite, nonatomic)AHUploadProgressController *uploadProgressController;
+@property(retain, readwrite, nonatomic) UIImagePickerController *imagePickerController;
+@property(retain, readwrite, nonatomic) AHCameraOverlayController *overlayController;
+@property(retain, readwrite, nonatomic) AHUploadProgressController *uploadProgressController;
 
 @end
 
@@ -143,6 +143,10 @@ BOOL isFirstTime = YES;
 
 - (void)showUploadProgress {
     [_uploadProgressController updateDisplay];
+    [self dismissCameraAndShowUpload];
+}
+
+- (void)dismissCameraAndShowUpload {
     [_imagePickerController dismissViewControllerAnimated:NO completion:^{
         [self presentViewController:_uploadProgressController animated:NO completion:NULL];
     }];
@@ -151,8 +155,12 @@ BOOL isFirstTime = YES;
 - (void)onUploadSuccess {
     [_overlayController clearReviewImage];
     [_uploadProgressController setForSuccess];
+    [self dismissUploadAndShowCamera];
+}
+
+- (void)dismissUploadAndShowCamera {
     [_uploadProgressController dismissViewControllerAnimated:NO completion:^{
-       [self presentViewController:_imagePickerController animated:NO completion:nil];
+        [self presentViewController:_imagePickerController animated:NO completion:nil];
     }];
 }
 
@@ -168,10 +176,10 @@ BOOL isFirstTime = YES;
 }
 
 - (void)onUploadRetry {
-        UIImage *image = _overlayController.reviewImage;
-        CGRect cropRect = [self getImageCropBounds:image];
-        UIImage *croppedImage = [self cropImage:image toBounds:cropRect];
-        [self saveAndUploadImage:croppedImage];
+    UIImage *image = _overlayController.reviewImage;
+    CGRect cropRect = [self getImageCropBounds:image];
+    UIImage *croppedImage = [self cropImage:image toBounds:cropRect];
+    [self saveAndUploadImage:croppedImage];
 }
 
 - (BOOL)isCameraAvailable {
