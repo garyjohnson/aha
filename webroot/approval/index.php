@@ -32,7 +32,7 @@ $images = $sql->fetchAll(MYSQLI_ASSOC);
 		<div id="imageList">
 <?
 foreach($images as $i) {
-	echo "<img src='/images/{$i["guid"]}.jpg' width='150' height='150' class='images' id='{$i["guid"]}' />";
+	echo "<img src='/images/{$i["guid"]}.jpg' width='150' height='150' class='images noselect' id='{$i["guid"]}' />";
 }
 ?>
 		</div>
