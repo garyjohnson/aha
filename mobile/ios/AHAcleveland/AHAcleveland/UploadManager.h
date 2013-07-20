@@ -18,7 +18,7 @@
 + (UploadManager*)instance;
 
 
--(void)uploadImage:(NSURL*)imageUrl withEmail:(NSString*)emailAddress andDeviceId:(NSString*)device;
+-(void)uploadImageUrl:(NSURL*)imageUrl withEmail:(NSString*)emailAddress andDeviceId:(NSString*)device;
 
 -(void)testUpload;
 @end

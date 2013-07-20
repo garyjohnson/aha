@@ -47,15 +47,15 @@ static UploadManager *sharedSingleton = nil;
     NSString* placeholderPath = [fileStorageDirectory stringByAppendingPathComponent:@"placeholder.jpg"];
     
     
-    NSURL* url = [NSURL URLWithString:placeholderPath];
+    NSURL* url = [NSURL fileURLWithPath:placeholderPath];
    
     
-    [self uploadImage:url withEmail:email andDeviceId:deviceId];
+    [self uploadImageUrl:url withEmail:email andDeviceId:deviceId];
     
 }
 
 
--(void)uploadImage:(NSURL*)imageUrl withEmail:(NSString*)emailAddress andDeviceId:(NSString*)device
+-(void)uploadImageUrl:(NSURL*)imageUrl withEmail:(NSString*)emailAddress andDeviceId:(NSString*)device
 {
     
     NSData* imageData = [self retrieveImageData:imageUrl];
