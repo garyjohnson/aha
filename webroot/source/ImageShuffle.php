@@ -79,7 +79,6 @@ class AHAImageShuffle {
         $directory = "../stockimages";
 	$scanned_directory = array_diff(scandir($directory), array('..', '.'));
 	$numfiles = sizeof($scanned_directory);
-	echo "numfiles=".$numfiles;
 	if ($numfiles > 0)
 	{
 	    $this->stockimagenum = $this->stockimagenum % $numfiles;
