@@ -1,0 +1,26 @@
+.container 
+{
+}
+
+.row
+{
+    width: 1080px; 
+    min-height: 360px;
+}
+
+.col
+{
+    height: 100%;
+    float: left;
+    margin-bottom: -6px;
+}
+
+.col img
+{
+    height:360px;
+    width:360px;
+}
+
+.col1{width: 360px;}
+.col2{width: 360px;}
+.col3{width: 360px;}

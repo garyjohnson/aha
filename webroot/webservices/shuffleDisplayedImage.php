@@ -6,7 +6,7 @@ require_once '../source/config.php';
 require_once('../source/MySQLi.class.php');
 
 //::TODO:: Remove this is some testing
-var_dump($_REQUEST,$_FILES);
+//var_dump($_REQUEST,$_FILES);
 
 //log each request
 $file = 'log.txt';
@@ -48,7 +48,7 @@ if ($retguid)
     $stmt->execute();
 }
 
-echo $retguid;
+echo json_encode(array('guid'=>$retguid));
 
 ?>
 
