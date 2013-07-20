@@ -1,4 +1,7 @@
-<h1>This is our cool display!</h1>
+<head>
+    <META HTTP-EQUIV="refresh" CONTENT="15">
+</head>
+<h1>This is our cool display!</h1> - Refreshes every 15 seconds<br/>
 <?php
 $dirname = "../images/";
 $images = glob($dirname."*.jpg");
