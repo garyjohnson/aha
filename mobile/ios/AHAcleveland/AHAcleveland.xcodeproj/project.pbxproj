@@ -22,6 +22,8 @@
 		4FEF8498179A1B1C00EA9242 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FEF8497179A1B1C00EA9242 /* second@2x.png */; };
 		4FEF84A5179A2AE400EA9242 /* Test2View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FEF84A4179A2AE400EA9242 /* Test2View.xib */; };
 		4FEF84A8179A2CDA00EA9242 /* UploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF84A7179A2CDA00EA9242 /* UploadManager.m */; };
+		8CE71676179A370300071DBD /* AHImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CE71674179A370300071DBD /* AHImagePickerController.m */; };
+		8CE71677179A370300071DBD /* AHImagePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CE71675179A370300071DBD /* AHImagePickerView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,9 @@
 		4FEF84A4179A2AE400EA9242 /* Test2View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Test2View.xib; sourceTree = "<group>"; };
 		4FEF84A6179A2CDA00EA9242 /* UploadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadManager.h; sourceTree = "<group>"; };
 		4FEF84A7179A2CDA00EA9242 /* UploadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadManager.m; sourceTree = "<group>"; };
+		8CE71673179A370300071DBD /* AHImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHImagePickerController.h; sourceTree = "<group>"; };
+		8CE71674179A370300071DBD /* AHImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHImagePickerController.m; sourceTree = "<group>"; };
+		8CE71675179A370300071DBD /* AHImagePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AHImagePickerView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +106,9 @@
 				4FEF84A4179A2AE400EA9242 /* Test2View.xib */,
 				4FEF84A6179A2CDA00EA9242 /* UploadManager.h */,
 				4FEF84A7179A2CDA00EA9242 /* UploadManager.m */,
+				8CE71673179A370300071DBD /* AHImagePickerController.h */,
+				8CE71674179A370300071DBD /* AHImagePickerController.m */,
+				8CE71675179A370300071DBD /* AHImagePickerView.xib */,
 			);
 			path = AHAcleveland;
 			sourceTree = "<group>";
@@ -179,6 +187,7 @@
 				4FEF8496179A1B1C00EA9242 /* second.png in Resources */,
 				4FEF8498179A1B1C00EA9242 /* second@2x.png in Resources */,
 				4FEF84A5179A2AE400EA9242 /* Test2View.xib in Resources */,
+				8CE71677179A370300071DBD /* AHImagePickerView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,6 +201,7 @@
 				4FEF8480179A1B1C00EA9242 /* main.m in Sources */,
 				4FEF8484179A1B1C00EA9242 /* AppDelegate.m in Sources */,
 				4FEF84A8179A2CDA00EA9242 /* UploadManager.m in Sources */,
+				8CE71676179A370300071DBD /* AHImagePickerController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
