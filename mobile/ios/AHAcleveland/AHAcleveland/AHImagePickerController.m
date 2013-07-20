@@ -6,111 +6,81 @@
 
 @interface AHImagePickerController ()
 
+@property (retain, readwrite, nonatomic) UIImagePickerController *imagePickerController;
+@property (retain, readwrite, nonatomic)AHCameraOverlayController *overlayController;
+@property (retain, readwrite, nonatomic)AHUploadProgressController *uploadProgressController;
+
 @end
 
 @implementation AHImagePickerController
 
-UIImagePickerController *imagePickerController;
-AHCameraOverlayController *overlayController;
-UploadManager *uploadManager;
-AHUploadProgressController *uploadProgressController;
+@synthesize imagePickerController = _imagePickerController;
+@synthesize overlayController = _overlayController;
+@synthesize uploadProgressController = _uploadProgressController;
+
+BOOL isFirstTime = YES;
 
 - (id)init {
     self = [super initWithNibName:@"AHImagePickerView" bundle:nil];
     if (self) {
-        uploadManager = [[UploadManager alloc] init];
-        uploadProgressController = [[AHUploadProgressController alloc] init];
-        [self subscribeToUploadEvents];
+        _uploadProgressController = [[AHUploadProgressController alloc] init];
+        [self subscribeToUploadManagerEvents];
+        [self subscribeToUploadProgressEvents];
     }
     return self;
 }
 
--(void)subscribeToUploadEvents {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onUploadSuccess) name:UPLOAD_SUCCESS object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onUploadFail) name:UPLOAD_FAIL object:nil];
-}
-
-- (NSUInteger)supportedInterfaceOrientations {
-    return UIInterfaceOrientationMaskPortrait;
-}
-
 - (void)viewDidAppear:(BOOL)animated {
-    [self showImagePicker];
+    [self initializeImagePicker];
+
+    if (isFirstTime)
+        [self showImagePicker];
+
+    isFirstTime = NO;
 }
 
 - (void)showImagePicker {
     if (![self isCameraAvailable]) {
-        [self showCameraNotAvailableError];
+        [self showError:@"Camera not available. This app requires a camera to function properly."];
         return;
     }
 
-    [self initializeImagePicker];
-
-    [self presentViewController:imagePickerController animated:YES completion:nil];
-}
-
-- (BOOL)isCameraAvailable {
-    return [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
-}
-
-- (void)showCameraNotAvailableError {
-    [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Camera not available. This app requires a camera to function properly." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    [self presentViewController:_imagePickerController animated:NO completion:nil];
 }
 
 - (void)initializeImagePicker {
-    imagePickerController = [[UIImagePickerController alloc] init];
-    imagePickerController.delegate = self;
-    imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
-    imagePickerController.wantsFullScreenLayout = YES;
-    imagePickerController.showsCameraControls = NO;
-    imagePickerController.navigationBarHidden = YES;
-
-    overlayController = [[AHCameraOverlayController alloc] init];
-    overlayController.delegate = self;
-    imagePickerController.cameraOverlayView = overlayController.view;
+    _imagePickerController = [[UIImagePickerController alloc] init];
+    _overlayController = [[AHCameraOverlayController alloc] init];
+    _imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+    _imagePickerController.wantsFullScreenLayout = YES;
+    _imagePickerController.showsCameraControls = NO;
+    _imagePickerController.navigationBarHidden = YES;
+    _imagePickerController.delegate = self;
+    _overlayController.delegate = self;
+    _imagePickerController.cameraOverlayView = _overlayController.view;
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
-    [overlayController setReviewImage:image];
+    [_overlayController setReviewImage:image];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [_imagePickerController dismissViewControllerAnimated:NO completion:nil];
 }
 
 - (void)onShutterPressed {
-    [imagePickerController takePicture];
+    [_imagePickerController takePicture];
 }
 
 - (void)onUsePhotoPressed {
-    UIImage *image = overlayController.reviewImage;
+    UIImage *image = _overlayController.reviewImage;
     CGRect cropRect = [self getImageCropBounds:image];
     UIImage *croppedImage = [self cropImage:image toBounds:cropRect];
 
     [self saveImageToImageLibraryIfAllowed:croppedImage];
     [self saveAndUploadImage:croppedImage];
 
-}
-
-- (UIImage*)unrotateImage:(UIImage*)image {
-    CGSize size = image.size;
-    UIGraphicsBeginImageContext(size);
-    [image drawInRect:CGRectMake(0,0,size.width ,size.height)];
-    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return newImage;
-}
-
-- (NSString *)getTemporaryFileName {
-    NSString *guid = [[NSProcessInfo processInfo] globallyUniqueString];
-    return [guid stringByAppendingString:@".jpg"];
-}
-
-- (NSString *)getWorkingImagesPath {
-    NSArray *documentDirs = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *docDir = [documentDirs objectAtIndex:0];
-    return [docDir stringByAppendingPathComponent:@"AHAcleveland"];
 }
 
 - (void)saveImage:(UIImage *)image toPath:(NSString *)path withFileName:(NSString *)fileName error:(NSError **)error {
@@ -124,7 +94,7 @@ AHUploadProgressController *uploadProgressController;
 
     if (createDirError != nil) {
         *error = [NSError errorWithDomain:@"AHAcleveland" code:100 userInfo:nil];
-        [[[UIAlertView alloc] initWithTitle:@"Error" message:@"An error occurred writing image. Please notify the application publisher." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        [self showError:@"An error occurred writing image. Please notify the application publisher."];
         return;
     }
 
@@ -134,7 +104,7 @@ AHUploadProgressController *uploadProgressController;
 
     if (writeFileError != nil) {
         *error = [NSError errorWithDomain:@"AHAcleveland" code:100 userInfo:nil];
-        [[[UIAlertView alloc] initWithTitle:@"Error" message:@"An error occurred writing image. Please notify the application publisher." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        [self showError:@"An error occurred writing image. Please notify the application publisher."];
         return;
     }
 }
@@ -143,33 +113,15 @@ AHUploadProgressController *uploadProgressController;
     [[[ALAssetsLibrary alloc] init] writeImageToSavedPhotosAlbum:[image CGImage]
                                                      orientation:(ALAssetOrientation) [image imageOrientation]
                                                  completionBlock:^(NSURL *assetURL, NSError *error) {
-         if (error != nil) {
-             [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Failed to write" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-             return;
-         }
-
-     }];
-}
-
-- (UIImage *)cropImage:(UIImage *)image toBounds:(CGRect)cropRect {
-    CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], cropRect);
-    UIImage *croppedImage = [UIImage imageWithCGImage:imageRef scale:image.scale orientation:image.imageOrientation];
-    CGImageRelease(imageRef);
-    return croppedImage;
-}
-
-- (CGRect)getImageCropBounds:(UIImage *)image {
-    CGRect imagePreviewBounds = [overlayController getImagePreviewBounds];
-    CGRect viewportBounds = [overlayController getImageViewportBounds];
-    CGFloat x = (viewportBounds.origin.x / imagePreviewBounds.size.width) * image.size.width;
-    CGFloat y = (viewportBounds.origin.y / imagePreviewBounds.size.height) * image.size.height;
-    CGFloat width = (viewportBounds.size.width / imagePreviewBounds.size.width) * image.size.width;
-    CGFloat height = (viewportBounds.size.height / imagePreviewBounds.size.height) * image.size.height;
-    return CGRectMake(y, x, width, height);
+                                                     if (error != nil) {
+                                                         [self showError:@"Failed to write to Image Library."];
+                                                         return;
+                                                     }
+                                                 }];
 }
 
 - (void)onTossPhotoPressed {
-    [overlayController clearReviewImage];
+    [_overlayController clearReviewImage];
 }
 
 - (void)saveAndUploadImage:(UIImage *)image {
@@ -184,23 +136,97 @@ AHUploadProgressController *uploadProgressController;
     if (saveError != nil)
         return;
 
-
     [self showUploadProgress];
     NSString *filePath = [workingDir stringByAppendingPathComponent:fileName];
-    [uploadManager uploadImageUrl:[NSURL fileURLWithPath:filePath] withEmail:@"gary@gjtt.com" andDeviceId:@"myDeviceId"];
+    [[UploadManager instance] uploadImageUrl:[NSURL fileURLWithPath:filePath] withEmail:@"gary@gjtt.com" andDeviceId:@"myDeviceId"];
 }
 
--(void)showUploadProgress {
-    [uploadProgressController updateDisplay];
-    [self presentViewController:uploadProgressController animated:YES completion:nil];
+- (void)showUploadProgress {
+    [_uploadProgressController updateDisplay];
+    [_imagePickerController dismissViewControllerAnimated:NO completion:^{
+        [self presentViewController:_uploadProgressController animated:NO completion:NULL];
+    }];
 }
 
--(void)onUploadSuccess{
-    //[uploadProgressController setForSuccess];
+- (void)onUploadSuccess {
+    [_overlayController clearReviewImage];
+    [_uploadProgressController setForSuccess];
+    [_uploadProgressController dismissViewControllerAnimated:NO completion:^{
+       [self presentViewController:_imagePickerController animated:NO completion:nil];
+    }];
 }
 
--(void)onUploadFail{
-    [uploadProgressController setForError];
+- (void)onUploadFail {
+    [_uploadProgressController setForError];
+}
+
+- (void)onUploadCancelled {
+    [_overlayController clearReviewImage];
+    [_uploadProgressController dismissViewControllerAnimated:NO completion:^{
+        [self presentViewController:_imagePickerController animated:NO completion:nil];
+    }];
+}
+
+- (void)onUploadRetry {
+        UIImage *image = _overlayController.reviewImage;
+        CGRect cropRect = [self getImageCropBounds:image];
+        UIImage *croppedImage = [self cropImage:image toBounds:cropRect];
+        [self saveAndUploadImage:croppedImage];
+}
+
+- (BOOL)isCameraAvailable {
+    return [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
+}
+
+- (void)showError:(NSString *)errorMessage {
+    [[[UIAlertView alloc] initWithTitle:@"Error" message:errorMessage delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+}
+
+- (UIImage *)cropImage:(UIImage *)image toBounds:(CGRect)cropRect {
+    CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], cropRect);
+    UIImage *croppedImage = [UIImage imageWithCGImage:imageRef scale:image.scale orientation:image.imageOrientation];
+    CGImageRelease(imageRef);
+    return croppedImage;
+}
+
+- (CGRect)getImageCropBounds:(UIImage *)image {
+    CGRect imagePreviewBounds = [_overlayController getImagePreviewBounds];
+    CGRect viewportBounds = [_overlayController getImageViewportBounds];
+    CGFloat x = (viewportBounds.origin.x / imagePreviewBounds.size.width) * image.size.width;
+    CGFloat y = (viewportBounds.origin.y / imagePreviewBounds.size.height) * image.size.height;
+    CGFloat width = (viewportBounds.size.width / imagePreviewBounds.size.width) * image.size.width;
+    CGFloat height = (viewportBounds.size.height / imagePreviewBounds.size.height) * image.size.height;
+    return CGRectMake(y, x, width, height);
+}
+
+- (void)subscribeToUploadManagerEvents {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onUploadSuccess) name:UPLOAD_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onUploadFail) name:UPLOAD_FAIL object:nil];
+}
+
+- (void)subscribeToUploadProgressEvents {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onUploadCancelled) name:UPLOADPROGRESSCONTROLLER_RETRY_DECLINED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onUploadRetry) name:UPLOADPROGRESSCONTROLLER_RETRY_SELECTED object:nil];
+}
+
+- (UIImage *)unrotateImage:(UIImage *)image {
+    CGSize size = image.size;
+    UIGraphicsBeginImageContext(size);
+    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
+
+- (NSString *)getTemporaryFileName {
+    NSString *guid = [[NSProcessInfo processInfo] globallyUniqueString];
+    return [guid stringByAppendingString:@".jpg"];
+}
+
+- (NSString *)getWorkingImagesPath {
+    NSArray *documentDirs = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docDir = [documentDirs objectAtIndex:0];
+    return [docDir stringByAppendingPathComponent:@"AHAcleveland"];
 }
 
 @end
