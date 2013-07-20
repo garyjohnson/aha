@@ -24,6 +24,8 @@
 		4FEF8498179A1B1C00EA9242 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FEF8497179A1B1C00EA9242 /* second@2x.png */; };
 		4FEF849B179A1B1C00EA9242 /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FEF8499179A1B1C00EA9242 /* FirstViewController.xib */; };
 		4FEF849E179A1B1C00EA9242 /* SecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FEF849C179A1B1C00EA9242 /* SecondViewController.xib */; };
+		4FEF84A5179A2AE400EA9242 /* Test2View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FEF84A4179A2AE400EA9242 /* Test2View.xib */; };
+		4FEF84A8179A2CDA00EA9242 /* UploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF84A7179A2CDA00EA9242 /* UploadManager.m */; };
 		8C5B7C56179A299A0087ECCE /* TestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C5B7C55179A299A0087ECCE /* TestView.xib */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +53,9 @@
 		4FEF8497179A1B1C00EA9242 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
 		4FEF849A179A1B1C00EA9242 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FirstViewController.xib; sourceTree = "<group>"; };
 		4FEF849D179A1B1C00EA9242 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SecondViewController.xib; sourceTree = "<group>"; };
+		4FEF84A4179A2AE400EA9242 /* Test2View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Test2View.xib; sourceTree = "<group>"; };
+		4FEF84A6179A2CDA00EA9242 /* UploadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadManager.h; sourceTree = "<group>"; };
+		4FEF84A7179A2CDA00EA9242 /* UploadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadManager.m; sourceTree = "<group>"; };
 		8C5B7C55179A299A0087ECCE /* TestView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,6 +117,9 @@
 				4FEF849C179A1B1C00EA9242 /* SecondViewController.xib */,
 				4FEF847A179A1B1C00EA9242 /* Supporting Files */,
 				8C5B7C55179A299A0087ECCE /* TestView.xib */,
+				4FEF84A4179A2AE400EA9242 /* Test2View.xib */,
+				4FEF84A6179A2CDA00EA9242 /* UploadManager.h */,
+				4FEF84A7179A2CDA00EA9242 /* UploadManager.m */,
 			);
 			path = AHAcleveland;
 			sourceTree = "<group>";
@@ -192,6 +200,7 @@
 				4FEF8498179A1B1C00EA9242 /* second@2x.png in Resources */,
 				4FEF849B179A1B1C00EA9242 /* FirstViewController.xib in Resources */,
 				4FEF849E179A1B1C00EA9242 /* SecondViewController.xib in Resources */,
+				4FEF84A5179A2AE400EA9242 /* Test2View.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,6 +215,7 @@
 				4FEF8484179A1B1C00EA9242 /* AppDelegate.m in Sources */,
 				4FEF848D179A1B1C00EA9242 /* FirstViewController.m in Sources */,
 				4FEF8494179A1B1C00EA9242 /* SecondViewController.m in Sources */,
+				4FEF84A8179A2CDA00EA9242 /* UploadManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +314,7 @@
 				GCC_PREFIX_HEADER = "AHAcleveland/AHAcleveland-Prefix.pch";
 				INFOPLIST_FILE = "AHAcleveland/AHAcleveland-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -315,6 +326,7 @@
 				GCC_PREFIX_HEADER = "AHAcleveland/AHAcleveland-Prefix.pch";
 				INFOPLIST_FILE = "AHAcleveland/AHAcleveland-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
