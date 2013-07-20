@@ -21,6 +21,10 @@
     return self;
 }
 
+-(NSUInteger)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 - (IBAction)onShutterPressed:(id)sender {
     [_delegate onShutterPressed];
 }

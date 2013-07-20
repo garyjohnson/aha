@@ -19,8 +19,8 @@ AHCameraOverlayController *overlayController;
     return self;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+-(NSUInteger)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -57,10 +57,6 @@ AHCameraOverlayController *overlayController;
     overlayController = [[AHCameraOverlayController alloc] init];
     overlayController.delegate = self;
     imagePickerController.cameraOverlayView = overlayController.view;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
