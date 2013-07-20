@@ -4,7 +4,7 @@ class Config {
 		"host"=>"localhost",
 		"user"=>"root",
 		"pass"=>"",
-		"db"=>"Aha",
+		"db"=>"aha",
 		"prefix"=>"",
 		"debug"=>true
 	);
