@@ -1,4 +1,10 @@
 <?php
+/**
+ * Small tooltip manager
+ * User: hadidotj
+ * Date: 7/20/13
+ * Time: 2:00 AM
+ */
 class Auth {
 	const SESSION_KEY = "ahathisisawesome";
 	const LOGGED_IN_KEY = "loggedIn";

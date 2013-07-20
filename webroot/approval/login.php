@@ -1,11 +1,17 @@
 <?php
-require 'auth.php';
+/**
+ * Small tooltip manager
+ * User: hadidotj
+ * Date: 7/20/13
+ * Time: 2:00 AM
+ */
+require_once 'auth.php';
 
 // Attempt to login the user
 $error = "";
 if($_POST["username"] != "" && $_POST["password"] != "") {
-	require '../source/MySQLi.class.php';
-	require '../source/config.php';
+	require_once '../source/MySQLi.class.php';
+	require_once '../source/config.php';
 	$sql = new SQL(Config::$mysql);
 
 	$user = $sql->escape($_POST["username"]);

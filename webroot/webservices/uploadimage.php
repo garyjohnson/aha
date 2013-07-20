@@ -1,7 +1,8 @@
 <?php
 // Take image save to file system under images and then insert into device folder 
 // and save the device to the database and the image.
-include('../source/MySQLi.class.php');
+require_once '../source/config.php';
+require_once('../source/MySQLi.class.php');
 
 
 
@@ -26,6 +27,6 @@ else
 // - Save metadata to the database
 // -------------------------------------------
 
-$db = new SQL($host = "localhost", $user = "ahauser", $pass = "hahafunny1!", $db = "Aha", $prefix = "", $debug = FALSE);
+$db = new SQL(Config::$mysql);
 var_dump($db);exit();
 ?>
