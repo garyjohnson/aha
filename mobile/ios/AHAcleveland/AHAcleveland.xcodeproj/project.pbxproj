@@ -24,6 +24,7 @@
 		4FEF8498179A1B1C00EA9242 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FEF8497179A1B1C00EA9242 /* second@2x.png */; };
 		4FEF849B179A1B1C00EA9242 /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FEF8499179A1B1C00EA9242 /* FirstViewController.xib */; };
 		4FEF849E179A1B1C00EA9242 /* SecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FEF849C179A1B1C00EA9242 /* SecondViewController.xib */; };
+		8C5B7C56179A299A0087ECCE /* TestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C5B7C55179A299A0087ECCE /* TestView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		4FEF8497179A1B1C00EA9242 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
 		4FEF849A179A1B1C00EA9242 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FirstViewController.xib; sourceTree = "<group>"; };
 		4FEF849D179A1B1C00EA9242 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SecondViewController.xib; sourceTree = "<group>"; };
+		8C5B7C55179A299A0087ECCE /* TestView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				4FEF8499179A1B1C00EA9242 /* FirstViewController.xib */,
 				4FEF849C179A1B1C00EA9242 /* SecondViewController.xib */,
 				4FEF847A179A1B1C00EA9242 /* Supporting Files */,
+				8C5B7C55179A299A0087ECCE /* TestView.xib */,
 			);
 			path = AHAcleveland;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				4FEF8486179A1B1C00EA9242 /* Default.png in Resources */,
 				4FEF8488179A1B1C00EA9242 /* Default@2x.png in Resources */,
 				4FEF848A179A1B1C00EA9242 /* Default-568h@2x.png in Resources */,
+				8C5B7C56179A299A0087ECCE /* TestView.xib in Resources */,
 				4FEF848F179A1B1C00EA9242 /* first.png in Resources */,
 				4FEF8491179A1B1C00EA9242 /* first@2x.png in Resources */,
 				4FEF8496179A1B1C00EA9242 /* second.png in Resources */,
@@ -334,6 +338,7 @@
 				4FEF84A3179A1B1C00EA9242 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
