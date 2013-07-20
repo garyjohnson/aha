@@ -1,3 +1,4 @@
+<? include '../source/config.php';?>
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
@@ -35,7 +36,7 @@
             function(data)
             {
                 lastGuid = $('#image'+currentImageNumber).attr('src');
-                $('#image'+currentImageNumber).attr('src', data.guid);
+                $('#image'+currentImageNumber).attr('src', <?= Config::imageurl ?>+data.guid);
             }, "json");
         }
         
