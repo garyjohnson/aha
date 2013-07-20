@@ -2,7 +2,7 @@
 /**
  * MySQLi handler class: Handles database connections and queries.
  * 
- * @author Tyler Hadidon
+ * @author Tyler Hadidon <hadidotj@gmail.com>
  * @version 1.0
  * @copyright 2013
  */
