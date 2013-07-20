@@ -142,7 +142,6 @@ BOOL isFirstTime = YES;
 }
 
 - (void)showUploadProgress {
-    [_uploadProgressController updateDisplay];
     [self dismissCameraAndShowUpload];
 }
 

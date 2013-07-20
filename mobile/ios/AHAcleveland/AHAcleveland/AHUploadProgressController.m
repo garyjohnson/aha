@@ -9,7 +9,7 @@
 - (id)init {
     self = [super initWithNibName:@"AHUploadProgressView" bundle:nil];
     if (self) {
-        
+
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(handleUploadProgress:)
                                                      name:UPLOAD_PROGRESS
@@ -38,13 +38,8 @@
 
 -(void)setForSuccess
 {
-    
-}
-
--(void)updateDisplay
-{
-    _buttonRetry.hidden = true;
-    _buttonDeclineRetry.hidden = true;
+    _buttonRetry.hidden = YES;
+    _buttonDeclineRetry.hidden = YES;
 }
 
 -(void)handleUploadProgress:(NSNotification*)notification
