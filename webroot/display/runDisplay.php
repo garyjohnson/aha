@@ -36,7 +36,7 @@
             function(data)
             {
                 lastGuid = $('#image'+currentImageNumber).attr('src');
-                $('#image'+currentImageNumber).attr('src', <?= Config::imageurl ?>+data.guid);
+                $('#image'+currentImageNumber).attr('src', '<?php echo Config::$imageurl; ?>'+data.guid);
             }, "json");
         }
         
@@ -54,16 +54,16 @@
     <div id="container" class="cotainer">
         <!--  Row 1 -->
         <div class="row">
-            <div class="col"><img id="image1" src="../images/CF58EF06-1E86-4E2C-93C1-A035F340DD4B_9DE2367F-FB86-494A-B3B0-54104B80068C.jpg"/></div>
-            <div class="col"><img id="image2" src="../images/CF58EF06-1E86-4E2C-93C1-A035F340DD4B_9DE2367F-FB86-494A-B3B0-54104B80068C.jpg"/></div>
-            <div class="col"><img id="image3" src="../images/CF58EF06-1E86-4E2C-93C1-A035F340DD4B_9DE2367F-FB86-494A-B3B0-54104B80068C.jpg"/></div>
+            <div class="col"><img id="image1" src="../images/<?= Config::$startImage?>"/></div>
+            <div class="col"><img id="image2" src="../images/<?= Config::$startImage?>"/></div>
+            <div class="col"><img id="image3" src="../images/<?= Config::$startImage?>"/></div>
         </div>
 
         <!--  Row 2 -->
         <div class="row">
-            <div class="col"><img id="image4" src="../images/CF58EF06-1E86-4E2C-93C1-A035F340DD4B_9DE2367F-FB86-494A-B3B0-54104B80068C.jpg"/></div>
-            <div class="col"><img id="image5" src="../images/CF58EF06-1E86-4E2C-93C1-A035F340DD4B_9DE2367F-FB86-494A-B3B0-54104B80068C.jpg"/></div>
-            <div class="col"><img id="image6" src="../images/CF58EF06-1E86-4E2C-93C1-A035F340DD4B_9DE2367F-FB86-494A-B3B0-54104B80068C.jpg"/></div>
+            <div class="col"><img id="image4" src="../images/<?= Config::$startImage?>"/></div>
+            <div class="col"><img id="image5" src="../images/<?= Config::$startImage?>"/></div>
+            <div class="col"><img id="image6" src="../images/<?= Config::$startImage?>"/></div>
         </div>
 
 
