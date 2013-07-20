@@ -9,7 +9,7 @@ USE `aha` ;
 -- Table `aha`.`images`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `aha`.`images` (
-  `guid` VARCHAR(50) NOT NULL ,
+  `guid` VARCHAR(100) NOT NULL ,
   `device` VARCHAR(50) NOT NULL ,
   `status` TINYINT NULL ,
   `timestamp` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ,
