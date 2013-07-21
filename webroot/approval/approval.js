@@ -10,12 +10,12 @@ var Approval = {
 			Approval.deselectImage(img);
 		});
 		img.addClass("selected");
-		Approval.denied.push(img);
+		Approval.denied.push(img.attr("id"));
 	},
 	deselectImage:function(img) {
 		img.removeClass("selected");
 		$("#overlay-"+img.attr("id")).remove();
-		if(index = Approval.denied.indexOf()) {
+		if((index = Approval.denied.indexOf(img.attr("id"))) >= 0) {
 			Approval.denied.splice(index, 1);
 		}
 	},
@@ -47,10 +47,7 @@ var Approval = {
 		}
 	},
 	denySelected:function() {
-		var ids = [];
-		for(var i in Approval.denied) {
-			ids.push(Approval.denied[i].attr("id"));
-		}
+		var ids = Approval.denied;
 		if(ids.length > 0) {
 			$.ajax({
 				cache:false,
@@ -60,8 +57,8 @@ var Approval = {
 				success:function(data) {
 					if(data.code == 200) {
 						for(var i in Approval.denied) {
-							$("#overlay-"+Approval.denied[i].attr("id")).remove();
-							Approval.denied[i].remove();
+							$("#overlay-"+Approval.denied[i]).remove();
+							$("#"+Approval.denied[i]).remove();
 						}
 						Approval.denied = [];
 						$("#pendingCount").html($("#imageList img").length);
