@@ -27,6 +27,7 @@ if($_POST["username"] != "" && $_POST["password"] != "") {
 		$serveruri = $_SERVER['REQUEST_URI'];
 	        $serveruri = substr($serveruri, 0, strrpos($serveruri, '/'));
 		header("Location: " . $serveruri . "/index.php");
+		exit();
 	} else {
 		$error = "Invalid username or password. Please try again.";
 	}
@@ -37,6 +38,7 @@ if(!is_null($_REQUEST["logout"])) {
 	$serveruri = $_SERVER['REQUEST_URI'];
 	$serveruri = substr($serveruri, 0, strrpos($serveruri, '/'));
 	header("Location: " . $serveruri . "/login.php");
+	exit();
 }
 ?>
 <!DOCTYPE HTML>
