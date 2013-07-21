@@ -59,7 +59,7 @@
 }
 
 - (CGRect)getImageViewportBounds {
-   return CGRectMake(20,58,280,280);
+   return CGRectMake(17,78,282,282);
 }
 
 - (CGRect)getImagePreviewBounds {
