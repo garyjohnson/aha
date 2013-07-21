@@ -253,10 +253,9 @@ BOOL isShowingSettingsBeforeUpload = NO;
 }
 
 - (void)onUploadRetry {
-    UIImage *image = _overlayController.reviewImage;
-    CGRect cropRect = [self getImageCropBounds:image];
-    UIImage *croppedImage = [self cropImage:image toBounds:cropRect];
-    [self uploadImage:croppedImage];
+    [self showUploadProgress];
+    NSString *installationId = [((AppDelegate *) [[UIApplication sharedApplication] delegate]) installationId];
+    [[UploadManager instance] uploadImageUrl:_currentUploadingImageUrl withEmail:[UserSession getEmail] andDeviceId:installationId];
 }
 
 - (BOOL)isCameraAvailable {
