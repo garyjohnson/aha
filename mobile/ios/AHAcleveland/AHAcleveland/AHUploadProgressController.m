@@ -26,7 +26,7 @@
         }
         
         
-
+        
         
         
         
@@ -48,10 +48,13 @@
 {
     [super viewDidAppear:animated];
     
+    _imageProgressAnimation.hidden = false;
     _imageProgressAnimation.animationImages = animationImages;
-    _imageProgressAnimation.animationDuration = 1.0;
+    _imageProgressAnimation.animationDuration = 5.0;
     
     [_imageProgressAnimation startAnimating];
+    
+    _imageSuccess.hidden = true;
 }
 
 -(void)setForError
@@ -66,9 +69,19 @@
     _buttonRetry.hidden = YES;
     _buttonDeclineRetry.hidden = YES;
     
+    _imageProgressAnimation.hidden = true;
+    _imageSuccess.hidden = false;
     
-    sleep(3);
+    dismissTimer = [NSTimer timerWithTimeInterval:5 target:self selector:@selector(messageToDismiss) userInfo:nil repeats:false];
     
+}
+
+-(void)messageToDismiss
+{
+    _imageSuccess.hidden = true;
+    _imageProgressAnimation.hidden = false;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:UPLOADPROGRESSCONTROLLER_SHOULD_DISMISS object:nil userInfo:nil];
 }
 
 -(void)handleUploadProgress:(NSNotification*)notification
