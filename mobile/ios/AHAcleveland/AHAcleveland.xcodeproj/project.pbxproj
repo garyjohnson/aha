@@ -27,35 +27,25 @@
 		4FE2AB92179BB1F200F11C6F /* 08@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2AB66179BB1F200F11C6F /* 08@2x.png */; };
 		4FE2AB93179BB1F200F11C6F /* 09@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2AB67179BB1F200F11C6F /* 09@2x.png */; };
 		4FE2AB94179BB1F200F11C6F /* 10@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2AB68179BB1F200F11C6F /* 10@2x.png */; };
-		4FE2AB95179BB1F200F11C6F /* CameraBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2AB69179BB1F200F11C6F /* CameraBack@2x.png */; };
-		4FE2AB96179BB1F200F11C6F /* CameraButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2AB6A179BB1F200F11C6F /* CameraButton@2x.png */; };
 		4FE2AB97179BB1F200F11C6F /* CameraButton2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2AB6B179BB1F200F11C6F /* CameraButton2@2x.png */; };
 		4FE2AB98179BB1F200F11C6F /* CheckBox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2AB6C179BB1F200F11C6F /* CheckBox@2x.png */; };
-		4FE2AB99179BB1F200F11C6F /* CheckBoxYellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2AB6D179BB1F200F11C6F /* CheckBoxYellow.png */; };
-		4FE2AB9A179BB1F200F11C6F /* Cloud 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2AB6E179BB1F200F11C6F /* Cloud 2.png */; };
 		4FE2AB9B179BB1F200F11C6F /* Cloud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2AB6F179BB1F200F11C6F /* Cloud@2x.png */; };
 		4FE2AB9C179BB1F200F11C6F /* DidntGetIt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2AB70179BB1F200F11C6F /* DidntGetIt@2x.png */; };
 		4FE2AB9D179BB1F200F11C6F /* EmailField@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2AB71179BB1F200F11C6F /* EmailField@2x.png */; };
 		4FE2AB9E179BB1F200F11C6F /* EmailIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2AB72179BB1F200F11C6F /* EmailIcon@2x.png */; };
 		4FE2AB9F179BB1F200F11C6F /* ForgetItButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2AB73179BB1F200F11C6F /* ForgetItButton@2x.png */; };
 		4FE2ABA0179BB1F200F11C6F /* LegalHeader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2AB74179BB1F200F11C6F /* LegalHeader@2x.png */; };
-		4FE2ABA1179BB1F200F11C6F /* LegalPage.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2AB75179BB1F200F11C6F /* LegalPage.png */; };
 		4FE2ABA2179BB1F200F11C6F /* LegalPageBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2AB76179BB1F200F11C6F /* LegalPageBack@2x.png */; };
 		4FE2ABA3179BB1F200F11C6F /* LegalHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2AB77179BB1F200F11C6F /* LegalHeader.png */; };
 		4FE2ABA4179BB1F200F11C6F /* NotifyMe@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2AB78179BB1F200F11C6F /* NotifyMe@2x.png */; };
 		4FE2ABA5179BB1F200F11C6F /* OkButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2AB79179BB1F200F11C6F /* OkButton@2x.png */; };
-		4FE2ABA6179BB1F200F11C6F /* Settings5.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2AB7A179BB1F200F11C6F /* Settings5.png */; };
 		4FE2ABA7179BB1F200F11C6F /* SettingsBack5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2AB7B179BB1F200F11C6F /* SettingsBack5@2x.png */; };
 		4FE2ABA8179BB1F200F11C6F /* SettingsButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2AB7C179BB1F200F11C6F /* SettingsButton@2x.png */; };
 		4FE2ABA9179BB1F200F11C6F /* SettingsHeader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2AB7D179BB1F200F11C6F /* SettingsHeader@2x.png */; };
-		4FE2ABAA179BB1F200F11C6F /* ShootBack4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2AB7E179BB1F200F11C6F /* ShootBack4@2x.png */; };
-		4FE2ABAB179BB1F200F11C6F /* ShootBack5.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2AB7F179BB1F200F11C6F /* ShootBack5.png */; };
 		4FE2ABAC179BB1F200F11C6F /* SureButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2AB80179BB1F200F11C6F /* SureButton@2x.png */; };
 		4FE2ABAD179BB1F200F11C6F /* TossButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2AB81179BB1F200F11C6F /* TossButton@2x.png */; };
-		4FE2ABAE179BB1F200F11C6F /* TransparentBorder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2AB82179BB1F200F11C6F /* TransparentBorder@2x.png */; };
 		4FE2ABAF179BB1F200F11C6F /* TryAgainButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2AB83179BB1F200F11C6F /* TryAgainButton@2x.png */; };
 		4FE2ABB0179BB1F200F11C6F /* UnCheckBox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2AB84179BB1F200F11C6F /* UnCheckBox@2x.png */; };
-		4FE2ABB1179BB1F200F11C6F /* UnCheckBoxYellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2AB85179BB1F200F11C6F /* UnCheckBoxYellow.png */; };
 		4FE2ABB2179BB1F200F11C6F /* UseButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2AB86179BB1F200F11C6F /* UseButton@2x.png */; };
 		4FE2ABB3179BB1F200F11C6F /* What@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2AB87179BB1F200F11C6F /* What@2x.png */; };
 		4FE2ABB4179BB1F200F11C6F /* WipeItButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2AB88179BB1F200F11C6F /* WipeItButton@2x.png */; };
@@ -68,12 +58,9 @@
 		4FE2F143179AFDF000F17213 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FE2F142179AFDF000F17213 /* AssetsLibrary.framework */; };
 		4FE2F147179B0F7300F17213 /* AHUploadProgressController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE2F145179B0F7300F17213 /* AHUploadProgressController.m */; };
 		4FE2F148179B0F7300F17213 /* AHUploadProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F146179B0F7300F17213 /* AHUploadProgressView.xib */; };
-		4FE2F150179B12EA00F17213 /* CameraButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F14A179B12EA00F17213 /* CameraButton.png */; };
 		4FE2F152179B12EA00F17213 /* SureButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F14C179B12EA00F17213 /* SureButton.png */; };
 		4FE2F153179B12EA00F17213 /* TossButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F14D179B12EA00F17213 /* TossButton.png */; };
-		4FE2F154179B12EA00F17213 /* TransparentBorder.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F14E179B12EA00F17213 /* TransparentBorder.png */; };
 		4FE2F155179B12EA00F17213 /* UseButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F14F179B12EA00F17213 /* UseButton.png */; };
-		4FE2F158179B1CA200F17213 /* LegalHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F156179B1CA200F17213 /* LegalHeader.png */; };
 		4FE2F159179B1CA200F17213 /* LegalPageBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F157179B1CA200F17213 /* LegalPageBack.png */; };
 		4FE2F15C179B22D600F17213 /* AHEULAManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE2F15B179B22D600F17213 /* AHEULAManager.m */; };
 		4FE2F172179B592800F17213 /* 00.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F15D179B592600F17213 /* 00.png */; };
@@ -112,10 +99,6 @@
 		4FEF8486179A1B1C00EA9242 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FEF8485179A1B1C00EA9242 /* Default.png */; };
 		4FEF8488179A1B1C00EA9242 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FEF8487179A1B1C00EA9242 /* Default@2x.png */; };
 		4FEF848A179A1B1C00EA9242 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FEF8489179A1B1C00EA9242 /* Default-568h@2x.png */; };
-		4FEF848F179A1B1C00EA9242 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FEF848E179A1B1C00EA9242 /* first.png */; };
-		4FEF8491179A1B1C00EA9242 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FEF8490179A1B1C00EA9242 /* first@2x.png */; };
-		4FEF8496179A1B1C00EA9242 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FEF8495179A1B1C00EA9242 /* second.png */; };
-		4FEF8498179A1B1C00EA9242 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FEF8497179A1B1C00EA9242 /* second@2x.png */; };
 		4FEF84A5179A2AE400EA9242 /* Test2View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FEF84A4179A2AE400EA9242 /* Test2View.xib */; };
 		4FEF84A8179A2CDA00EA9242 /* UploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF84A7179A2CDA00EA9242 /* UploadManager.m */; };
 		8CE71676179A370300071DBD /* AHImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CE71674179A370300071DBD /* AHImagePickerController.m */; };
@@ -124,6 +107,7 @@
 		8CEC4D15179B8D9C00B8E277 /* ForgetItButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CEC4D11179B8D9C00B8E277 /* ForgetItButton.png */; };
 		8CEC4D16179B8D9C00B8E277 /* TryAgainButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CEC4D12179B8D9C00B8E277 /* TryAgainButton.png */; };
 		8CEC4D17179B8D9C00B8E277 /* Yeah.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CEC4D13179B8D9C00B8E277 /* Yeah.png */; };
+		8CEC4D2F179C35F200B8E277 /* ShootBack4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CEC4D2E179C35F200B8E277 /* ShootBack4@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -148,35 +132,25 @@
 		4FE2AB66179BB1F200F11C6F /* 08@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "08@2x.png"; sourceTree = "<group>"; };
 		4FE2AB67179BB1F200F11C6F /* 09@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "09@2x.png"; sourceTree = "<group>"; };
 		4FE2AB68179BB1F200F11C6F /* 10@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "10@2x.png"; sourceTree = "<group>"; };
-		4FE2AB69179BB1F200F11C6F /* CameraBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CameraBack@2x.png"; sourceTree = "<group>"; };
-		4FE2AB6A179BB1F200F11C6F /* CameraButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CameraButton@2x.png"; sourceTree = "<group>"; };
 		4FE2AB6B179BB1F200F11C6F /* CameraButton2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CameraButton2@2x.png"; sourceTree = "<group>"; };
 		4FE2AB6C179BB1F200F11C6F /* CheckBox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CheckBox@2x.png"; sourceTree = "<group>"; };
-		4FE2AB6D179BB1F200F11C6F /* CheckBoxYellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CheckBoxYellow.png; sourceTree = "<group>"; };
-		4FE2AB6E179BB1F200F11C6F /* Cloud 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cloud 2.png"; sourceTree = "<group>"; };
 		4FE2AB6F179BB1F200F11C6F /* Cloud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cloud@2x.png"; sourceTree = "<group>"; };
 		4FE2AB70179BB1F200F11C6F /* DidntGetIt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DidntGetIt@2x.png"; sourceTree = "<group>"; };
 		4FE2AB71179BB1F200F11C6F /* EmailField@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EmailField@2x.png"; sourceTree = "<group>"; };
 		4FE2AB72179BB1F200F11C6F /* EmailIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EmailIcon@2x.png"; sourceTree = "<group>"; };
 		4FE2AB73179BB1F200F11C6F /* ForgetItButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ForgetItButton@2x.png"; sourceTree = "<group>"; };
 		4FE2AB74179BB1F200F11C6F /* LegalHeader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LegalHeader@2x.png"; sourceTree = "<group>"; };
-		4FE2AB75179BB1F200F11C6F /* LegalPage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LegalPage.png; sourceTree = "<group>"; };
 		4FE2AB76179BB1F200F11C6F /* LegalPageBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LegalPageBack@2x.png"; sourceTree = "<group>"; };
 		4FE2AB77179BB1F200F11C6F /* LegalHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LegalHeader.png; sourceTree = "<group>"; };
 		4FE2AB78179BB1F200F11C6F /* NotifyMe@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NotifyMe@2x.png"; sourceTree = "<group>"; };
 		4FE2AB79179BB1F200F11C6F /* OkButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OkButton@2x.png"; sourceTree = "<group>"; };
-		4FE2AB7A179BB1F200F11C6F /* Settings5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings5.png; sourceTree = "<group>"; };
 		4FE2AB7B179BB1F200F11C6F /* SettingsBack5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SettingsBack5@2x.png"; sourceTree = "<group>"; };
 		4FE2AB7C179BB1F200F11C6F /* SettingsButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SettingsButton@2x.png"; sourceTree = "<group>"; };
 		4FE2AB7D179BB1F200F11C6F /* SettingsHeader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SettingsHeader@2x.png"; sourceTree = "<group>"; };
-		4FE2AB7E179BB1F200F11C6F /* ShootBack4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ShootBack4@2x.png"; sourceTree = "<group>"; };
-		4FE2AB7F179BB1F200F11C6F /* ShootBack5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShootBack5.png; sourceTree = "<group>"; };
 		4FE2AB80179BB1F200F11C6F /* SureButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SureButton@2x.png"; sourceTree = "<group>"; };
 		4FE2AB81179BB1F200F11C6F /* TossButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TossButton@2x.png"; sourceTree = "<group>"; };
-		4FE2AB82179BB1F200F11C6F /* TransparentBorder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TransparentBorder@2x.png"; sourceTree = "<group>"; };
 		4FE2AB83179BB1F200F11C6F /* TryAgainButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TryAgainButton@2x.png"; sourceTree = "<group>"; };
 		4FE2AB84179BB1F200F11C6F /* UnCheckBox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UnCheckBox@2x.png"; sourceTree = "<group>"; };
-		4FE2AB85179BB1F200F11C6F /* UnCheckBoxYellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UnCheckBoxYellow.png; sourceTree = "<group>"; };
 		4FE2AB86179BB1F200F11C6F /* UseButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UseButton@2x.png"; sourceTree = "<group>"; };
 		4FE2AB87179BB1F200F11C6F /* What@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "What@2x.png"; sourceTree = "<group>"; };
 		4FE2AB88179BB1F200F11C6F /* WipeItButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "WipeItButton@2x.png"; sourceTree = "<group>"; };
@@ -194,12 +168,9 @@
 		4FE2F144179B0F7300F17213 /* AHUploadProgressController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHUploadProgressController.h; sourceTree = "<group>"; };
 		4FE2F145179B0F7300F17213 /* AHUploadProgressController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHUploadProgressController.m; sourceTree = "<group>"; };
 		4FE2F146179B0F7300F17213 /* AHUploadProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AHUploadProgressView.xib; sourceTree = "<group>"; };
-		4FE2F14A179B12EA00F17213 /* CameraButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CameraButton.png; sourceTree = "<group>"; };
 		4FE2F14C179B12EA00F17213 /* SureButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SureButton.png; sourceTree = "<group>"; };
 		4FE2F14D179B12EA00F17213 /* TossButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TossButton.png; sourceTree = "<group>"; };
-		4FE2F14E179B12EA00F17213 /* TransparentBorder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TransparentBorder.png; sourceTree = "<group>"; };
 		4FE2F14F179B12EA00F17213 /* UseButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UseButton.png; sourceTree = "<group>"; };
-		4FE2F156179B1CA200F17213 /* LegalHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LegalHeader.png; sourceTree = "<group>"; };
 		4FE2F157179B1CA200F17213 /* LegalPageBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LegalPageBack.png; sourceTree = "<group>"; };
 		4FE2F15A179B22D600F17213 /* AHEULAManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHEULAManager.h; sourceTree = "<group>"; };
 		4FE2F15B179B22D600F17213 /* AHEULAManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHEULAManager.m; sourceTree = "<group>"; };
@@ -247,10 +218,6 @@
 		4FEF8485179A1B1C00EA9242 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		4FEF8487179A1B1C00EA9242 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		4FEF8489179A1B1C00EA9242 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		4FEF848E179A1B1C00EA9242 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
-		4FEF8490179A1B1C00EA9242 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		4FEF8495179A1B1C00EA9242 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
-		4FEF8497179A1B1C00EA9242 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
 		4FEF84A4179A2AE400EA9242 /* Test2View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Test2View.xib; sourceTree = "<group>"; };
 		4FEF84A6179A2CDA00EA9242 /* UploadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadManager.h; sourceTree = "<group>"; };
 		4FEF84A7179A2CDA00EA9242 /* UploadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadManager.m; sourceTree = "<group>"; };
@@ -261,6 +228,7 @@
 		8CEC4D11179B8D9C00B8E277 /* ForgetItButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ForgetItButton.png; sourceTree = "<group>"; };
 		8CEC4D12179B8D9C00B8E277 /* TryAgainButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TryAgainButton.png; sourceTree = "<group>"; };
 		8CEC4D13179B8D9C00B8E277 /* Yeah.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Yeah.png; sourceTree = "<group>"; };
+		8CEC4D2E179C35F200B8E277 /* ShootBack4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ShootBack4@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,6 +251,7 @@
 		4FE2F149179B12EA00F17213 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8CEC4D2E179C35F200B8E277 /* ShootBack4@2x.png */,
 				4FE2AB5E179BB1F200F11C6F /* 00@2x.png */,
 				4FE2AB5F179BB1F200F11C6F /* 01@2x.png */,
 				4FE2AB60179BB1F200F11C6F /* 02@2x.png */,
@@ -294,35 +263,25 @@
 				4FE2AB66179BB1F200F11C6F /* 08@2x.png */,
 				4FE2AB67179BB1F200F11C6F /* 09@2x.png */,
 				4FE2AB68179BB1F200F11C6F /* 10@2x.png */,
-				4FE2AB69179BB1F200F11C6F /* CameraBack@2x.png */,
-				4FE2AB6A179BB1F200F11C6F /* CameraButton@2x.png */,
 				4FE2AB6B179BB1F200F11C6F /* CameraButton2@2x.png */,
 				4FE2AB6C179BB1F200F11C6F /* CheckBox@2x.png */,
-				4FE2AB6D179BB1F200F11C6F /* CheckBoxYellow.png */,
-				4FE2AB6E179BB1F200F11C6F /* Cloud 2.png */,
 				4FE2AB6F179BB1F200F11C6F /* Cloud@2x.png */,
 				4FE2AB70179BB1F200F11C6F /* DidntGetIt@2x.png */,
 				4FE2AB71179BB1F200F11C6F /* EmailField@2x.png */,
 				4FE2AB72179BB1F200F11C6F /* EmailIcon@2x.png */,
 				4FE2AB73179BB1F200F11C6F /* ForgetItButton@2x.png */,
 				4FE2AB74179BB1F200F11C6F /* LegalHeader@2x.png */,
-				4FE2AB75179BB1F200F11C6F /* LegalPage.png */,
 				4FE2AB76179BB1F200F11C6F /* LegalPageBack@2x.png */,
 				4FE2AB77179BB1F200F11C6F /* LegalHeader.png */,
 				4FE2AB78179BB1F200F11C6F /* NotifyMe@2x.png */,
 				4FE2AB79179BB1F200F11C6F /* OkButton@2x.png */,
-				4FE2AB7A179BB1F200F11C6F /* Settings5.png */,
 				4FE2AB7B179BB1F200F11C6F /* SettingsBack5@2x.png */,
 				4FE2AB7C179BB1F200F11C6F /* SettingsButton@2x.png */,
 				4FE2AB7D179BB1F200F11C6F /* SettingsHeader@2x.png */,
-				4FE2AB7E179BB1F200F11C6F /* ShootBack4@2x.png */,
-				4FE2AB7F179BB1F200F11C6F /* ShootBack5.png */,
 				4FE2AB80179BB1F200F11C6F /* SureButton@2x.png */,
 				4FE2AB81179BB1F200F11C6F /* TossButton@2x.png */,
-				4FE2AB82179BB1F200F11C6F /* TransparentBorder@2x.png */,
 				4FE2AB83179BB1F200F11C6F /* TryAgainButton@2x.png */,
 				4FE2AB84179BB1F200F11C6F /* UnCheckBox@2x.png */,
-				4FE2AB85179BB1F200F11C6F /* UnCheckBoxYellow.png */,
 				4FE2AB86179BB1F200F11C6F /* UseButton@2x.png */,
 				4FE2AB87179BB1F200F11C6F /* What@2x.png */,
 				4FE2AB88179BB1F200F11C6F /* WipeItButton@2x.png */,
@@ -360,12 +319,9 @@
 				4FE2F16F179B592700F17213 /* UnCheckBox.png */,
 				4FE2F170179B592700F17213 /* What.png */,
 				4FE2F171179B592800F17213 /* WipeItButton.png */,
-				4FE2F156179B1CA200F17213 /* LegalHeader.png */,
 				4FE2F157179B1CA200F17213 /* LegalPageBack.png */,
-				4FE2F14A179B12EA00F17213 /* CameraButton.png */,
 				4FE2F14C179B12EA00F17213 /* SureButton.png */,
 				4FE2F14D179B12EA00F17213 /* TossButton.png */,
-				4FE2F14E179B12EA00F17213 /* TransparentBorder.png */,
 				4FE2F14F179B12EA00F17213 /* UseButton.png */,
 				426B213629BD5ADFA4677E1D /* SettingsButton.png */,
 			);
@@ -436,10 +392,6 @@
 				4FE2F13C179AFDBE00F17213 /* AHLegaleseView.xib */,
 				4FEF8482179A1B1C00EA9242 /* AppDelegate.h */,
 				4FEF8483179A1B1C00EA9242 /* AppDelegate.m */,
-				4FEF848E179A1B1C00EA9242 /* first.png */,
-				4FEF8490179A1B1C00EA9242 /* first@2x.png */,
-				4FEF8495179A1B1C00EA9242 /* second.png */,
-				4FEF8497179A1B1C00EA9242 /* second@2x.png */,
 				4FEF847A179A1B1C00EA9242 /* Supporting Files */,
 				4FEF84A4179A2AE400EA9242 /* Test2View.xib */,
 				4FEF84A6179A2CDA00EA9242 /* UploadManager.h */,
@@ -523,21 +475,14 @@
 				4FEF8486179A1B1C00EA9242 /* Default.png in Resources */,
 				4FEF8488179A1B1C00EA9242 /* Default@2x.png in Resources */,
 				4FEF848A179A1B1C00EA9242 /* Default-568h@2x.png in Resources */,
-				4FEF848F179A1B1C00EA9242 /* first.png in Resources */,
-				4FEF8491179A1B1C00EA9242 /* first@2x.png in Resources */,
-				4FEF8496179A1B1C00EA9242 /* second.png in Resources */,
-				4FEF8498179A1B1C00EA9242 /* second@2x.png in Resources */,
 				4FEF84A5179A2AE400EA9242 /* Test2View.xib in Resources */,
 				8CE71677179A370300071DBD /* AHImagePickerView.xib in Resources */,
 				4FE2F13F179AFDBE00F17213 /* AHCameraOverlayView.xib in Resources */,
 				4FE2F141179AFDBE00F17213 /* AHLegaleseView.xib in Resources */,
 				4FE2F148179B0F7300F17213 /* AHUploadProgressView.xib in Resources */,
-				4FE2F150179B12EA00F17213 /* CameraButton.png in Resources */,
 				4FE2F152179B12EA00F17213 /* SureButton.png in Resources */,
 				4FE2F153179B12EA00F17213 /* TossButton.png in Resources */,
-				4FE2F154179B12EA00F17213 /* TransparentBorder.png in Resources */,
 				4FE2F155179B12EA00F17213 /* UseButton.png in Resources */,
-				4FE2F158179B1CA200F17213 /* LegalHeader.png in Resources */,
 				4FE2F159179B1CA200F17213 /* LegalPageBack.png in Resources */,
 				4FE2F172179B592800F17213 /* 00.png in Resources */,
 				4FE2F173179B592800F17213 /* 01.png in Resources */,
@@ -585,39 +530,30 @@
 				4FE2AB92179BB1F200F11C6F /* 08@2x.png in Resources */,
 				4FE2AB93179BB1F200F11C6F /* 09@2x.png in Resources */,
 				4FE2AB94179BB1F200F11C6F /* 10@2x.png in Resources */,
-				4FE2AB95179BB1F200F11C6F /* CameraBack@2x.png in Resources */,
-				4FE2AB96179BB1F200F11C6F /* CameraButton@2x.png in Resources */,
 				4FE2AB97179BB1F200F11C6F /* CameraButton2@2x.png in Resources */,
 				4FE2AB98179BB1F200F11C6F /* CheckBox@2x.png in Resources */,
-				4FE2AB99179BB1F200F11C6F /* CheckBoxYellow.png in Resources */,
-				4FE2AB9A179BB1F200F11C6F /* Cloud 2.png in Resources */,
 				4FE2AB9B179BB1F200F11C6F /* Cloud@2x.png in Resources */,
 				4FE2AB9C179BB1F200F11C6F /* DidntGetIt@2x.png in Resources */,
 				4FE2AB9D179BB1F200F11C6F /* EmailField@2x.png in Resources */,
 				4FE2AB9E179BB1F200F11C6F /* EmailIcon@2x.png in Resources */,
 				4FE2AB9F179BB1F200F11C6F /* ForgetItButton@2x.png in Resources */,
 				4FE2ABA0179BB1F200F11C6F /* LegalHeader@2x.png in Resources */,
-				4FE2ABA1179BB1F200F11C6F /* LegalPage.png in Resources */,
 				4FE2ABA2179BB1F200F11C6F /* LegalPageBack@2x.png in Resources */,
 				4FE2ABA3179BB1F200F11C6F /* LegalHeader.png in Resources */,
 				4FE2ABA4179BB1F200F11C6F /* NotifyMe@2x.png in Resources */,
 				4FE2ABA5179BB1F200F11C6F /* OkButton@2x.png in Resources */,
-				4FE2ABA6179BB1F200F11C6F /* Settings5.png in Resources */,
 				4FE2ABA7179BB1F200F11C6F /* SettingsBack5@2x.png in Resources */,
 				4FE2ABA8179BB1F200F11C6F /* SettingsButton@2x.png in Resources */,
 				4FE2ABA9179BB1F200F11C6F /* SettingsHeader@2x.png in Resources */,
-				4FE2ABAA179BB1F200F11C6F /* ShootBack4@2x.png in Resources */,
-				4FE2ABAB179BB1F200F11C6F /* ShootBack5.png in Resources */,
 				4FE2ABAC179BB1F200F11C6F /* SureButton@2x.png in Resources */,
 				4FE2ABAD179BB1F200F11C6F /* TossButton@2x.png in Resources */,
-				4FE2ABAE179BB1F200F11C6F /* TransparentBorder@2x.png in Resources */,
 				4FE2ABAF179BB1F200F11C6F /* TryAgainButton@2x.png in Resources */,
 				4FE2ABB0179BB1F200F11C6F /* UnCheckBox@2x.png in Resources */,
-				4FE2ABB1179BB1F200F11C6F /* UnCheckBoxYellow.png in Resources */,
 				4FE2ABB2179BB1F200F11C6F /* UseButton@2x.png in Resources */,
 				4FE2ABB3179BB1F200F11C6F /* What@2x.png in Resources */,
 				4FE2ABB4179BB1F200F11C6F /* WipeItButton@2x.png in Resources */,
 				4FE2ABB5179BB1F200F11C6F /* Yeah@2x.png in Resources */,
+				8CEC4D2F179C35F200B8E277 /* ShootBack4@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
