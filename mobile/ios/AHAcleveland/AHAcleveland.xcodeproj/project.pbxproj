@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		426B28CB371C01DBCBB0C2A0 /* SettingsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 426B213629BD5ADFA4677E1D /* SettingsButton.png */; };
 		4FE2F13D179AFDBE00F17213 /* AHCameraOverlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE2F135179AFDBE00F17213 /* AHCameraOverlayController.m */; };
 		4FE2F13E179AFDBE00F17213 /* AHCameraOverlayControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE2F137179AFDBE00F17213 /* AHCameraOverlayControllerViewController.m */; };
 		4FE2F13F179AFDBE00F17213 /* AHCameraOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F139179AFDBE00F17213 /* AHCameraOverlayView.xib */; };
@@ -67,9 +68,16 @@
 		4FEF84A8179A2CDA00EA9242 /* UploadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEF84A7179A2CDA00EA9242 /* UploadManager.m */; };
 		8CE71676179A370300071DBD /* AHImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CE71674179A370300071DBD /* AHImagePickerController.m */; };
 		8CE71677179A370300071DBD /* AHImagePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CE71675179A370300071DBD /* AHImagePickerView.xib */; };
+		8CEC4D0F179B82E800B8E277 /* Cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CEC4D0E179B82E800B8E277 /* Cloud.png */; };
+		8CEC4D14179B8D9C00B8E277 /* CameraBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CEC4D10179B8D9C00B8E277 /* CameraBack.png */; };
+		8CEC4D15179B8D9C00B8E277 /* ForgetItButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CEC4D11179B8D9C00B8E277 /* ForgetItButton.png */; };
+		8CEC4D16179B8D9C00B8E277 /* TryAgainButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CEC4D12179B8D9C00B8E277 /* TryAgainButton.png */; };
+		8CEC4D17179B8D9C00B8E277 /* Yeah.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CEC4D13179B8D9C00B8E277 /* Yeah.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		426B213629BD5ADFA4677E1D /* SettingsButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SettingsButton.png; sourceTree = "<group>"; };
+		426B2677F21D7461004D32C5 /* AHSettingsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHSettingsDelegate.h; sourceTree = "<group>"; };
 		4FE2F134179AFDBE00F17213 /* AHCameraOverlayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHCameraOverlayController.h; sourceTree = "<group>"; };
 		4FE2F135179AFDBE00F17213 /* AHCameraOverlayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHCameraOverlayController.m; sourceTree = "<group>"; };
 		4FE2F136179AFDBE00F17213 /* AHCameraOverlayControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHCameraOverlayControllerViewController.h; sourceTree = "<group>"; };
@@ -146,6 +154,11 @@
 		8CE71673179A370300071DBD /* AHImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHImagePickerController.h; sourceTree = "<group>"; };
 		8CE71674179A370300071DBD /* AHImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHImagePickerController.m; sourceTree = "<group>"; };
 		8CE71675179A370300071DBD /* AHImagePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AHImagePickerView.xib; sourceTree = "<group>"; };
+		8CEC4D0E179B82E800B8E277 /* Cloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cloud.png; sourceTree = "<group>"; };
+		8CEC4D10179B8D9C00B8E277 /* CameraBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CameraBack.png; sourceTree = "<group>"; };
+		8CEC4D11179B8D9C00B8E277 /* ForgetItButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ForgetItButton.png; sourceTree = "<group>"; };
+		8CEC4D12179B8D9C00B8E277 /* TryAgainButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TryAgainButton.png; sourceTree = "<group>"; };
+		8CEC4D13179B8D9C00B8E277 /* Yeah.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Yeah.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +181,11 @@
 		4FE2F149179B12EA00F17213 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8CEC4D10179B8D9C00B8E277 /* CameraBack.png */,
+				8CEC4D11179B8D9C00B8E277 /* ForgetItButton.png */,
+				8CEC4D12179B8D9C00B8E277 /* TryAgainButton.png */,
+				8CEC4D13179B8D9C00B8E277 /* Yeah.png */,
+				8CEC4D0E179B82E800B8E277 /* Cloud.png */,
 				4FE2F15D179B592600F17213 /* 00.png */,
 				4FE2F15E179B592600F17213 /* 01.png */,
 				4FE2F15F179B592600F17213 /* 02.png */,
@@ -196,6 +214,7 @@
 				4FE2F14D179B12EA00F17213 /* TossButton.png */,
 				4FE2F14E179B12EA00F17213 /* TransparentBorder.png */,
 				4FE2F14F179B12EA00F17213 /* UseButton.png */,
+				426B213629BD5ADFA4677E1D /* SettingsButton.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -277,6 +296,7 @@
 				8CE71675179A370300071DBD /* AHImagePickerView.xib */,
 				4FE2F15A179B22D600F17213 /* AHEULAManager.h */,
 				4FE2F15B179B22D600F17213 /* AHEULAManager.m */,
+				426B2677F21D7461004D32C5 /* AHSettingsDelegate.h */,
 			);
 			path = AHAcleveland;
 			sourceTree = "<group>";
@@ -388,6 +408,12 @@
 				4FE2F185179B592800F17213 /* What.png in Resources */,
 				4FE2F186179B592800F17213 /* WipeItButton.png in Resources */,
 				4FE2F18E179B651700F17213 /* AHSettingsViewController.xib in Resources */,
+				426B28CB371C01DBCBB0C2A0 /* SettingsButton.png in Resources */,
+				8CEC4D0F179B82E800B8E277 /* Cloud.png in Resources */,
+				8CEC4D14179B8D9C00B8E277 /* CameraBack.png in Resources */,
+				8CEC4D15179B8D9C00B8E277 /* ForgetItButton.png in Resources */,
+				8CEC4D16179B8D9C00B8E277 /* TryAgainButton.png in Resources */,
+				8CEC4D17179B8D9C00B8E277 /* Yeah.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,7 +478,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -477,7 +503,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;

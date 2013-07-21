@@ -1,12 +1,5 @@
-//
-//  AHSettingsViewController.h
-//  AHAcleveland
-//
-//  Created by AnyaTheMac on 7/20/13.
-//  Copyright (c) 2013 Bill Davis. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
+#import "AHSettingsDelegate.h"
 
 @interface AHSettingsViewController : UIViewController <UITextFieldDelegate, UIAlertViewDelegate, UIGestureRecognizerDelegate>
 
@@ -16,5 +9,10 @@
 @property (nonatomic, strong) IBOutlet UIButton *notifyMeButton;
 @property (nonatomic, strong) IBOutlet UILabel *popoverLabel;
 @property (nonatomic, strong) IBOutlet UIImageView *popoverImage;
+
+@property (readwrite) id<AHSettingsDelegate> delegate;
+
+- (id)initWithDelegate:(id<AHSettingsDelegate>)delegate;
+-(BOOL)hasShownToUserAtLeastOnce;
 
 @end

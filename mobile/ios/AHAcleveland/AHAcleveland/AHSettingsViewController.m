@@ -1,14 +1,7 @@
-//
-//  AHSettingsViewController.m
-//  AHAcleveland
-//
-//  Created by AnyaTheMac on 7/20/13.
-//  Copyright (c) 2013 Bill Davis. All rights reserved.
-//
-
 #import "AHSettingsViewController.h"
-#import <QuartzCore/QuartzCore.h>
 #import "UserSession.h"
+
+#define SETTING_HAS_SHOWN_SETTINGS_TO_USER @"SETTING_HAS_SHOWN_SETTINGS_TO_USER"
 
 @interface AHSettingsViewController ()
 {
@@ -20,11 +13,13 @@
 
 @implementation AHSettingsViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+@synthesize delegate = _delegate;
+
+- (id)initWithDelegate:(id<AHSettingsDelegate>)delegate
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithNibName:@"AHSettingsViewController" bundle:nil];
     if (self) {
-        // Custom  initialization
+        self.delegate = delegate;
     }
     return self;
 }
@@ -32,22 +27,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 
-    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-    
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onSingleTap:)];
     tap.numberOfTapsRequired = 1;
     [self.view addGestureRecognizer:tap];
     
     self.emailTextField.borderStyle = UITextBorderStyleNone;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -261,8 +246,12 @@
 
 - (void) onDismiss
 {
+    BOOL isFirstShowing = ![self hasShownToUserAtLeastOnce];
+    if(isFirstShowing)
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:SETTING_HAS_SHOWN_SETTINGS_TO_USER];
+
     [self.emailTextField resignFirstResponder];
-    [self dismissViewControllerAnimated:YES completion:^{}];
+    [_delegate onSettingsSaved:isFirstShowing];
 }
 
 - (void) setPopoverShown:(BOOL)shown
@@ -289,5 +278,8 @@
     popoverShown = shown;
 }
 
+-(BOOL)hasShownToUserAtLeastOnce {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:SETTING_HAS_SHOWN_SETTINGS_TO_USER];
+}
 
 @end

@@ -4,6 +4,8 @@
 #import "UploadManager.h"
 #import "AHUploadProgressController.h"
 #import "AHLegaleseController.h"
+#import "AHSettingsViewController.h"
+#import "UserSession.h"
 
 @interface AHImagePickerController ()
 
@@ -11,6 +13,7 @@
 @property(retain, readwrite) AHCameraOverlayController *overlayController;
 @property(retain, readwrite) AHUploadProgressController *uploadProgressController;
 @property(retain, readwrite) AHLegaleseController *legaleseController;
+@property(retain, readwrite) AHSettingsViewController *settingsController;
 
 @end
 
@@ -20,6 +23,7 @@
 @synthesize overlayController = _overlayController;
 @synthesize uploadProgressController = _uploadProgressController;
 @synthesize legaleseController = _legaleseController;
+@synthesize settingsController = _settingsController;
 
 BOOL isFirstTimeLoading = YES;
 
@@ -28,6 +32,7 @@ BOOL isFirstTimeLoading = YES;
     if (self) {
         _legaleseController = [[AHLegaleseController alloc] initWithDelegate:self];
         _uploadProgressController = [[AHUploadProgressController alloc] init];
+        _settingsController = [[AHSettingsViewController alloc] initWithDelegate:self];
         [self subscribeToUploadManagerEvents];
         [self subscribeToUploadProgressEvents];
     }
@@ -96,13 +101,19 @@ BOOL isFirstTimeLoading = YES;
 }
 
 - (void)onUsePhotoPressed {
+    if([_settingsController hasShownToUserAtLeastOnce])
+        [self saveAndUploadCroppedImage];
+    else
+        [self dismissCameraAndShowSettings];
+}
+
+- (void)saveAndUploadCroppedImage {
     UIImage *image = _overlayController.reviewImage;
     CGRect cropRect = [self getImageCropBounds:image];
     UIImage *croppedImage = [self cropImage:image toBounds:cropRect];
 
     [self saveImageToImageLibraryIfAllowed:croppedImage];
-    [self saveAndUploadImage:croppedImage];
-
+    [self uploadImage:croppedImage];
 }
 
 - (void)saveImage:(UIImage *)image toPath:(NSString *)path withFileName:(NSString *)fileName error:(NSError **)error {
@@ -146,7 +157,7 @@ BOOL isFirstTimeLoading = YES;
     [_overlayController clearReviewImage];
 }
 
-- (void)saveAndUploadImage:(UIImage *)image {
+- (void)uploadImage:(UIImage *)image {
     NSString *workingDir = [self getWorkingImagesPath];
     NSString *fileName = [self getTemporaryFileName];
 
@@ -160,7 +171,7 @@ BOOL isFirstTimeLoading = YES;
 
     [self showUploadProgress];
     NSString *filePath = [workingDir stringByAppendingPathComponent:fileName];
-    [[UploadManager instance] uploadImageUrl:[NSURL fileURLWithPath:filePath] withEmail:@"gary@gjtt.com" andDeviceId:@"myDeviceId"];
+    [[UploadManager instance] uploadImageUrl:[NSURL fileURLWithPath:filePath] withEmail:[UserSession getEmail] andDeviceId:@"myDeviceId"];
 }
 
 - (void)showUploadProgress {
@@ -173,10 +184,29 @@ BOOL isFirstTimeLoading = YES;
     }];
 }
 
+- (void)dismissCameraAndShowSettings {
+    [_imagePickerController dismissViewControllerAnimated:NO completion:^{
+        [self presentViewController:_settingsController animated:NO completion:NULL];
+    }];
+}
+
+- (void)dismissSettingsAndStartUpload {
+    [_settingsController dismissViewControllerAnimated:NO completion:^{
+        [self presentViewController:_imagePickerController animated:NO completion:^{
+            [self saveAndUploadCroppedImage];
+        }];
+    }];
+}
+
+- (void)dismissSettingsAndShowCamera {
+    [_settingsController dismissViewControllerAnimated:NO completion:^{
+        [self presentViewController:_imagePickerController animated:NO completion:NULL];
+    }];
+}
+
 - (void)onUploadSuccess {
     [_overlayController clearReviewImage];
     [_uploadProgressController setForSuccess];
-    [self dismissUploadAndShowCamera];
 }
 
 - (void)dismissUploadAndShowCamera {
@@ -200,7 +230,7 @@ BOOL isFirstTimeLoading = YES;
     UIImage *image = _overlayController.reviewImage;
     CGRect cropRect = [self getImageCropBounds:image];
     UIImage *croppedImage = [self cropImage:image toBounds:cropRect];
-    [self saveAndUploadImage:croppedImage];
+    [self uploadImage:croppedImage];
 }
 
 - (BOOL)isCameraAvailable {
@@ -236,6 +266,7 @@ BOOL isFirstTimeLoading = YES;
 - (void)subscribeToUploadProgressEvents {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onUploadCancelled) name:UPLOADPROGRESSCONTROLLER_RETRY_DECLINED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onUploadRetry) name:UPLOADPROGRESSCONTROLLER_RETRY_SELECTED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onUploadDismiss) name:UPLOADPROGRESSCONTROLLER_SHOULD_DISMISS object:nil];
 }
 
 - (UIImage *)unrotateImage:(UIImage *)image {
@@ -256,6 +287,23 @@ BOOL isFirstTimeLoading = YES;
     NSArray *documentDirs = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *docDir = [documentDirs objectAtIndex:0];
     return [docDir stringByAppendingPathComponent:@"AHAcleveland"];
+}
+
+- (void)onSettingsPressed {
+    [self dismissCameraAndShowSettings];
+}
+
+- (void)onSettingsSaved:(BOOL)isFirstTimeShown {
+    if(isFirstTimeShown){
+        [self dismissSettingsAndStartUpload];
+    }
+    else{
+        [self dismissSettingsAndShowCamera];
+    }
+}
+
+- (void)onUploadDismiss {
+    [self dismissUploadAndShowCamera];
 }
 
 @end

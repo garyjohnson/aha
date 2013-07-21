@@ -1,3 +1,4 @@
+#import <AVFoundation/AVFoundation.h>
 #import "AHCameraOverlayController.h"
 
 @interface AHCameraOverlayController ()
@@ -18,6 +19,7 @@
     self = [super initWithNibName:@"AHCameraOverlayView" bundle:nil];
     if (self) {
         self.delegate = delegate;
+        [self subscribeToCameraReadyEvent];
     }
     return self;
 }
@@ -36,6 +38,10 @@
 
 - (IBAction)onTossPhotoPressed:(id)sender {
     [_delegate onTossPhotoPressed];
+}
+
+- (IBAction)onSettingsPressed:(id)sender {
+    [_delegate onSettingsPressed];
 }
 
 - (void)clearReviewImage {
@@ -67,5 +73,12 @@
     _reviewImageView.hidden = !isInReviewMode;
 }
 
+-(void)subscribeToCameraReadyEvent{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCameraReady) name:AVCaptureSessionDidStartRunningNotification object:nil];
+}
+
+-(void)onCameraReady{
+    _shutterButton.enabled = YES;
+}
 
 @end

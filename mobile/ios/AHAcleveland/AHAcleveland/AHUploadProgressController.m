@@ -24,12 +24,6 @@
         for (int i = 0; i < imageNames.count; i++) {
             [animationImages addObject:[UIImage imageNamed:[imageNames objectAtIndex:i]]];
         }
-        
-        
-
-        
-        
-        
     }
     return self;
 }
@@ -48,16 +42,25 @@
 {
     [super viewDidAppear:animated];
     
+    _imageProgressAnimation.hidden = false;
     _imageProgressAnimation.animationImages = animationImages;
-    _imageProgressAnimation.animationDuration = 1.0;
+    _imageProgressAnimation.animationDuration = 5.0;
     
     [_imageProgressAnimation startAnimating];
+    
+    _imageSuccess.hidden = true;
+    _imageErrorMessage.hidden = true;
 }
 
 -(void)setForError
 {
     _buttonRetry.hidden = false;
     _buttonDeclineRetry.hidden = false;
+    
+    
+    _imageProgressAnimation.hidden = true;
+    _imageErrorMessage.hidden = false;
+    
     
 }
 
@@ -66,26 +69,40 @@
     _buttonRetry.hidden = YES;
     _buttonDeclineRetry.hidden = YES;
     
+    _imageProgressAnimation.hidden = true;
+    _imageSuccess.hidden = false;
     
-    sleep(3);
+    dismissTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(messageToDismiss) userInfo:nil repeats:false];
+}
+
+-(void)messageToDismiss
+{
+    _imageSuccess.hidden = true;
+    _imageProgressAnimation.hidden = false;
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:UPLOADPROGRESSCONTROLLER_SHOULD_DISMISS object:nil userInfo:nil];
 }
 
 -(void)handleUploadProgress:(NSNotification*)notification
 {
     NSDictionary* userInfo = notification.userInfo;
-    
-    
+
     int totalExpectedBytes = [userInfo[UPLOAD_TOTALBYTESEXPECTED] intValue];
     int bytesSoFar = [userInfo[UPLOAD_TOTALBYTESSOFAR] intValue];
-    
-    
 }
-
 
 - (IBAction)handleRetry:(id)sender {
     
     [[NSNotificationCenter defaultCenter] postNotificationName:UPLOADPROGRESSCONTROLLER_RETRY_SELECTED object:nil userInfo:nil];
+    
+    _buttonRetry.hidden = true;
+    _buttonDeclineRetry.hidden = true;
+    
+    _imageErrorMessage.hidden = true;
+    _imageProgressAnimation.hidden = false;
+    
+   
+    
 }
 
 - (IBAction)handleRetryDecline:(id)sender {
