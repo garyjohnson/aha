@@ -150,14 +150,10 @@ BOOL isShowingSettingsBeforeUpload = NO;
 }
 
 - (void)saveImageToImageLibraryIfAllowed:(UIImage *)image {
-    [[[ALAssetsLibrary alloc] init] writeImageToSavedPhotosAlbum:[image CGImage]
-                                                     orientation:(ALAssetOrientation) [image imageOrientation]
-                                                 completionBlock:^(NSURL *assetURL, NSError *error) {
-                                                     if (error != nil) {
-                                                         [self showError:@"Failed to write to Image Library."];
-                                                         return;
-                                                     }
-                                                 }];
+    ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+    [library writeImageToSavedPhotosAlbum:[image CGImage]
+                              orientation:(ALAssetOrientation) [image imageOrientation]
+                          completionBlock:nil];
 }
 
 - (void)onTossPhotoPressed {
@@ -178,7 +174,7 @@ BOOL isShowingSettingsBeforeUpload = NO;
 
     [self showUploadProgress];
     NSString *filePath = [workingDir stringByAppendingPathComponent:fileName];
-    NSString *installationId = [((AppDelegate*)[[UIApplication sharedApplication] delegate]) installationId];
+    NSString *installationId = [((AppDelegate *) [[UIApplication sharedApplication] delegate]) installationId];
     self.currentUploadingImageUrl = [NSURL fileURLWithPath:filePath];
     [[UploadManager instance] uploadImageUrl:_currentUploadingImageUrl withEmail:[UserSession getEmail] andDeviceId:installationId];
 }
@@ -237,7 +233,7 @@ BOOL isShowingSettingsBeforeUpload = NO;
     }];
 }
 
--(void)deleteTempImageIfExists{
+- (void)deleteTempImageIfExists {
     NSFileManager *fileManager = [NSFileManager defaultManager];
 
     if (_currentUploadingImageUrl != nil &&
