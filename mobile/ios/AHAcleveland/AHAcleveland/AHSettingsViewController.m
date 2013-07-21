@@ -251,7 +251,7 @@
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:SETTING_HAS_SHOWN_SETTINGS_TO_USER];
 
     [self.emailTextField resignFirstResponder];
-    [_delegate onSettingsSaved:isFirstShowing];
+    [_delegate onSettingsSaved];
 }
 
 - (void) setPopoverShown:(BOOL)shown

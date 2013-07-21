@@ -26,6 +26,7 @@
 @synthesize settingsController = _settingsController;
 
 BOOL isFirstTimeLoading = YES;
+BOOL isShowingSettingsBeforeUpload = NO;
 
 - (id)init {
     self = [super initWithNibName:@"AHImagePickerView" bundle:nil];
@@ -101,10 +102,13 @@ BOOL isFirstTimeLoading = YES;
 }
 
 - (void)onUsePhotoPressed {
-    if([_settingsController hasShownToUserAtLeastOnce])
+    if ([_settingsController hasShownToUserAtLeastOnce]) {
         [self saveAndUploadCroppedImage];
-    else
+    }
+    else {
+        isShowingSettingsBeforeUpload = YES;
         [self dismissCameraAndShowSettings];
+    }
 }
 
 - (void)saveAndUploadCroppedImage {
@@ -293,11 +297,12 @@ BOOL isFirstTimeLoading = YES;
     [self dismissCameraAndShowSettings];
 }
 
-- (void)onSettingsSaved:(BOOL)isFirstTimeShown {
-    if(isFirstTimeShown){
+- (void)onSettingsSaved {
+    if (isShowingSettingsBeforeUpload) {
+        isShowingSettingsBeforeUpload = NO;
         [self dismissSettingsAndStartUpload];
     }
-    else{
+    else {
         [self dismissSettingsAndShowCamera];
     }
 }
