@@ -13,5 +13,6 @@
 @property (readwrite) id<AHSettingsDelegate> delegate;
 
 - (id)initWithDelegate:(id<AHSettingsDelegate>)delegate;
+-(BOOL)hasShownToUserAtLeastOnce;
 
 @end

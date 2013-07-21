@@ -2,6 +2,6 @@
 
 @protocol AHSettingsDelegate <NSObject>
 
--(void)onSettingsSaved;
+- (void)onSettingsSaved:(BOOL)isFirstTimeShown;
 
 @end

@@ -17,9 +17,15 @@ class Auth {
 
 	public static function requireAuth() {
 		if(Auth::get(Auth::LOGGED_IN_KEY) !== TRUE || Auth::get(Auth::USERNAME) == "") {
-		    $serveruri = $_SERVER['REQUEST_URI'];
-	            $serveruri = substr($serveruri, 0, strrpos($serveruri, '/'));
+			$serveruri = $_SERVER['REQUEST_URI'];
+			$serveruri = substr($serveruri, 0, strrpos($serveruri, '/'));
+
+			if($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
+				header("Content-Type: application/json");
+				exit('{"code":401,"msg":"Not authorized.","url":"'.$serveruri.'/login.php"}');
+			}
 			header("Location: " . $serveruri . "/login.php");
+			exit();
 		}
 	}
 

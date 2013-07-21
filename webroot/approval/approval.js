@@ -21,50 +21,61 @@ var Approval = {
 	},
 	approveAll:function() {
 		var ids = [];
-		for(var img in $("#imageList img")) {
-			ids.push(img.attr("id"));
+		var imgs = $("#imageList img");
+		for(var i=0;i<imgs.length;i++) {
+			ids.push($(imgs.get(i)).attr("id"));
 		}
-		$.ajax({
-			cache:false,
-			data:{approve:true,imgs:ids},
-			type:"POST",
-			url:"/approval/approve.php",
-			success:function(data) {
-				if(data.code == 200) {
-					for(var i in Approval.denied) {
-						var img = Approval.denied[i];
-						$("#overlay-"+img.attr("id")).remove();
-						img.remove();
+		if(ids.length > 0) {
+			$.ajax({
+				cache:false,
+				data:{approve:true,imgs:ids},
+				type:"POST",
+				url:"approve.php",
+				success:function(data) {
+					if(data.code == 200) {
+						$("#imageList").html("");
+						Approval.denied = [];
+						location.href = "index.php"; // Refresh the page ;)
+					} else if (data.url) {
+						location.href = data.url;
 					}
-					Approval.denied = [];
+				},
+				error:function(xhr,status,error) {
+					alert("There was an error while approving. Please try again.");
 				}
-			},
-			error:function(xhr,status,error) {
-				alert("There was an error while denying. Please try again.");
-			}
-		});
+			});
+		}
 	},
 	denySelected:function() {
 		var ids = [];
 		for(var i in Approval.denied) {
 			ids.push(Approval.denied[i].attr("id"));
 		}
-		$.ajax({
-			cache:false,
-			data:{deny:true,imgs:ids},
-			type:"POST",
-			url:"/approval/deny.php",
-			success:function(data) {
-				for(var i in Approval.denied) {
-					$("#overlay-"+Approval.denied[i].attr("id")).remove();
-					Approval.denied[i].remove();
+		if(ids.length > 0) {
+			$.ajax({
+				cache:false,
+				data:{deny:true,imgs:ids},
+				type:"POST",
+				url:"deny.php",
+				success:function(data) {
+					if(data.code == 200) {
+						for(var i in Approval.denied) {
+							$("#overlay-"+Approval.denied[i].attr("id")).remove();
+							Approval.denied[i].remove();
+						}
+						Approval.denied = [];
+						$("#pendingCount").html($("#imageList img").length);
+						if($("#imageList img").length <=0)
+							location.href = "index.php"; // Refresh the page b/c there are none left!
+					} else if (data.url) {
+						location.href = data.url;
+					}
+				},
+				error:function(xhr,status,error) {
+					alert("There was an error while denying. Please try again.");
 				}
-				Approval.denied = [];
-			},
-			error:function(xhr,status,error) {
-				alert("There was an error while denying. Please try again.");
-			}
-		});
+			});
+		}
 	},
 	registerListeners:function() {
 		$(document).ready(function() {
