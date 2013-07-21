@@ -85,7 +85,7 @@
                 //reset the skyline
                 
                 setTimeout(function(){
-                $('#skyline').html(' <img src="img/CityBack.png" style="position: absolute;z-index: 1"/>'); 
+                $('#skyline').html(' <img src="img/CityBack2.png" style="position: absolute;z-index: 1"/>'); 
                 topPosition=skylineHeight;
                 leftPosition=0;
                 },SHUFFLE_INTERVAL_TIME)
@@ -113,7 +113,7 @@
 
         <!--  Row 3 SKYLINE -->
         <div id="skyline">
-            <img src="img/CityBack.png" style="position: absolute;z-index: 1"/>
+            <img src="img/CityBack2.png" style="position: absolute;z-index: 1"/>
         </div>
     </div>
 
