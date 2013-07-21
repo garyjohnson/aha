@@ -44,14 +44,10 @@
             {
                 if(data.imageurl!=null)
                 {
-                    droppingGuid = $('#image4').attr('src');
+		    imagenumber = (currentImageNumber % 6) + 1;
+                    droppingGuid = $('#image'+imagenumber).attr('src');
                     animateDroppingImage();
-                    $('#image4').attr('src',$('#image5').attr('src'));
-                    $('#image5').attr('src',$('#image6').attr('src'));
-                    $('#image6').attr('src',$('#image3').attr('src'));
-                    $('#image3').attr('src',$('#image2').attr('src'));
-                    $('#image2').attr('src',$('#image1').attr('src'));
-                    $('#image1').attr('src', data.imageurl);
+                    $('#image'+imagenumber).attr('src', data.imageurl);
                 }
                 
                 
@@ -66,10 +62,11 @@
         function animateDroppingImage()
         {
             
-            $('#skyline').append('<img id="image'+currentImageNumber+'" src="'+droppingGuid+'" style="width:'+squareWidth+'px;height:'+squareWidth+'px;position:absolute" />')
+            $('#skyline').append('<img id="image'+currentImageNumber+'" src="'+droppingGuid+'" style="opacity:0;width:'+squareWidth+'px;height:'+squareWidth+'px;position:absolute" />')
             $('#image'+currentImageNumber).animate({
                 left: '+='+leftPosition,
-                top: '+='+topPosition
+                top: '+='+topPosition,
+		opacity:1
                 }, 5000, function() {
                 // Animation complete.
                 });        
@@ -80,7 +77,7 @@
                 leftPosition=0;
                 topPosition = topPosition-squareWidth;
             }
-            if((topPosition)<600)
+            if((topPosition)<400)
             {
                 //reset the skyline
                 
@@ -95,7 +92,7 @@
         }
     </script>
 
-    <div id="container" class="cotainer">
+    <div id="container" class="cotainer" style="height:320px;">
         <!--  Row 1 -->
         <div class="row">
             <div class="col"><img id="image1" src="../<?= Config::$startImage1?>"/></div>
