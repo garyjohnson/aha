@@ -20,8 +20,21 @@
     self = [super initWithNibName:@"AHSettingsViewController" bundle:nil];
     if (self) {
         self.delegate = delegate;
+        [self setUpKeyboardDismissOnTap];
+
     }
     return self;
+}
+
+- (void)setUpKeyboardDismissOnTap {
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+            initWithTarget:self
+                    action:@selector(dismissKeyboard)];
+    [self.view addGestureRecognizer:tap];
+}
+
+-(void)dismissKeyboard {
+    [_emailTextField resignFirstResponder];
 }
 
 - (void)viewDidLoad
@@ -281,5 +294,9 @@
 -(BOOL)hasShownToUserAtLeastOnce {
     return [[NSUserDefaults standardUserDefaults] boolForKey:SETTING_HAS_SHOWN_SETTINGS_TO_USER];
 }
+
+- (id)onViewTouched {
+}
+
 
 @end
