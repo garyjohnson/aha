@@ -174,6 +174,8 @@
     [UserSession setEmail:@""];
     [self.emailTextField resignFirstResponder];
     [self setCheckboxChecked:NO];
+    
+    [self onDismiss];
 }
 
 - (IBAction) whatButtonTouchUpInside
