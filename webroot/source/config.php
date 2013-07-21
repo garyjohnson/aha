@@ -13,8 +13,7 @@ class Config {
 		"port"=>587,
 		"auth"=>"tls",
 		"user"=>"",
-		"pass"=>"",
-
+		"pass"=>""
 	);
         //This is needed because to set the src field in jquery you must give a full path to the image
         public static $imageurl = "http://172.16.0.160:8888/GiveCamp/webroot/images/";
