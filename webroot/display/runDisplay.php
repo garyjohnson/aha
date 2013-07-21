@@ -1,5 +1,5 @@
 <? include '../source/config.php';?>
-<!DOCTYPE html>
+</!DOCTYPE html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -13,7 +13,7 @@
             <script src="js/vendor/modernizr-2.6.2.min.js"></script>-->
 </head>
 
-<body>
+<body style="background-color: black;">
     <script src="js/canvasmask.js"></script>
     <script type="text/javascript">
 
@@ -22,10 +22,10 @@
         
         var currentImageNumber = 6;
         var row = 0;
-        var squareWidth = 200;
-        var skylineWidth = 1100;
+        var squareWidth = 180;
+        var skylineWidth = 1000;
         var leftPosition = 0;
-        var skylineHeight = 1200;
+        var skylineHeight = 1200 - squareWidth;
         var topPosition = skylineHeight;
         var lastGuid = null;
         var droppingGuid = null;
@@ -80,12 +80,12 @@
                 leftPosition=0;
                 topPosition = topPosition-squareWidth;
             }
-            if((topPosition)<0)
+            if((topPosition)<600)
             {
                 //reset the skyline
                 
                 setTimeout(function(){
-                $('#skyline').html(''); 
+                $('#skyline').html(' <img src="img/CityBack2.png" style="position: absolute;z-index: 1"/>'); 
                 topPosition=skylineHeight;
                 leftPosition=0;
                 },SHUFFLE_INTERVAL_TIME)
@@ -98,22 +98,22 @@
     <div id="container" class="cotainer">
         <!--  Row 1 -->
         <div class="row">
-            <div class="col"><img id="image1" src="../images/<?= Config::$startImage?>"/></div>
-            <div class="col"><img id="image2" src="../images/<?= Config::$startImage?>"/></div>
-            <div class="col"><img id="image3" src="../images/<?= Config::$startImage?>"/></div>
+            <div class="col"><img id="image1" src="../<?= Config::$startImage1?>"/></div>
+            <div class="col"><img id="image2" src="../<?= Config::$startImage2?>"/></div>
+            <div class="col"><img id="image3" src="../<?= Config::$startImage3?>"/></div>
         </div>
 
         <!--  Row 2 -->
         <div class="row">
-            <div class="col"><img id="image4" src="../images/<?= Config::$startImage?>"/></div>
-            <div class="col"><img id="image5" src="../images/<?= Config::$startImage?>"/></div>
-            <div class="col"><img id="image6" src="../images/<?= Config::$startImage?>"/></div>
+            <div class="col"><img id="image4" src="../<?= Config::$startImage1?>"/></div>
+            <div class="col"><img id="image5" src="../<?= Config::$startImage2?>"/></div>
+            <div class="col"><img id="image6" src="../<?= Config::$startImage3?>"/></div>
         </div>
 
 
         <!--  Row 3 SKYLINE -->
-        <div id="skyline" class="row" style="background-image: url(img/CityBack.png);min-height: 1200px;height:1200px;width:1080px;">
-
+        <div id="skyline">
+            <img src="img/CityBack2.png" style="position: absolute;z-index: 1"/>
         </div>
     </div>
 

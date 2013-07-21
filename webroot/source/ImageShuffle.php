@@ -105,10 +105,11 @@ class AHAImageShuffle {
 
     private function getNextUserImageToDisplay() {
         $resultSet = $this->db->select('images', 'guid', 'WHERE status=' . AHAConstants::STATUS_APPROVED . ' order by timestamp asc LIMIT 1');
+	$returl = null;
 	if($row = $this->db->fetch())
 	{
 	   $returl = $row['guid'];
-	   if ($returl)
+	   if (!is_null($returl))
 	   {
 	       $this->moveImageFromApprovedToDisplaying($returl);
 	       $returl = $this->url . "images/" . $returl;
