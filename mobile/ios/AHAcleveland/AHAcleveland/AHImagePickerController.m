@@ -6,6 +6,7 @@
 #import "AHLegaleseController.h"
 #import "AHSettingsViewController.h"
 #import "UserSession.h"
+#import "AppDelegate.h"
 
 @interface AHImagePickerController ()
 
@@ -175,7 +176,8 @@ BOOL isShowingSettingsBeforeUpload = NO;
 
     [self showUploadProgress];
     NSString *filePath = [workingDir stringByAppendingPathComponent:fileName];
-    [[UploadManager instance] uploadImageUrl:[NSURL fileURLWithPath:filePath] withEmail:[UserSession getEmail] andDeviceId:@"myDeviceId"];
+    NSString *installationId = [((AppDelegate*)[[UIApplication sharedApplication] delegate]) installationId];
+    [[UploadManager instance] uploadImageUrl:[NSURL fileURLWithPath:filePath] withEmail:[UserSession getEmail] andDeviceId:installationId];
 }
 
 - (void)showUploadProgress {
