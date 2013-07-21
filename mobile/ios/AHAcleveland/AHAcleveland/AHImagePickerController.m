@@ -184,9 +184,16 @@ BOOL isShowingSettingsBeforeUpload = NO;
 }
 
 - (void)dismissCameraAndShowUpload {
-    [_imagePickerController dismissViewControllerAnimated:YES completion:^{
+    [_uploadProgressController setForUploading];
+
+    if(self.presentedViewController == _imagePickerController){
+        [_imagePickerController dismissViewControllerAnimated:YES completion:^{
+            [self presentViewController:_uploadProgressController animated:YES completion:nil];
+        }];
+    }
+    else if(self.presentedViewController != _uploadProgressController){
         [self presentViewController:_uploadProgressController animated:YES completion:NULL];
-    }];
+    }
 }
 
 - (void)dismissCameraAndShowSettings {
@@ -315,7 +322,12 @@ BOOL isShowingSettingsBeforeUpload = NO;
 - (void)onSettingsSaved {
     if (isShowingSettingsBeforeUpload) {
         isShowingSettingsBeforeUpload = NO;
-        [self dismissSettingsAndStartUpload];
+        //[self dismissSettingsAndStartUpload];
+        [_settingsController dismissViewControllerAnimated:YES completion:^{
+          //  [self presentViewController:_imagePickerController animated:YES completion:^{
+                [self saveAndUploadCroppedImage];
+           // }];
+        }];
     }
     else {
         [self dismissSettingsAndShowCamera];
