@@ -1,7 +1,7 @@
 #import "AHSettingsViewController.h"
 #import "UserSession.h"
 
-#define SETTING_HAS_SHOWN_SETTINGS_TO_USER = @"SETTING_HAS_SHOWN_SETTINGS_TO_USER"
+#define SETTING_HAS_SHOWN_SETTINGS_TO_USER @"SETTING_HAS_SHOWN_SETTINGS_TO_USER"
 
 @interface AHSettingsViewController ()
 {
@@ -27,11 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 
-    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-    
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onSingleTap:)];
     tap.numberOfTapsRequired = 1;
     [self.view addGestureRecognizer:tap];
@@ -250,9 +246,12 @@
 
 - (void) onDismiss
 {
+    BOOL isFirstShowing = ![self hasShownToUserAtLeastOnce];
+    if(isFirstShowing)
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:SETTING_HAS_SHOWN_SETTINGS_TO_USER];
+
     [self.emailTextField resignFirstResponder];
-    [_delegate onSettingsSaved];
-    //[self dismissViewControllerAnimated:YES completion:^{}];
+    [_delegate onSettingsSaved:isFirstShowing];
 }
 
 - (void) setPopoverShown:(BOOL)shown
@@ -280,9 +279,7 @@
 }
 
 -(BOOL)hasShownToUserAtLeastOnce {
-   // [[NSUserDefaults standardUserDefaults] b]
-    //return [[NSUserDefaults standardUserDefaults] boolForKey:SETTING_HAS_SHOWN_SETTINGS_TO_USER];
-    return NO;
+    return [[NSUserDefaults standardUserDefaults] boolForKey:SETTING_HAS_SHOWN_SETTINGS_TO_USER];
 }
 
 @end

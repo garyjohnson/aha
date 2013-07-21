@@ -101,13 +101,19 @@ BOOL isFirstTimeLoading = YES;
 }
 
 - (void)onUsePhotoPressed {
+    if([_settingsController hasShownToUserAtLeastOnce])
+        [self saveAndUploadCroppedImage];
+    else
+        [self dismissCameraAndShowSettings];
+}
+
+- (void)saveAndUploadCroppedImage {
     UIImage *image = _overlayController.reviewImage;
     CGRect cropRect = [self getImageCropBounds:image];
     UIImage *croppedImage = [self cropImage:image toBounds:cropRect];
 
     [self saveImageToImageLibraryIfAllowed:croppedImage];
-    [self saveAndUploadImage:croppedImage];
-
+    [self uploadImage:croppedImage];
 }
 
 - (void)saveImage:(UIImage *)image toPath:(NSString *)path withFileName:(NSString *)fileName error:(NSError **)error {
@@ -151,7 +157,7 @@ BOOL isFirstTimeLoading = YES;
     [_overlayController clearReviewImage];
 }
 
-- (void)saveAndUploadImage:(UIImage *)image {
+- (void)uploadImage:(UIImage *)image {
     NSString *workingDir = [self getWorkingImagesPath];
     NSString *fileName = [self getTemporaryFileName];
 
@@ -181,6 +187,14 @@ BOOL isFirstTimeLoading = YES;
 - (void)dismissCameraAndShowSettings {
     [_imagePickerController dismissViewControllerAnimated:NO completion:^{
         [self presentViewController:_settingsController animated:NO completion:NULL];
+    }];
+}
+
+- (void)dismissSettingsAndStartUpload {
+    [_settingsController dismissViewControllerAnimated:NO completion:^{
+        [self presentViewController:_imagePickerController animated:NO completion:^{
+            [self saveAndUploadCroppedImage];
+        }];
     }];
 }
 
@@ -216,7 +230,7 @@ BOOL isFirstTimeLoading = YES;
     UIImage *image = _overlayController.reviewImage;
     CGRect cropRect = [self getImageCropBounds:image];
     UIImage *croppedImage = [self cropImage:image toBounds:cropRect];
-    [self saveAndUploadImage:croppedImage];
+    [self uploadImage:croppedImage];
 }
 
 - (BOOL)isCameraAvailable {
@@ -279,8 +293,13 @@ BOOL isFirstTimeLoading = YES;
     [self dismissCameraAndShowSettings];
 }
 
-- (void)onSettingsSaved {
-    [self dismissSettingsAndShowCamera];
+- (void)onSettingsSaved:(BOOL)isFirstTimeShown {
+    if(isFirstTimeShown){
+        [self dismissSettingsAndStartUpload];
+    }
+    else{
+        [self dismissSettingsAndShowCamera];
+    }
 }
 
 - (void)onUploadDismiss {
