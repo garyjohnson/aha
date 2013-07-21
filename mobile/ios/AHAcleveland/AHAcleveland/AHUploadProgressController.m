@@ -6,6 +6,8 @@
 
 @implementation AHUploadProgressController
 
+UploadState uploadState;
+
 - (id)init {
     self = [super initWithNibName:@"AHUploadProgressView" bundle:nil];
     if (self) {
@@ -36,31 +38,39 @@
     _imageProgressAnimation.animationDuration = 5.0;
     
     [_imageProgressAnimation startAnimating];
+
+    [self onUploadStateChange:uploadState];
 }
 
 -(void)setForUploading{
-    _buttonRetry.hidden = YES;
-    _buttonDeclineRetry.hidden = YES;
-    _imageProgressAnimation.hidden = NO;
-    _imageErrorMessage.hidden = YES;
+    [self onUploadStateChange:Uploading];
 }
 
 -(void)setForError
 {
-    _buttonRetry.hidden = NO;
-    _buttonDeclineRetry.hidden = NO;
-    _imageProgressAnimation.hidden = YES;
-    _imageErrorMessage.hidden = NO;
+    [self onUploadStateChange:Error];
 }
 
 -(void)setForSuccess
 {
-    _buttonRetry.hidden = YES;
-    _buttonDeclineRetry.hidden = YES;
-    _imageProgressAnimation.hidden = YES;
-    _imageSuccess.hidden = NO;
-    
-    dismissTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(messageToDismiss) userInfo:nil repeats:false];
+    [self onUploadStateChange:Success];
+}
+
+-(void)onUploadStateChange:(UploadState)state {
+    uploadState = state;
+
+    bool isError = state == Error;
+    bool isUploading = state == Uploading;
+    bool isSuccess = state == Success;
+
+    _buttonRetry.hidden = !isError;
+    _buttonDeclineRetry.hidden = !isError;
+    _imageErrorMessage.hidden = !isError;
+    _imageProgressAnimation.hidden = !isUploading;
+    _imageSuccess.hidden = !isSuccess;
+
+    if(state == Success)
+        dismissTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(messageToDismiss) userInfo:nil repeats:false];
 }
 
 -(void)messageToDismiss

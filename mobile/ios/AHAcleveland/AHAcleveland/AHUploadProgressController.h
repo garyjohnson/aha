@@ -7,11 +7,15 @@
 
 #define UPLOADPROGRESSCONTROLLER_SHOULD_DISMISS @"UPLOADPROGRESSCONTROLLER_SHOULD_DISMISS"
 
+typedef enum {
+    Uploading,
+    Error,
+    Success
+} UploadState;
 
 @interface AHUploadProgressController : UIViewController
 {
     NSMutableArray* animationImages;
-    
     NSTimer* dismissTimer;
 }
 
