@@ -34,7 +34,9 @@ if($_POST["username"] != "" && $_POST["password"] != "") {
 
 if(!is_null($_REQUEST["logout"])) {
 	Auth::destroy();
-	header("Location: /approval/login.php");
+	$serveruri = $_SERVER['REQUEST_URI'];
+	$serveruri = substr($serveruri, 0, strrpos($serveruri, '/'));
+	header("Location: " . $serveruri . "/login.php");
 }
 ?>
 <!DOCTYPE HTML>
