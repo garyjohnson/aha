@@ -19,13 +19,13 @@
     self = [super initWithNibName:@"AHCameraOverlayView" bundle:nil];
     if (self) {
         self.delegate = delegate;
-        [self subscribeToCameraReadyEvent];
+        [self enableShutterAfterDelay];
     }
     return self;
 }
 
--(NSUInteger)supportedInterfaceOrientations {
-    return UIInterfaceOrientationMaskPortrait;
+- (void)enableShutterAfterDelay {
+    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(onCameraReady) userInfo:nil repeats:NO];
 }
 
 - (IBAction)onShutterPressed:(id)sender {
@@ -71,10 +71,6 @@
     _usePhotoButton.hidden = !isInReviewMode;
     _tossPhotoButton.hidden = !isInReviewMode;
     _reviewImageView.hidden = !isInReviewMode;
-}
-
--(void)subscribeToCameraReadyEvent{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onCameraReady) name:AVCaptureSessionDidStartRunningNotification object:nil];
 }
 
 -(void)onCameraReady{
