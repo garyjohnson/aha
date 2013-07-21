@@ -26,9 +26,7 @@
         }
         
         
-        
-        
-        
+
         
         
         
@@ -46,6 +44,16 @@
 
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    _imageProgressAnimation.animationImages = animationImages;
+    _imageProgressAnimation.animationDuration = 1.0;
+    
+    [_imageProgressAnimation startAnimating];
+}
+
 -(void)setForError
 {
     _buttonRetry.hidden = false;
@@ -57,6 +65,10 @@
 {
     _buttonRetry.hidden = YES;
     _buttonDeclineRetry.hidden = YES;
+    
+    
+    sleep(3);
+    
 }
 
 -(void)handleUploadProgress:(NSNotification*)notification
