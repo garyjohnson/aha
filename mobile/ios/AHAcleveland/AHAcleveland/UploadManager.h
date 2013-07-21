@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define UPLOAD_SERVICE_URL @"http://172.16.0.160:8888/GiveCamp/webroot/webservices/uploadimage.php"
+#define UPLOAD_SERVICE_URL @"http://172.16.0.98:8888/GiveCamp/webroot/webservices/uploadimage.php"
 #define UPLOAD_FAIL @"UPLOAD_FAIL"
 #define UPLOAD_SUCCESS @"UPLOAD_SUCCESS"
 #define UPLOAD_PROGRESS @"UPLOAD_PROGRESS"
