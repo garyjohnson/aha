@@ -20,23 +20,10 @@
     self = [super initWithNibName:@"AHSettingsViewController" bundle:nil];
     if (self) {
         self.delegate = delegate;
-        [self setUpKeyboardDismissOnTap];
-
     }
     return self;
 }
-
-- (void)setUpKeyboardDismissOnTap {
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
-            initWithTarget:self
-                    action:@selector(dismissKeyboard)];
-    [self.view addGestureRecognizer:tap];
-}
-
--(void)dismissKeyboard {
-    [_emailTextField resignFirstResponder];
-}
-
+    
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -94,6 +81,8 @@
     {
         [self setPopoverShown:NO];
     }
+    
+    [_emailTextField resignFirstResponder];
 }
 
 #pragma mark -
@@ -162,14 +151,14 @@
         }
         else
         {
-            [self showErrorWithMessage:@"The e-mail address you entered has an invalid format.  Please re-enter."];
+            [self showErrorWithMessage:@"Hmm... that doesn't look right.  Are you sure that's your e-mail?"];
         }
     }
     else
     {
         if (self.notifyMeButton.selected)
         {
-            [self showErrorWithMessage:@"Can't notify you with an empty e-mail address, silly."];
+            [self showErrorWithMessage:@"Can't notify you with an empty e-mail address!"];
         }
         else
         {
@@ -185,6 +174,8 @@
     [UserSession setEmail:@""];
     [self.emailTextField resignFirstResponder];
     [self setCheckboxChecked:NO];
+    
+    [self onDismiss];
 }
 
 - (IBAction) whatButtonTouchUpInside
@@ -293,9 +284,6 @@
 
 -(BOOL)hasShownToUserAtLeastOnce {
     return [[NSUserDefaults standardUserDefaults] boolForKey:SETTING_HAS_SHOWN_SETTINGS_TO_USER];
-}
-
-- (id)onViewTouched {
 }
 
 

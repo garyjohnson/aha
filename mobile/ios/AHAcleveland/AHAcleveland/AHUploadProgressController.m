@@ -32,14 +32,10 @@
 {
     [super viewDidAppear:animated];
     
-    _imageProgressAnimation.hidden = false;
     _imageProgressAnimation.animationImages = animationImages;
     _imageProgressAnimation.animationDuration = 5.0;
     
     [_imageProgressAnimation startAnimating];
-    
-    _imageSuccess.hidden = true;
-    _imageErrorMessage.hidden = true;
 }
 
 -(void)setForUploading{
@@ -64,7 +60,7 @@
     _imageProgressAnimation.hidden = YES;
     _imageSuccess.hidden = NO;
     
-    dismissTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(messageToDismiss) userInfo:nil repeats:false];
+    dismissTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(messageToDismiss) userInfo:nil repeats:false];
 }
 
 -(void)messageToDismiss

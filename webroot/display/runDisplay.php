@@ -1,4 +1,4 @@
-<? include '../source/config.php';?>
+<?php include '../source/config.php';?>
 </!DOCTYPE html>
 <head>
     <meta charset="utf-8">
@@ -95,16 +95,16 @@
     <div id="container" class="cotainer" style="height:320px;">
         <!--  Row 1 -->
         <div class="row">
-            <div class="col"><img id="image1" src="../<?= Config::$startImage1?>"/></div>
-            <div class="col"><img id="image2" src="../<?= Config::$startImage2?>"/></div>
-            <div class="col"><img id="image3" src="../<?= Config::$startImage3?>"/></div>
+            <div class="col"><img id="image1" src="../<?php echo Config::$startImage1?>"/></div>
+            <div class="col"><img id="image2" src="../<?php echo Config::$startImage2?>"/></div>
+            <div class="col"><img id="image3" src="../<?php echo Config::$startImage3?>"/></div>
         </div>
 
         <!--  Row 2 -->
         <div class="row">
-            <div class="col"><img id="image4" src="../<?= Config::$startImage1?>"/></div>
-            <div class="col"><img id="image5" src="../<?= Config::$startImage2?>"/></div>
-            <div class="col"><img id="image6" src="../<?= Config::$startImage3?>"/></div>
+            <div class="col"><img id="image4" src="../<?php echo Config::$startImage1?>"/></div>
+            <div class="col"><img id="image5" src="../<?php echo Config::$startImage2?>"/></div>
+            <div class="col"><img id="image6" src="../<?php echo Config::$startImage3?>"/></div>
         </div>
 
 

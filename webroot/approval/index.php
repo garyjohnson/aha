@@ -32,7 +32,7 @@ $serveruri = substr($serveruri, 0, strrpos($serveruri, '/'));
 			<div class="button" id="denyButton">Deny Selected</div>
 		</div>
 		<div id="imageList">
-<?
+<?php
 foreach($images as $i) {
 	echo "<img src='$serveruri/../images/{$i["guid"]}' width='150' height='150' class='images noselect' id='{$i["guid"]}' />";
 }
