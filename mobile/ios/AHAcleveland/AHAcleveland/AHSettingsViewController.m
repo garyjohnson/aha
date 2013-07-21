@@ -1,7 +1,7 @@
 #import "AHSettingsViewController.h"
-#import <QuartzCore/QuartzCore.h>
 #import "UserSession.h"
-#import "AHSettingsDelegate.h"
+
+#define SETTING_HAS_SHOWN_SETTINGS_TO_USER = @"SETTING_HAS_SHOWN_SETTINGS_TO_USER"
 
 @interface AHSettingsViewController ()
 {
@@ -279,5 +279,10 @@
     popoverShown = shown;
 }
 
+-(BOOL)hasShownToUserAtLeastOnce {
+   // [[NSUserDefaults standardUserDefaults] b]
+    //return [[NSUserDefaults standardUserDefaults] boolForKey:SETTING_HAS_SHOWN_SETTINGS_TO_USER];
+    return NO;
+}
 
 @end

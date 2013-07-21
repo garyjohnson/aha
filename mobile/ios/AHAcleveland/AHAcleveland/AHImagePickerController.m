@@ -193,7 +193,6 @@ BOOL isFirstTimeLoading = YES;
 - (void)onUploadSuccess {
     [_overlayController clearReviewImage];
     [_uploadProgressController setForSuccess];
-    [self dismissUploadAndShowCamera];
 }
 
 - (void)dismissUploadAndShowCamera {
@@ -253,6 +252,7 @@ BOOL isFirstTimeLoading = YES;
 - (void)subscribeToUploadProgressEvents {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onUploadCancelled) name:UPLOADPROGRESSCONTROLLER_RETRY_DECLINED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onUploadRetry) name:UPLOADPROGRESSCONTROLLER_RETRY_SELECTED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onUploadDismiss) name:UPLOADPROGRESSCONTROLLER_SHOULD_DISMISS object:nil];
 }
 
 - (UIImage *)unrotateImage:(UIImage *)image {
@@ -283,5 +283,8 @@ BOOL isFirstTimeLoading = YES;
     [self dismissSettingsAndShowCamera];
 }
 
+- (void)onUploadDismiss {
+    [self dismissUploadAndShowCamera];
+}
 
 @end

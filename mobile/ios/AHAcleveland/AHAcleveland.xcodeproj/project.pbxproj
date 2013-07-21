@@ -69,6 +69,10 @@
 		8CE71676179A370300071DBD /* AHImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CE71674179A370300071DBD /* AHImagePickerController.m */; };
 		8CE71677179A370300071DBD /* AHImagePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CE71675179A370300071DBD /* AHImagePickerView.xib */; };
 		8CEC4D0F179B82E800B8E277 /* Cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CEC4D0E179B82E800B8E277 /* Cloud.png */; };
+		8CEC4D14179B8D9C00B8E277 /* CameraBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CEC4D10179B8D9C00B8E277 /* CameraBack.png */; };
+		8CEC4D15179B8D9C00B8E277 /* ForgetItButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CEC4D11179B8D9C00B8E277 /* ForgetItButton.png */; };
+		8CEC4D16179B8D9C00B8E277 /* TryAgainButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CEC4D12179B8D9C00B8E277 /* TryAgainButton.png */; };
+		8CEC4D17179B8D9C00B8E277 /* Yeah.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CEC4D13179B8D9C00B8E277 /* Yeah.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -151,6 +155,10 @@
 		8CE71674179A370300071DBD /* AHImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHImagePickerController.m; sourceTree = "<group>"; };
 		8CE71675179A370300071DBD /* AHImagePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AHImagePickerView.xib; sourceTree = "<group>"; };
 		8CEC4D0E179B82E800B8E277 /* Cloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cloud.png; sourceTree = "<group>"; };
+		8CEC4D10179B8D9C00B8E277 /* CameraBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CameraBack.png; sourceTree = "<group>"; };
+		8CEC4D11179B8D9C00B8E277 /* ForgetItButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ForgetItButton.png; sourceTree = "<group>"; };
+		8CEC4D12179B8D9C00B8E277 /* TryAgainButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TryAgainButton.png; sourceTree = "<group>"; };
+		8CEC4D13179B8D9C00B8E277 /* Yeah.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Yeah.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +181,10 @@
 		4FE2F149179B12EA00F17213 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8CEC4D10179B8D9C00B8E277 /* CameraBack.png */,
+				8CEC4D11179B8D9C00B8E277 /* ForgetItButton.png */,
+				8CEC4D12179B8D9C00B8E277 /* TryAgainButton.png */,
+				8CEC4D13179B8D9C00B8E277 /* Yeah.png */,
 				8CEC4D0E179B82E800B8E277 /* Cloud.png */,
 				4FE2F15D179B592600F17213 /* 00.png */,
 				4FE2F15E179B592600F17213 /* 01.png */,
@@ -398,6 +410,10 @@
 				4FE2F18E179B651700F17213 /* AHSettingsViewController.xib in Resources */,
 				426B28CB371C01DBCBB0C2A0 /* SettingsButton.png in Resources */,
 				8CEC4D0F179B82E800B8E277 /* Cloud.png in Resources */,
+				8CEC4D14179B8D9C00B8E277 /* CameraBack.png in Resources */,
+				8CEC4D15179B8D9C00B8E277 /* ForgetItButton.png in Resources */,
+				8CEC4D16179B8D9C00B8E277 /* TryAgainButton.png in Resources */,
+				8CEC4D17179B8D9C00B8E277 /* Yeah.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

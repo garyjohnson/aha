@@ -24,12 +24,6 @@
         for (int i = 0; i < imageNames.count; i++) {
             [animationImages addObject:[UIImage imageNamed:[imageNames objectAtIndex:i]]];
         }
-        
-        
-        
-        
-        
-        
     }
     return self;
 }
@@ -72,8 +66,7 @@
     _imageProgressAnimation.hidden = true;
     _imageSuccess.hidden = false;
     
-    dismissTimer = [NSTimer timerWithTimeInterval:5 target:self selector:@selector(messageToDismiss) userInfo:nil repeats:false];
-    
+    dismissTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(messageToDismiss) userInfo:nil repeats:false];
 }
 
 -(void)messageToDismiss
@@ -87,14 +80,10 @@
 -(void)handleUploadProgress:(NSNotification*)notification
 {
     NSDictionary* userInfo = notification.userInfo;
-    
-    
+
     int totalExpectedBytes = [userInfo[UPLOAD_TOTALBYTESEXPECTED] intValue];
     int bytesSoFar = [userInfo[UPLOAD_TOTALBYTESSOFAR] intValue];
-    
-    
 }
-
 
 - (IBAction)handleRetry:(id)sender {
     
