@@ -12,7 +12,7 @@ require_once '../source/config.php';
 require_once '../source/AHAConstants.php';
 $sql = new SQL(Config::$mysql);
 
-$count = $sql->select("images","*","WHERE status='".AHAConstants::STATUS_PENDING."'");
+$count = $sql->select("images","*","WHERE status='".AHAConstants::STATUS_PENDING."' LIMIT 0,50");
 $images = $sql->fetchAll(MYSQLI_ASSOC);
 $serveruri = $_SERVER['REQUEST_URI'];
 $serveruri = substr($serveruri, 0, strrpos($serveruri, '/'));

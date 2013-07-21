@@ -8,6 +8,13 @@ class Config {
 		"prefix"=>"",
 		"debug"=>false
 	);
+	public static $mailer = Array(
+		"host"=>"smtp.gmail.com",
+		"port"=>587,
+		"auth"=>"tls",
+		"user"=>"",
+		"pass"=>""
+	);
         //This is needed because to set the src field in jquery you must give a full path to the image
         public static $imageurl = "http://172.16.0.160:8888/GiveCamp/webroot/images/";
         public static $startImage1 = "sponsorimages/aha_logo-04.jpg";
