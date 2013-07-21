@@ -7,6 +7,9 @@
 
 
 @interface AHUploadProgressController : UIViewController
+{
+    NSMutableArray* animationImages;
+}
 
 @property (strong, nonatomic) IBOutlet UIButton *buttonRetry;
 @property (strong, nonatomic) IBOutlet UIButton *buttonDeclineRetry;
@@ -17,4 +20,5 @@
 - (IBAction)handleRetry:(id)sender;
 - (IBAction)handleRetryDecline:(id)sender;
 
+@property (strong, nonatomic) IBOutlet UIImageView *imageProgressAnimation;
 @end

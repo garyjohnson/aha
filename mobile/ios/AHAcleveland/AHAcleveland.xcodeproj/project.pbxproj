@@ -7,6 +7,49 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4FE2F13D179AFDBE00F17213 /* AHCameraOverlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE2F135179AFDBE00F17213 /* AHCameraOverlayController.m */; };
+		4FE2F13E179AFDBE00F17213 /* AHCameraOverlayControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE2F137179AFDBE00F17213 /* AHCameraOverlayControllerViewController.m */; };
+		4FE2F13F179AFDBE00F17213 /* AHCameraOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F139179AFDBE00F17213 /* AHCameraOverlayView.xib */; };
+		4FE2F140179AFDBE00F17213 /* AHLegaleseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE2F13B179AFDBE00F17213 /* AHLegaleseController.m */; };
+		4FE2F141179AFDBE00F17213 /* AHLegaleseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F13C179AFDBE00F17213 /* AHLegaleseView.xib */; };
+		4FE2F143179AFDF000F17213 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FE2F142179AFDF000F17213 /* AssetsLibrary.framework */; };
+		4FE2F147179B0F7300F17213 /* AHUploadProgressController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE2F145179B0F7300F17213 /* AHUploadProgressController.m */; };
+		4FE2F148179B0F7300F17213 /* AHUploadProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F146179B0F7300F17213 /* AHUploadProgressView.xib */; };
+		4FE2F150179B12EA00F17213 /* CameraButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F14A179B12EA00F17213 /* CameraButton.png */; };
+		4FE2F152179B12EA00F17213 /* SureButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F14C179B12EA00F17213 /* SureButton.png */; };
+		4FE2F153179B12EA00F17213 /* TossButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F14D179B12EA00F17213 /* TossButton.png */; };
+		4FE2F154179B12EA00F17213 /* TransparentBorder.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F14E179B12EA00F17213 /* TransparentBorder.png */; };
+		4FE2F155179B12EA00F17213 /* UseButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F14F179B12EA00F17213 /* UseButton.png */; };
+		4FE2F158179B1CA200F17213 /* LegalHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F156179B1CA200F17213 /* LegalHeader.png */; };
+		4FE2F159179B1CA200F17213 /* LegalPageBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F157179B1CA200F17213 /* LegalPageBack.png */; };
+		4FE2F15C179B22D600F17213 /* AHEULAManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE2F15B179B22D600F17213 /* AHEULAManager.m */; };
+		4FE2F172179B592800F17213 /* 00.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F15D179B592600F17213 /* 00.png */; };
+		4FE2F173179B592800F17213 /* 01.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F15E179B592600F17213 /* 01.png */; };
+		4FE2F174179B592800F17213 /* 02.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F15F179B592600F17213 /* 02.png */; };
+		4FE2F175179B592800F17213 /* 03.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F160179B592600F17213 /* 03.png */; };
+		4FE2F176179B592800F17213 /* 04.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F161179B592600F17213 /* 04.png */; };
+		4FE2F177179B592800F17213 /* 05.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F162179B592600F17213 /* 05.png */; };
+		4FE2F178179B592800F17213 /* 06.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F163179B592600F17213 /* 06.png */; };
+		4FE2F179179B592800F17213 /* 07.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F164179B592600F17213 /* 07.png */; };
+		4FE2F17A179B592800F17213 /* 08.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F165179B592600F17213 /* 08.png */; };
+		4FE2F17B179B592800F17213 /* 09.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F166179B592600F17213 /* 09.png */; };
+		4FE2F17C179B592800F17213 /* 10.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F167179B592700F17213 /* 10.png */; };
+		4FE2F17D179B592800F17213 /* CheckBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F168179B592700F17213 /* CheckBox.png */; };
+		4FE2F17E179B592800F17213 /* EmailField.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F169179B592700F17213 /* EmailField.png */; };
+		4FE2F17F179B592800F17213 /* EmailIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F16A179B592700F17213 /* EmailIcon.png */; };
+		4FE2F180179B592800F17213 /* NotifyMe.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F16B179B592700F17213 /* NotifyMe.png */; };
+		4FE2F181179B592800F17213 /* OkButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F16C179B592700F17213 /* OkButton.png */; };
+		4FE2F182179B592800F17213 /* SettingsBack5.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F16D179B592700F17213 /* SettingsBack5.png */; };
+		4FE2F183179B592800F17213 /* SettingsHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F16E179B592700F17213 /* SettingsHeader.png */; };
+		4FE2F184179B592800F17213 /* UnCheckBox.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F16F179B592700F17213 /* UnCheckBox.png */; };
+		4FE2F185179B592800F17213 /* What.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F170179B592700F17213 /* What.png */; };
+		4FE2F186179B592800F17213 /* WipeItButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F171179B592800F17213 /* WipeItButton.png */; };
+		4FE2F18D179B651700F17213 /* AHSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE2F189179B651700F17213 /* AHSettingsViewController.m */; };
+		4FE2F18E179B651700F17213 /* AHSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE2F18A179B651700F17213 /* AHSettingsViewController.xib */; };
+		4FE2F18F179B651700F17213 /* UserSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE2F18C179B651700F17213 /* UserSession.m */; };
+		4FE2F193179B652C00F17213 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE2F192179B652C00F17213 /* KeychainItemWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4FE2F195179B65A400F17213 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FE2F194179B65A400F17213 /* QuartzCore.framework */; };
+		4FE2F197179B65B100F17213 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FE2F196179B65B100F17213 /* Security.framework */; };
 		4FEF8474179A1B1C00EA9242 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FEF8473179A1B1C00EA9242 /* UIKit.framework */; };
 		4FEF8476179A1B1C00EA9242 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FEF8475179A1B1C00EA9242 /* Foundation.framework */; };
 		4FEF8478179A1B1C00EA9242 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FEF8477179A1B1C00EA9242 /* CoreGraphics.framework */; };
@@ -27,6 +70,59 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4FE2F134179AFDBE00F17213 /* AHCameraOverlayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHCameraOverlayController.h; sourceTree = "<group>"; };
+		4FE2F135179AFDBE00F17213 /* AHCameraOverlayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHCameraOverlayController.m; sourceTree = "<group>"; };
+		4FE2F136179AFDBE00F17213 /* AHCameraOverlayControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHCameraOverlayControllerViewController.h; sourceTree = "<group>"; };
+		4FE2F137179AFDBE00F17213 /* AHCameraOverlayControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHCameraOverlayControllerViewController.m; sourceTree = "<group>"; };
+		4FE2F138179AFDBE00F17213 /* AHCameraOverlayDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHCameraOverlayDelegate.h; sourceTree = "<group>"; };
+		4FE2F139179AFDBE00F17213 /* AHCameraOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AHCameraOverlayView.xib; sourceTree = "<group>"; };
+		4FE2F13A179AFDBE00F17213 /* AHLegaleseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHLegaleseController.h; sourceTree = "<group>"; };
+		4FE2F13B179AFDBE00F17213 /* AHLegaleseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHLegaleseController.m; sourceTree = "<group>"; };
+		4FE2F13C179AFDBE00F17213 /* AHLegaleseView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AHLegaleseView.xib; sourceTree = "<group>"; };
+		4FE2F142179AFDF000F17213 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		4FE2F144179B0F7300F17213 /* AHUploadProgressController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHUploadProgressController.h; sourceTree = "<group>"; };
+		4FE2F145179B0F7300F17213 /* AHUploadProgressController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHUploadProgressController.m; sourceTree = "<group>"; };
+		4FE2F146179B0F7300F17213 /* AHUploadProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AHUploadProgressView.xib; sourceTree = "<group>"; };
+		4FE2F14A179B12EA00F17213 /* CameraButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CameraButton.png; sourceTree = "<group>"; };
+		4FE2F14C179B12EA00F17213 /* SureButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SureButton.png; sourceTree = "<group>"; };
+		4FE2F14D179B12EA00F17213 /* TossButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TossButton.png; sourceTree = "<group>"; };
+		4FE2F14E179B12EA00F17213 /* TransparentBorder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TransparentBorder.png; sourceTree = "<group>"; };
+		4FE2F14F179B12EA00F17213 /* UseButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UseButton.png; sourceTree = "<group>"; };
+		4FE2F156179B1CA200F17213 /* LegalHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LegalHeader.png; sourceTree = "<group>"; };
+		4FE2F157179B1CA200F17213 /* LegalPageBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LegalPageBack.png; sourceTree = "<group>"; };
+		4FE2F15A179B22D600F17213 /* AHEULAManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHEULAManager.h; sourceTree = "<group>"; };
+		4FE2F15B179B22D600F17213 /* AHEULAManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHEULAManager.m; sourceTree = "<group>"; };
+		4FE2F15D179B592600F17213 /* 00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 00.png; sourceTree = "<group>"; };
+		4FE2F15E179B592600F17213 /* 01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 01.png; sourceTree = "<group>"; };
+		4FE2F15F179B592600F17213 /* 02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 02.png; sourceTree = "<group>"; };
+		4FE2F160179B592600F17213 /* 03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 03.png; sourceTree = "<group>"; };
+		4FE2F161179B592600F17213 /* 04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 04.png; sourceTree = "<group>"; };
+		4FE2F162179B592600F17213 /* 05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 05.png; sourceTree = "<group>"; };
+		4FE2F163179B592600F17213 /* 06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 06.png; sourceTree = "<group>"; };
+		4FE2F164179B592600F17213 /* 07.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 07.png; sourceTree = "<group>"; };
+		4FE2F165179B592600F17213 /* 08.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 08.png; sourceTree = "<group>"; };
+		4FE2F166179B592600F17213 /* 09.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 09.png; sourceTree = "<group>"; };
+		4FE2F167179B592700F17213 /* 10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 10.png; sourceTree = "<group>"; };
+		4FE2F168179B592700F17213 /* CheckBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CheckBox.png; sourceTree = "<group>"; };
+		4FE2F169179B592700F17213 /* EmailField.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EmailField.png; sourceTree = "<group>"; };
+		4FE2F16A179B592700F17213 /* EmailIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EmailIcon.png; sourceTree = "<group>"; };
+		4FE2F16B179B592700F17213 /* NotifyMe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NotifyMe.png; sourceTree = "<group>"; };
+		4FE2F16C179B592700F17213 /* OkButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OkButton.png; sourceTree = "<group>"; };
+		4FE2F16D179B592700F17213 /* SettingsBack5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SettingsBack5.png; sourceTree = "<group>"; };
+		4FE2F16E179B592700F17213 /* SettingsHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SettingsHeader.png; sourceTree = "<group>"; };
+		4FE2F16F179B592700F17213 /* UnCheckBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UnCheckBox.png; sourceTree = "<group>"; };
+		4FE2F170179B592700F17213 /* What.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = What.png; sourceTree = "<group>"; };
+		4FE2F171179B592800F17213 /* WipeItButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WipeItButton.png; sourceTree = "<group>"; };
+		4FE2F187179B651700F17213 /* AHLegaleseDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHLegaleseDelegate.h; sourceTree = "<group>"; };
+		4FE2F188179B651700F17213 /* AHSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHSettingsViewController.h; sourceTree = "<group>"; };
+		4FE2F189179B651700F17213 /* AHSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHSettingsViewController.m; sourceTree = "<group>"; };
+		4FE2F18A179B651700F17213 /* AHSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AHSettingsViewController.xib; sourceTree = "<group>"; };
+		4FE2F18B179B651700F17213 /* UserSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSession.h; sourceTree = "<group>"; };
+		4FE2F18C179B651700F17213 /* UserSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSession.m; sourceTree = "<group>"; };
+		4FE2F191179B652C00F17213 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
+		4FE2F192179B652C00F17213 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
+		4FE2F194179B65A400F17213 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		4FE2F196179B65B100F17213 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		4FEF8470179A1B1C00EA9242 /* AHAcleveland.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AHAcleveland.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FEF8473179A1B1C00EA9242 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4FEF8475179A1B1C00EA9242 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -57,6 +153,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FE2F197179B65B100F17213 /* Security.framework in Frameworks */,
+				4FE2F195179B65A400F17213 /* QuartzCore.framework in Frameworks */,
+				4FE2F143179AFDF000F17213 /* AssetsLibrary.framework in Frameworks */,
 				4FEF8474179A1B1C00EA9242 /* UIKit.framework in Frameworks */,
 				4FEF8476179A1B1C00EA9242 /* Foundation.framework in Frameworks */,
 				4FEF8478179A1B1C00EA9242 /* CoreGraphics.framework in Frameworks */,
@@ -66,9 +165,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4FE2F149179B12EA00F17213 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				4FE2F15D179B592600F17213 /* 00.png */,
+				4FE2F15E179B592600F17213 /* 01.png */,
+				4FE2F15F179B592600F17213 /* 02.png */,
+				4FE2F160179B592600F17213 /* 03.png */,
+				4FE2F161179B592600F17213 /* 04.png */,
+				4FE2F162179B592600F17213 /* 05.png */,
+				4FE2F163179B592600F17213 /* 06.png */,
+				4FE2F164179B592600F17213 /* 07.png */,
+				4FE2F165179B592600F17213 /* 08.png */,
+				4FE2F166179B592600F17213 /* 09.png */,
+				4FE2F167179B592700F17213 /* 10.png */,
+				4FE2F168179B592700F17213 /* CheckBox.png */,
+				4FE2F169179B592700F17213 /* EmailField.png */,
+				4FE2F16A179B592700F17213 /* EmailIcon.png */,
+				4FE2F16B179B592700F17213 /* NotifyMe.png */,
+				4FE2F16C179B592700F17213 /* OkButton.png */,
+				4FE2F16D179B592700F17213 /* SettingsBack5.png */,
+				4FE2F16E179B592700F17213 /* SettingsHeader.png */,
+				4FE2F16F179B592700F17213 /* UnCheckBox.png */,
+				4FE2F170179B592700F17213 /* What.png */,
+				4FE2F171179B592800F17213 /* WipeItButton.png */,
+				4FE2F156179B1CA200F17213 /* LegalHeader.png */,
+				4FE2F157179B1CA200F17213 /* LegalPageBack.png */,
+				4FE2F14A179B12EA00F17213 /* CameraButton.png */,
+				4FE2F14C179B12EA00F17213 /* SureButton.png */,
+				4FE2F14D179B12EA00F17213 /* TossButton.png */,
+				4FE2F14E179B12EA00F17213 /* TransparentBorder.png */,
+				4FE2F14F179B12EA00F17213 /* UseButton.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		4FE2F190179B652C00F17213 /* KeychainItemWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				4FE2F191179B652C00F17213 /* KeychainItemWrapper.h */,
+				4FE2F192179B652C00F17213 /* KeychainItemWrapper.m */,
+			);
+			path = KeychainItemWrapper;
+			sourceTree = "<group>";
+		};
 		4FEF8467179A1B1C00EA9242 = {
 			isa = PBXGroup;
 			children = (
+				4FE2F196179B65B100F17213 /* Security.framework */,
+				4FE2F194179B65A400F17213 /* QuartzCore.framework */,
 				4FEF8479179A1B1C00EA9242 /* AHAcleveland */,
 				4FEF8472179A1B1C00EA9242 /* Frameworks */,
 				4FEF8471179A1B1C00EA9242 /* Products */,
@@ -87,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				4FEF8473179A1B1C00EA9242 /* UIKit.framework */,
+				4FE2F142179AFDF000F17213 /* AssetsLibrary.framework */,
 				4FEF8475179A1B1C00EA9242 /* Foundation.framework */,
 				4FEF8477179A1B1C00EA9242 /* CoreGraphics.framework */,
 			);
@@ -96,6 +242,26 @@
 		4FEF8479179A1B1C00EA9242 /* AHAcleveland */ = {
 			isa = PBXGroup;
 			children = (
+				4FE2F190179B652C00F17213 /* KeychainItemWrapper */,
+				4FE2F187179B651700F17213 /* AHLegaleseDelegate.h */,
+				4FE2F188179B651700F17213 /* AHSettingsViewController.h */,
+				4FE2F189179B651700F17213 /* AHSettingsViewController.m */,
+				4FE2F18A179B651700F17213 /* AHSettingsViewController.xib */,
+				4FE2F18B179B651700F17213 /* UserSession.h */,
+				4FE2F18C179B651700F17213 /* UserSession.m */,
+				4FE2F149179B12EA00F17213 /* Images */,
+				4FE2F144179B0F7300F17213 /* AHUploadProgressController.h */,
+				4FE2F145179B0F7300F17213 /* AHUploadProgressController.m */,
+				4FE2F146179B0F7300F17213 /* AHUploadProgressView.xib */,
+				4FE2F134179AFDBE00F17213 /* AHCameraOverlayController.h */,
+				4FE2F135179AFDBE00F17213 /* AHCameraOverlayController.m */,
+				4FE2F136179AFDBE00F17213 /* AHCameraOverlayControllerViewController.h */,
+				4FE2F137179AFDBE00F17213 /* AHCameraOverlayControllerViewController.m */,
+				4FE2F138179AFDBE00F17213 /* AHCameraOverlayDelegate.h */,
+				4FE2F139179AFDBE00F17213 /* AHCameraOverlayView.xib */,
+				4FE2F13A179AFDBE00F17213 /* AHLegaleseController.h */,
+				4FE2F13B179AFDBE00F17213 /* AHLegaleseController.m */,
+				4FE2F13C179AFDBE00F17213 /* AHLegaleseView.xib */,
 				4FEF8482179A1B1C00EA9242 /* AppDelegate.h */,
 				4FEF8483179A1B1C00EA9242 /* AppDelegate.m */,
 				4FEF848E179A1B1C00EA9242 /* first.png */,
@@ -109,6 +275,8 @@
 				8CE71673179A370300071DBD /* AHImagePickerController.h */,
 				8CE71674179A370300071DBD /* AHImagePickerController.m */,
 				8CE71675179A370300071DBD /* AHImagePickerView.xib */,
+				4FE2F15A179B22D600F17213 /* AHEULAManager.h */,
+				4FE2F15B179B22D600F17213 /* AHEULAManager.m */,
 			);
 			path = AHAcleveland;
 			sourceTree = "<group>";
@@ -188,6 +356,38 @@
 				4FEF8498179A1B1C00EA9242 /* second@2x.png in Resources */,
 				4FEF84A5179A2AE400EA9242 /* Test2View.xib in Resources */,
 				8CE71677179A370300071DBD /* AHImagePickerView.xib in Resources */,
+				4FE2F13F179AFDBE00F17213 /* AHCameraOverlayView.xib in Resources */,
+				4FE2F141179AFDBE00F17213 /* AHLegaleseView.xib in Resources */,
+				4FE2F148179B0F7300F17213 /* AHUploadProgressView.xib in Resources */,
+				4FE2F150179B12EA00F17213 /* CameraButton.png in Resources */,
+				4FE2F152179B12EA00F17213 /* SureButton.png in Resources */,
+				4FE2F153179B12EA00F17213 /* TossButton.png in Resources */,
+				4FE2F154179B12EA00F17213 /* TransparentBorder.png in Resources */,
+				4FE2F155179B12EA00F17213 /* UseButton.png in Resources */,
+				4FE2F158179B1CA200F17213 /* LegalHeader.png in Resources */,
+				4FE2F159179B1CA200F17213 /* LegalPageBack.png in Resources */,
+				4FE2F172179B592800F17213 /* 00.png in Resources */,
+				4FE2F173179B592800F17213 /* 01.png in Resources */,
+				4FE2F174179B592800F17213 /* 02.png in Resources */,
+				4FE2F175179B592800F17213 /* 03.png in Resources */,
+				4FE2F176179B592800F17213 /* 04.png in Resources */,
+				4FE2F177179B592800F17213 /* 05.png in Resources */,
+				4FE2F178179B592800F17213 /* 06.png in Resources */,
+				4FE2F179179B592800F17213 /* 07.png in Resources */,
+				4FE2F17A179B592800F17213 /* 08.png in Resources */,
+				4FE2F17B179B592800F17213 /* 09.png in Resources */,
+				4FE2F17C179B592800F17213 /* 10.png in Resources */,
+				4FE2F17D179B592800F17213 /* CheckBox.png in Resources */,
+				4FE2F17E179B592800F17213 /* EmailField.png in Resources */,
+				4FE2F17F179B592800F17213 /* EmailIcon.png in Resources */,
+				4FE2F180179B592800F17213 /* NotifyMe.png in Resources */,
+				4FE2F181179B592800F17213 /* OkButton.png in Resources */,
+				4FE2F182179B592800F17213 /* SettingsBack5.png in Resources */,
+				4FE2F183179B592800F17213 /* SettingsHeader.png in Resources */,
+				4FE2F184179B592800F17213 /* UnCheckBox.png in Resources */,
+				4FE2F185179B592800F17213 /* What.png in Resources */,
+				4FE2F186179B592800F17213 /* WipeItButton.png in Resources */,
+				4FE2F18E179B651700F17213 /* AHSettingsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,6 +402,14 @@
 				4FEF8484179A1B1C00EA9242 /* AppDelegate.m in Sources */,
 				4FEF84A8179A2CDA00EA9242 /* UploadManager.m in Sources */,
 				8CE71676179A370300071DBD /* AHImagePickerController.m in Sources */,
+				4FE2F13D179AFDBE00F17213 /* AHCameraOverlayController.m in Sources */,
+				4FE2F13E179AFDBE00F17213 /* AHCameraOverlayControllerViewController.m in Sources */,
+				4FE2F140179AFDBE00F17213 /* AHLegaleseController.m in Sources */,
+				4FE2F147179B0F7300F17213 /* AHUploadProgressController.m in Sources */,
+				4FE2F15C179B22D600F17213 /* AHEULAManager.m in Sources */,
+				4FE2F18D179B651700F17213 /* AHSettingsViewController.m in Sources */,
+				4FE2F18F179B651700F17213 /* UserSession.m in Sources */,
+				4FE2F193179B652C00F17213 /* KeychainItemWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

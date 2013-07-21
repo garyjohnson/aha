@@ -14,14 +14,21 @@
 </head>
 
 <body>
-
+    <script src="js/canvasmask.js"></script>
     <script type="text/javascript">
 
         //::TODO:: CHANGE BACK TO 30 seconds
-        var SHUFFLE_INTERVAL_TIME = 5000;
+        var SHUFFLE_INTERVAL_TIME = 3000;
         
-        var currentImageNumber = 0;
-        var lastGuid= null;
+        var currentImageNumber = 6;
+        var row = 0;
+        var squareWidth = 200;
+        var skylineWidth = 1100;
+        var leftPosition = 0;
+        var skylineHeight = 1200;
+        var topPosition = skylineHeight;
+        var lastGuid = null;
+        var droppingGuid = null;
         
         $(document).ready(function() 
         {
@@ -35,20 +42,57 @@
             { "guid":  $('#image'+currentImageNumber).attr('src')},
             function(data)
             {
-                lastGuid = $('#image'+currentImageNumber).attr('src');
-                $('#image'+currentImageNumber).attr('src', '<?php echo Config::$imageurl; ?>'+data.guid);
+                if(data.imageurl!=null)
+                {
+                    droppingGuid = $('#image4').attr('src');
+                    animateDroppingImage();
+                    $('#image4').attr('src',$('#image5').attr('src'));
+                    $('#image5').attr('src',$('#image6').attr('src'));
+                    $('#image6').attr('src',$('#image3').attr('src'));
+                    $('#image3').attr('src',$('#image2').attr('src'));
+                    $('#image2').attr('src',$('#image1').attr('src'));
+                    $('#image1').attr('src', data.imageurl);
+                }
+                
+                
             }, "json");
         }
         
         function IncrementImageNumber()
         {
             currentImageNumber = currentImageNumber+1;
-            if (currentImageNumber==7)
-            {
-                currentImageNumber=1;
-            }
         }
-
+        
+        function animateDroppingImage()
+        {
+            
+            $('#skyline').append('<img id="image'+currentImageNumber+'" src="'+droppingGuid+'" style="width:'+squareWidth+'px;height:'+squareWidth+'px;position:absolute" />')
+            $('#image'+currentImageNumber).animate({
+                left: '+='+leftPosition,
+                top: '+='+topPosition
+                }, 5000, function() {
+                // Animation complete.
+                });        
+                
+            leftPosition = leftPosition+squareWidth;
+            if((leftPosition)>=skylineWidth)
+            {
+                leftPosition=0;
+                topPosition = topPosition-squareWidth;
+            }
+            if((topPosition)<0)
+            {
+                //reset the skyline
+                
+                setTimeout(function(){
+                $('#skyline').html(''); 
+                topPosition=skylineHeight;
+                leftPosition=0;
+                },SHUFFLE_INTERVAL_TIME)
+                
+            }
+            
+        }
     </script>
 
     <div id="container" class="cotainer">
@@ -68,7 +112,7 @@
 
 
         <!--  Row 3 SKYLINE -->
-        <div class="row">
+        <div id="skyline" class="row" style="background-image: url(images/CityBack.png);min-height: 1200px;height:1200px;width:1080px;">
 
         </div>
     </div>
