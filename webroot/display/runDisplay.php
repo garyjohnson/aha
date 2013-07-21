@@ -112,7 +112,7 @@
 
 
         <!--  Row 3 SKYLINE -->
-        <div id="skyline" class="row" style="background-image: url(images/CityBack.png);min-height: 1200px;height:1200px;width:1080px;">
+        <div id="skyline" class="row" style="background-image: url(img/CityBack.png);min-height: 1200px;height:1200px;width:1080px;">
 
         </div>
     </div>
