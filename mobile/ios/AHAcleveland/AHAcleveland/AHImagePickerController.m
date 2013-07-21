@@ -5,6 +5,7 @@
 #import "AHUploadProgressController.h"
 #import "AHLegaleseController.h"
 #import "AHSettingsViewController.h"
+#import "UserSession.h"
 
 @interface AHImagePickerController ()
 
@@ -164,7 +165,7 @@ BOOL isFirstTimeLoading = YES;
 
     [self showUploadProgress];
     NSString *filePath = [workingDir stringByAppendingPathComponent:fileName];
-    [[UploadManager instance] uploadImageUrl:[NSURL fileURLWithPath:filePath] withEmail:@"gary@gjtt.com" andDeviceId:@"myDeviceId"];
+    [[UploadManager instance] uploadImageUrl:[NSURL fileURLWithPath:filePath] withEmail:[UserSession getEmail] andDeviceId:@"myDeviceId"];
 }
 
 - (void)showUploadProgress {
