@@ -26,4 +26,5 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView *imageProgressAnimation;
 @property (strong, nonatomic) IBOutlet UIImageView *imageSuccess;
+@property (strong, nonatomic) IBOutlet UIImageView *imageErrorMessage;
 @end

@@ -55,12 +55,18 @@
     [_imageProgressAnimation startAnimating];
     
     _imageSuccess.hidden = true;
+    _imageErrorMessage.hidden = true;
 }
 
 -(void)setForError
 {
     _buttonRetry.hidden = false;
     _buttonDeclineRetry.hidden = false;
+    
+    
+    _imageProgressAnimation.hidden = true;
+    _imageErrorMessage.hidden = false;
+    
     
 }
 
@@ -72,7 +78,7 @@
     _imageProgressAnimation.hidden = true;
     _imageSuccess.hidden = false;
     
-    dismissTimer = [NSTimer timerWithTimeInterval:5 target:self selector:@selector(messageToDismiss) userInfo:nil repeats:false];
+    dismissTimer = [NSTimer timerWithTimeInterval:3 target:self selector:@selector(messageToDismiss) userInfo:nil repeats:false];
     
 }
 
@@ -99,6 +105,15 @@
 - (IBAction)handleRetry:(id)sender {
     
     [[NSNotificationCenter defaultCenter] postNotificationName:UPLOADPROGRESSCONTROLLER_RETRY_SELECTED object:nil userInfo:nil];
+    
+    _buttonRetry.hidden = true;
+    _buttonDeclineRetry.hidden = true;
+    
+    _imageErrorMessage.hidden = true;
+    _imageProgressAnimation.hidden = false;
+    
+   
+    
 }
 
 - (IBAction)handleRetryDecline:(id)sender {
