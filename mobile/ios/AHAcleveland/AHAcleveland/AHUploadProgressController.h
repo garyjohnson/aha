@@ -15,7 +15,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *buttonDeclineRetry;
 
 -(void)setForError;
--(void)updateDisplay;
 -(void)setForSuccess;
 
 - (IBAction)handleRetry:(id)sender;

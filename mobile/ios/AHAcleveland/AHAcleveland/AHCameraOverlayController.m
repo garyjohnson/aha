@@ -13,10 +13,11 @@
 @synthesize reviewImageView = _reviewImageView;
 @synthesize reviewImageViewport = _reviewImageViewport;
 
-- (id)init
+- (id)initWithDelegate:(id<AHCameraOverlayDelegate>)delegate
 {
     self = [super initWithNibName:@"AHCameraOverlayView" bundle:nil];
     if (self) {
+        self.delegate = delegate;
     }
     return self;
 }
