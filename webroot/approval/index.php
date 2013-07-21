@@ -27,7 +27,7 @@ $serveruri = substr($serveruri, 0, strrpos($serveruri, '/'));
 	</head>
 	<body>
 		<div id="menu">
-			<div class="button" id="approveButton">Approve All <span id="pendingCount">(<?php echo $count; ?>)</span></div>
+			<div class="button" id="approveButton">Approve All (<span id="pendingCount"><?php echo $count; ?></span>)</div>
 			<div class="right"><a href="<?php echo $serveruri; ?>/login.php?logout">Logout</a></div>
 			<div class="button" id="denyButton">Deny Selected</div>
 		</div>

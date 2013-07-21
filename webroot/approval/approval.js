@@ -35,6 +35,7 @@ var Approval = {
 					if(data.code == 200) {
 						$("#imageList").html("");
 						Approval.denied = [];
+						location.href = "index.php"; // Refresh the page ;)
 					} else if (data.url) {
 						location.href = data.url;
 					}
@@ -63,6 +64,9 @@ var Approval = {
 							Approval.denied[i].remove();
 						}
 						Approval.denied = [];
+						$("#pendingCount").html($("#imageList img").length);
+						if($("#imageList img").length <=0)
+							location.href = "index.php"; // Refresh the page b/c there are none left!
 					} else if (data.url) {
 						location.href = data.url;
 					}
