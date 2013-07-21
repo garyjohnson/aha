@@ -66,18 +66,20 @@ BOOL isFirstTimeLoading = YES;
         return;
     }
 
-    _imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
     [self presentViewController:_imagePickerController animated:NO completion:nil];
 }
 
 - (void)initializeImagePicker {
     _imagePickerController = [[UIImagePickerController alloc] init];
     _overlayController = [[AHCameraOverlayController alloc] initWithDelegate:self];
-    _imagePickerController.wantsFullScreenLayout = YES;
-    _imagePickerController.showsCameraControls = NO;
-    _imagePickerController.navigationBarHidden = YES;
+    if ([self isCameraAvailable]) {
+        _imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+        _imagePickerController.wantsFullScreenLayout = YES;
+        _imagePickerController.showsCameraControls = NO;
+        _imagePickerController.navigationBarHidden = YES;
+        _imagePickerController.cameraOverlayView = _overlayController.view;
+    }
     _imagePickerController.delegate = self;
-    _imagePickerController.cameraOverlayView = _overlayController.view;
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
