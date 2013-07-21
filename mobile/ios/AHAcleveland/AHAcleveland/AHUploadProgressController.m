@@ -32,14 +32,10 @@
 {
     [super viewDidAppear:animated];
     
-    _imageProgressAnimation.hidden = false;
     _imageProgressAnimation.animationImages = animationImages;
     _imageProgressAnimation.animationDuration = 5.0;
     
     [_imageProgressAnimation startAnimating];
-    
-    _imageSuccess.hidden = true;
-    _imageErrorMessage.hidden = true;
 }
 
 -(void)setForUploading{
