@@ -6,15 +6,15 @@ require_once '../source/config.php';
 require_once('../source/MySQLi.class.php');
 
 //::TODO:: Remove this is some testing
-var_dump($_REQUEST,$_FILES);
+//var_dump($_REQUEST,$_FILES);
 
 //log each request
-$file = 'log.txt';
-$current = file_get_contents($file);
-file_put_contents($file, $current.  date("F j, Y, g:i a")."\n"
-        ."==FILES==".print_r($_FILES, TRUE)
-        ."==REQUEST==".print_r($_REQUEST, TRUE)
-        ."==GetAllHeaders==".print_r(getallheaders(), TRUE)."\n");
+//$file = 'log.txt';
+//$current = file_get_contents($file);
+//file_put_contents($file, $current.  date("F j, Y, g:i a")."\n"
+        //."==FILES==".print_r($_FILES, TRUE)
+        //."==REQUEST==".print_r($_REQUEST, TRUE)
+        //."==GetAllHeaders==".print_r(getallheaders(), TRUE)."\n");
 
 
 // -------------------------------------------
