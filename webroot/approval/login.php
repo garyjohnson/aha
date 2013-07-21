@@ -24,7 +24,9 @@ if($_POST["username"] != "" && $_POST["password"] != "") {
 		Auth::set(Auth::LOGGED_IN_KEY, TRUE);
 		Auth::set(Auth::USERNAME, $user);
 
-		header("Location: /approval/index.php");
+		$serveruri = $_SERVER['REQUEST_URI'];
+	        $serveruri = substr($serveruri, 0, strrpos($serveruri, '/'));
+		header("Location: " . $serveruri . "/index.php");
 	} else {
 		$error = "Invalid username or password. Please try again.";
 	}
@@ -32,7 +34,9 @@ if($_POST["username"] != "" && $_POST["password"] != "") {
 
 if(!is_null($_REQUEST["logout"])) {
 	Auth::destroy();
-	header("Location: /approval/login.php");
+	$serveruri = $_SERVER['REQUEST_URI'];
+	$serveruri = substr($serveruri, 0, strrpos($serveruri, '/'));
+	header("Location: " . $serveruri . "/login.php");
 }
 ?>
 <!DOCTYPE HTML>
