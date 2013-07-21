@@ -60,11 +60,11 @@ BOOL isShowingSettingsBeforeUpload = NO;
 }
 
 - (void)showLegalTerms {
-    [self presentViewController:_legaleseController animated:NO completion:nil];
+    [self presentViewController:_legaleseController animated:YES completion:nil];
 }
 
 - (void)onLegalTermsAccepted {
-    [_legaleseController dismissViewControllerAnimated:NO completion:^{
+    [_legaleseController dismissViewControllerAnimated:YES completion:^{
         [self showImagePicker];
     }];
 }
@@ -75,7 +75,7 @@ BOOL isShowingSettingsBeforeUpload = NO;
         return;
     }
 
-    [self presentViewController:_imagePickerController animated:NO completion:nil];
+    [self presentViewController:_imagePickerController animated:YES completion:nil];
 }
 
 - (void)initializeImagePicker {
@@ -97,7 +97,7 @@ BOOL isShowingSettingsBeforeUpload = NO;
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    [_imagePickerController dismissViewControllerAnimated:NO completion:nil];
+    [_imagePickerController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)onShutterPressed {
@@ -184,28 +184,28 @@ BOOL isShowingSettingsBeforeUpload = NO;
 }
 
 - (void)dismissCameraAndShowUpload {
-    [_imagePickerController dismissViewControllerAnimated:NO completion:^{
-        [self presentViewController:_uploadProgressController animated:NO completion:NULL];
+    [_imagePickerController dismissViewControllerAnimated:YES completion:^{
+        [self presentViewController:_uploadProgressController animated:YES completion:NULL];
     }];
 }
 
 - (void)dismissCameraAndShowSettings {
-    [_imagePickerController dismissViewControllerAnimated:NO completion:^{
-        [self presentViewController:_settingsController animated:NO completion:NULL];
+    [_imagePickerController dismissViewControllerAnimated:YES completion:^{
+        [self presentViewController:_settingsController animated:YES completion:NULL];
     }];
 }
 
 - (void)dismissSettingsAndStartUpload {
-    [_settingsController dismissViewControllerAnimated:NO completion:^{
-        [self presentViewController:_imagePickerController animated:NO completion:^{
+    [_settingsController dismissViewControllerAnimated:YES completion:^{
+        [self presentViewController:_imagePickerController animated:YES completion:^{
             [self saveAndUploadCroppedImage];
         }];
     }];
 }
 
 - (void)dismissSettingsAndShowCamera {
-    [_settingsController dismissViewControllerAnimated:NO completion:^{
-        [self presentViewController:_imagePickerController animated:NO completion:NULL];
+    [_settingsController dismissViewControllerAnimated:YES completion:^{
+        [self presentViewController:_imagePickerController animated:YES completion:NULL];
     }];
 }
 
