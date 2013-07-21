@@ -15,6 +15,23 @@
                                                      name:UPLOAD_PROGRESS
                                                    object:nil];
         
+        
+        NSArray *imageNames = @[@"00.png", @"01.png", @"02.png", @"03.png",
+                                @"04.png", @"05.png", @"06.png", @"07.png",
+                                @"08.png", @"09.png", @"10.png"];
+        
+        animationImages = [[NSMutableArray alloc] init];
+        for (int i = 0; i < imageNames.count; i++) {
+            [animationImages addObject:[UIImage imageNamed:[imageNames objectAtIndex:i]]];
+        }
+        
+        
+        
+        
+        
+        
+        
+        
     }
     return self;
 }

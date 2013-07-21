@@ -3,12 +3,14 @@
 #import "AssetsLibrary/AssetsLibrary.h"
 #import "UploadManager.h"
 #import "AHUploadProgressController.h"
+#import "AHLegaleseController.h"
 
 @interface AHImagePickerController ()
 
-@property(retain, readwrite, nonatomic) UIImagePickerController *imagePickerController;
-@property(retain, readwrite, nonatomic) AHCameraOverlayController *overlayController;
-@property(retain, readwrite, nonatomic) AHUploadProgressController *uploadProgressController;
+@property(retain, readwrite) UIImagePickerController *imagePickerController;
+@property(retain, readwrite) AHCameraOverlayController *overlayController;
+@property(retain, readwrite) AHUploadProgressController *uploadProgressController;
+@property(retain, readwrite) AHLegaleseController *legaleseController;
 
 @end
 
@@ -17,12 +19,14 @@
 @synthesize imagePickerController = _imagePickerController;
 @synthesize overlayController = _overlayController;
 @synthesize uploadProgressController = _uploadProgressController;
+@synthesize legaleseController = _legaleseController;
 
-BOOL isFirstTime = YES;
+BOOL isFirstTimeLoading = YES;
 
 - (id)init {
     self = [super initWithNibName:@"AHImagePickerView" bundle:nil];
     if (self) {
+        _legaleseController = [[AHLegaleseController alloc] initWithDelegate:self];
         _uploadProgressController = [[AHUploadProgressController alloc] init];
         [self subscribeToUploadManagerEvents];
         [self subscribeToUploadProgressEvents];
@@ -33,10 +37,27 @@ BOOL isFirstTime = YES;
 - (void)viewDidAppear:(BOOL)animated {
     [self initializeImagePicker];
 
-    if (isFirstTime)
-        [self showImagePicker];
+    if (isFirstTimeLoading)
+        [self navigateOnFirstTimeLoading];
 
-    isFirstTime = NO;
+    isFirstTimeLoading = NO;
+}
+
+- (void)navigateOnFirstTimeLoading {
+    if (![_legaleseController hasAcceptedLegalTerms])
+        [self showLegalTerms];
+    else
+        [self showImagePicker];
+}
+
+- (void)showLegalTerms {
+    [self presentViewController:_legaleseController animated:NO completion:nil];
+}
+
+- (void)onLegalTermsAccepted {
+    [_legaleseController dismissViewControllerAnimated:NO completion:^{
+        [self showImagePicker];
+    }];
 }
 
 - (void)showImagePicker {
@@ -50,14 +71,15 @@ BOOL isFirstTime = YES;
 
 - (void)initializeImagePicker {
     _imagePickerController = [[UIImagePickerController alloc] init];
-    _overlayController = [[AHCameraOverlayController alloc] init];
-    _imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
-    _imagePickerController.wantsFullScreenLayout = YES;
-    _imagePickerController.showsCameraControls = NO;
-    _imagePickerController.navigationBarHidden = YES;
+    _overlayController = [[AHCameraOverlayController alloc] initWithDelegate:self];
+    if ([self isCameraAvailable]) {
+        _imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+        _imagePickerController.wantsFullScreenLayout = YES;
+        _imagePickerController.showsCameraControls = NO;
+        _imagePickerController.navigationBarHidden = YES;
+        _imagePickerController.cameraOverlayView = _overlayController.view;
+    }
     _imagePickerController.delegate = self;
-    _overlayController.delegate = self;
-    _imagePickerController.cameraOverlayView = _overlayController.view;
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {

@@ -30,7 +30,9 @@ class AHAImageShuffle {
 	$this->stockimagenum = $_SESSION['stockimagenum'];
 	$this->sponsorimagenum = $_SESSION['sponsorimagenum'];
 	$serveruri = $_SERVER['REQUEST_URI'];
-	$this->url = "http://" . $_SERVER['HTTP_HOST'] . substr($serveruri, 0, strrpos($serveruri, '/')) . "/../";
+	$serveruri = substr($serveruri, 0, strrpos($serveruri, '/'));
+	$serveruri = substr($serveruri, 0, strrpos($serveruri, '/'));
+	$this->url = "http://" . $_SERVER['HTTP_HOST'] . $serveruri . "/";
     }
     private function saveSessionVars() {
 	$_SESSION['displayimagenum'] = $this->displayimagenum;

@@ -20,4 +20,6 @@
 - (CGRect)getImagePreviewBounds;
 - (CGRect)getImageViewportBounds;
 
+- (id)initWithDelegate:(id<AHCameraOverlayDelegate>)delegate;
+
 @end
