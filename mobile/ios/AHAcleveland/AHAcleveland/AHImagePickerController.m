@@ -4,6 +4,7 @@
 #import "UploadManager.h"
 #import "AHUploadProgressController.h"
 #import "AHLegaleseController.h"
+#import "AHSettingsViewController.h"
 
 @interface AHImagePickerController ()
 
@@ -11,6 +12,7 @@
 @property(retain, readwrite) AHCameraOverlayController *overlayController;
 @property(retain, readwrite) AHUploadProgressController *uploadProgressController;
 @property(retain, readwrite) AHLegaleseController *legaleseController;
+@property(retain, readwrite) AHSettingsViewController *settingsController;
 
 @end
 
@@ -20,6 +22,7 @@
 @synthesize overlayController = _overlayController;
 @synthesize uploadProgressController = _uploadProgressController;
 @synthesize legaleseController = _legaleseController;
+@synthesize settingsController = _settingsController;
 
 BOOL isFirstTimeLoading = YES;
 
@@ -28,6 +31,7 @@ BOOL isFirstTimeLoading = YES;
     if (self) {
         _legaleseController = [[AHLegaleseController alloc] initWithDelegate:self];
         _uploadProgressController = [[AHUploadProgressController alloc] init];
+        _settingsController = [[AHSettingsViewController alloc] initWithDelegate:self];
         [self subscribeToUploadManagerEvents];
         [self subscribeToUploadProgressEvents];
     }
@@ -173,6 +177,18 @@ BOOL isFirstTimeLoading = YES;
     }];
 }
 
+- (void)dismissCameraAndShowSettings {
+    [_imagePickerController dismissViewControllerAnimated:NO completion:^{
+        [self presentViewController:_settingsController animated:NO completion:NULL];
+    }];
+}
+
+- (void)dismissSettingsAndShowCamera {
+    [_settingsController dismissViewControllerAnimated:NO completion:^{
+        [self presentViewController:_imagePickerController animated:NO completion:NULL];
+    }];
+}
+
 - (void)onUploadSuccess {
     [_overlayController clearReviewImage];
     [_uploadProgressController setForSuccess];
@@ -257,5 +273,14 @@ BOOL isFirstTimeLoading = YES;
     NSString *docDir = [documentDirs objectAtIndex:0];
     return [docDir stringByAppendingPathComponent:@"AHAcleveland"];
 }
+
+- (void)onSettingsPressed {
+    [self dismissCameraAndShowSettings];
+}
+
+- (void)onSettingsSaved {
+    [self dismissSettingsAndShowCamera];
+}
+
 
 @end

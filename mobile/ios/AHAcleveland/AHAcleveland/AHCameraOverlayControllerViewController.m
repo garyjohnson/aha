@@ -1,11 +1,3 @@
-//
-//  AHCameraOverlayControllerViewController.m
-//  AHAcleveland
-//
-//  Created by Gary Johnson on 7/20/13.
-//  Copyright (c) 2013 Bill Davis. All rights reserved.
-//
-
 #import "AHCameraOverlayControllerViewController.h"
 
 @interface AHCameraOverlayControllerViewController ()

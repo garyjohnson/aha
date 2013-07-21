@@ -38,6 +38,10 @@
     [_delegate onTossPhotoPressed];
 }
 
+- (IBAction)onSettingsPressed:(id)sender {
+    [_delegate onSettingsPressed];
+}
+
 - (void)clearReviewImage {
     [self setReviewImage:nil];
 }

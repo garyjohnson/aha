@@ -1,14 +1,7 @@
-//
-//  AHSettingsViewController.m
-//  AHAcleveland
-//
-//  Created by AnyaTheMac on 7/20/13.
-//  Copyright (c) 2013 Bill Davis. All rights reserved.
-//
-
 #import "AHSettingsViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "UserSession.h"
+#import "AHSettingsDelegate.h"
 
 @interface AHSettingsViewController ()
 {
@@ -20,11 +13,13 @@
 
 @implementation AHSettingsViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+@synthesize delegate = _delegate;
+
+- (id)initWithDelegate:(id<AHSettingsDelegate>)delegate
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithNibName:@"AHSettingsViewController" bundle:nil];
     if (self) {
-        // Custom  initialization
+        self.delegate = delegate;
     }
     return self;
 }
@@ -42,12 +37,6 @@
     [self.view addGestureRecognizer:tap];
     
     self.emailTextField.borderStyle = UITextBorderStyleNone;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -262,7 +251,8 @@
 - (void) onDismiss
 {
     [self.emailTextField resignFirstResponder];
-    [self dismissViewControllerAnimated:YES completion:^{}];
+    [_delegate onSettingsSaved];
+    //[self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 - (void) setPopoverShown:(BOOL)shown

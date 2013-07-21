@@ -5,5 +5,6 @@
 -(void)onShutterPressed;
 -(void)onUsePhotoPressed;
 -(void)onTossPhotoPressed;
+-(void)onSettingsPressed;
 
 @end
