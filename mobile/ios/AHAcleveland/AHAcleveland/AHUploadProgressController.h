@@ -18,6 +18,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *buttonRetry;
 @property (strong, nonatomic) IBOutlet UIButton *buttonDeclineRetry;
 
+-(void)setForUploading;
 -(void)setForError;
 -(void)setForSuccess;
 

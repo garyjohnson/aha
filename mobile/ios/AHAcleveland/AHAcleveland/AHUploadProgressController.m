@@ -28,16 +28,6 @@
     return self;
 }
 
-- (NSUInteger)supportedInterfaceOrientations {
-    return UIInterfaceOrientationMaskPortrait;
-}
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-
-}
-
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -52,25 +42,27 @@
     _imageErrorMessage.hidden = true;
 }
 
+-(void)setForUploading{
+    _buttonRetry.hidden = YES;
+    _buttonDeclineRetry.hidden = YES;
+    _imageProgressAnimation.hidden = NO;
+    _imageErrorMessage.hidden = YES;
+}
+
 -(void)setForError
 {
-    _buttonRetry.hidden = false;
-    _buttonDeclineRetry.hidden = false;
-    
-    
-    _imageProgressAnimation.hidden = true;
-    _imageErrorMessage.hidden = false;
-    
-    
+    _buttonRetry.hidden = NO;
+    _buttonDeclineRetry.hidden = NO;
+    _imageProgressAnimation.hidden = YES;
+    _imageErrorMessage.hidden = NO;
 }
 
 -(void)setForSuccess
 {
     _buttonRetry.hidden = YES;
     _buttonDeclineRetry.hidden = YES;
-    
-    _imageProgressAnimation.hidden = true;
-    _imageSuccess.hidden = false;
+    _imageProgressAnimation.hidden = YES;
+    _imageSuccess.hidden = NO;
     
     dismissTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(messageToDismiss) userInfo:nil repeats:false];
 }
@@ -92,22 +84,13 @@
 }
 
 - (IBAction)handleRetry:(id)sender {
-    
     [[NSNotificationCenter defaultCenter] postNotificationName:UPLOADPROGRESSCONTROLLER_RETRY_SELECTED object:nil userInfo:nil];
-    
-    _buttonRetry.hidden = true;
-    _buttonDeclineRetry.hidden = true;
-    
-    _imageErrorMessage.hidden = true;
-    _imageProgressAnimation.hidden = false;
-    
-   
-    
+    [self setForUploading];
 }
 
 - (IBAction)handleRetryDecline:(id)sender {
-    
     [[NSNotificationCenter defaultCenter] postNotificationName:UPLOADPROGRESSCONTROLLER_RETRY_DECLINED object:nil userInfo:nil];
+    [self setForUploading];
 }
 
 @end
