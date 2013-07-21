@@ -15,6 +15,7 @@
 @property(retain, readwrite) AHUploadProgressController *uploadProgressController;
 @property(retain, readwrite) AHLegaleseController *legaleseController;
 @property(retain, readwrite) AHSettingsViewController *settingsController;
+@property(retain, readwrite) NSURL *currentUploadingImageUrl;
 
 @end
 
@@ -25,6 +26,7 @@
 @synthesize uploadProgressController = _uploadProgressController;
 @synthesize legaleseController = _legaleseController;
 @synthesize settingsController = _settingsController;
+@synthesize currentUploadingImageUrl = _currentUploadingImageUrl;
 
 BOOL isFirstTimeLoading = YES;
 BOOL isShowingSettingsBeforeUpload = NO;
@@ -177,7 +179,8 @@ BOOL isShowingSettingsBeforeUpload = NO;
     [self showUploadProgress];
     NSString *filePath = [workingDir stringByAppendingPathComponent:fileName];
     NSString *installationId = [((AppDelegate*)[[UIApplication sharedApplication] delegate]) installationId];
-    [[UploadManager instance] uploadImageUrl:[NSURL fileURLWithPath:filePath] withEmail:[UserSession getEmail] andDeviceId:installationId];
+    self.currentUploadingImageUrl = [NSURL fileURLWithPath:filePath];
+    [[UploadManager instance] uploadImageUrl:_currentUploadingImageUrl withEmail:[UserSession getEmail] andDeviceId:installationId];
 }
 
 - (void)showUploadProgress {
@@ -211,6 +214,7 @@ BOOL isShowingSettingsBeforeUpload = NO;
 }
 
 - (void)onUploadSuccess {
+    [self deleteTempImageIfExists];
     [_overlayController clearReviewImage];
     [_uploadProgressController setForSuccess];
 }
@@ -226,10 +230,19 @@ BOOL isShowingSettingsBeforeUpload = NO;
 }
 
 - (void)onUploadCancelled {
+    [self deleteTempImageIfExists];
     [_overlayController clearReviewImage];
     [_uploadProgressController dismissViewControllerAnimated:NO completion:^{
         [self presentViewController:_imagePickerController animated:NO completion:nil];
     }];
+}
+
+-(void)deleteTempImageIfExists{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+
+    if (_currentUploadingImageUrl != nil &&
+            [fileManager isDeletableFileAtPath:[_currentUploadingImageUrl relativePath]])
+        [fileManager removeItemAtPath:[_currentUploadingImageUrl relativePath] error:nil];
 }
 
 - (void)onUploadRetry {

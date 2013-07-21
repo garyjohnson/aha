@@ -31,12 +31,6 @@ static UploadManager *sharedSingleton = nil;
     return self;
     
 }
-
-
-
-
-
-
 -(void)testUpload
 {
     NSString* deviceId = ([(NSUUID*)[NSUUID UUID] UUIDString]);
@@ -54,24 +48,12 @@ static UploadManager *sharedSingleton = nil;
     
 }
 
-
 -(void)uploadImageUrl:(NSURL*)imageUrl withEmail:(NSString*)emailAddress andDeviceId:(NSString*)device
 {
-    
     NSData* imageData = [self retrieveImageData:imageUrl];
-    
-    
     NSURLRequest* request = [self configureRequestWithData:imageData andEmail:emailAddress andDevice:device];
-    
-    
-    
     NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-    
-    
     [conn start];
-    
-    
-    
 }
 
 -(NSURLRequest*)configureRequestWithData:(NSData*)imageData andEmail:(NSString*)email andDevice:(NSString*)deviceId
@@ -116,7 +98,6 @@ static UploadManager *sharedSingleton = nil;
 
 }
 
-
 -(NSData*)retrieveImageData:(NSURL*)urlToFile
 {
     NSData* data = [NSData dataWithContentsOfURL:urlToFile];
@@ -132,31 +113,17 @@ static UploadManager *sharedSingleton = nil;
     [userInfo setValue:[NSNumber numberWithInt:totalBytesExpectedToWrite] forKey:UPLOAD_TOTALBYTESEXPECTED];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:UPLOAD_PROGRESS object:nil userInfo:userInfo];
-    
-    NSLog(@"progress sent");
 }
 
-
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
-    
 }
 
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
-    
     [[NSNotificationCenter defaultCenter] postNotificationName:UPLOAD_FAIL object:nil userInfo:nil];
-    
-    NSLog(@"upload failed");
 }
-
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection{
-    
-
     [[NSNotificationCenter defaultCenter] postNotificationName:UPLOAD_SUCCESS object:nil userInfo:nil];
-    
-    NSLog(@"upload finished successfully");
 }
-
-
 
 @end
