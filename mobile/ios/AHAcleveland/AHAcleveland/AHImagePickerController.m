@@ -210,6 +210,10 @@ BOOL isShowingSettingsBeforeUpload = NO;
 }
 
 - (void)onUploadSuccess {
+    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(afterAnimationDelay) userInfo:nil repeats:NO];
+}
+
+-(void)afterAnimationDelay{
     [self deleteTempImageIfExists];
     [_overlayController clearReviewImage];
     [_uploadProgressController setForSuccess];
