@@ -220,8 +220,8 @@ BOOL isShowingSettingsBeforeUpload = NO;
 }
 
 - (void)dismissUploadAndShowCamera {
-    [_uploadProgressController dismissViewControllerAnimated:NO completion:^{
-        [self presentViewController:_imagePickerController animated:NO completion:nil];
+    [_uploadProgressController dismissViewControllerAnimated:YES completion:^{
+        [self presentViewController:_imagePickerController animated:YES completion:nil];
     }];
 }
 
