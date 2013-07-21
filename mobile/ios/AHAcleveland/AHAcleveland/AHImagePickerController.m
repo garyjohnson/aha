@@ -93,6 +93,7 @@ BOOL isShowingSettingsBeforeUpload = NO;
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    image = [UIImage imageWithCGImage:[image CGImage] scale:image.scale orientation:UIImageOrientationRight];
     [_overlayController setReviewImage:image];
 }
 
