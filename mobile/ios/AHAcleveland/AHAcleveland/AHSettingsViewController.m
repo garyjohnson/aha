@@ -171,7 +171,7 @@
     {
         if (self.notifyMeButton.selected)
         {
-            [self showErrorWithMessage:@""];
+            [self showErrorWithMessage:@"Can't notify you with an empty e-mail address, silly."];
         }
         else
         {
@@ -267,8 +267,24 @@
 
 - (void) setPopoverShown:(BOOL)shown
 {
-    self.popoverImage.hidden = !shown;
-    self.popoverLabel.hidden = !shown;
+    if (shown)
+    {
+        self.popoverImage.alpha = 0.0f;
+        self.popoverLabel.alpha = 0.0f;
+        
+        self.popoverImage.hidden = NO;
+        self.popoverLabel.hidden = NO;
+        
+        [UIView animateWithDuration:0.4 animations:^{
+            self.popoverImage.alpha = 1.0f;
+            self.popoverLabel.alpha = 1.0f;
+        }];
+    }
+    else
+    {
+        self.popoverImage.alpha = 0.0f;
+        self.popoverLabel.alpha = 0.0f;
+    }
     
     popoverShown = shown;
 }
