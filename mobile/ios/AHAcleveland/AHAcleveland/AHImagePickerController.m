@@ -60,11 +60,11 @@ BOOL isShowingSettingsBeforeUpload = NO;
 }
 
 - (void)showLegalTerms {
-    [self presentViewController:_legaleseController animated:NO completion:nil];
+    [self presentViewController:_legaleseController animated:YES completion:nil];
 }
 
 - (void)onLegalTermsAccepted {
-    [_legaleseController dismissViewControllerAnimated:NO completion:^{
+    [_legaleseController dismissViewControllerAnimated:YES completion:^{
         [self showImagePicker];
     }];
 }
@@ -75,7 +75,7 @@ BOOL isShowingSettingsBeforeUpload = NO;
         return;
     }
 
-    [self presentViewController:_imagePickerController animated:NO completion:nil];
+    [self presentViewController:_imagePickerController animated:YES completion:nil];
 }
 
 - (void)initializeImagePicker {
@@ -97,7 +97,7 @@ BOOL isShowingSettingsBeforeUpload = NO;
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    [_imagePickerController dismissViewControllerAnimated:NO completion:nil];
+    [_imagePickerController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)onShutterPressed {
@@ -150,14 +150,10 @@ BOOL isShowingSettingsBeforeUpload = NO;
 }
 
 - (void)saveImageToImageLibraryIfAllowed:(UIImage *)image {
-    [[[ALAssetsLibrary alloc] init] writeImageToSavedPhotosAlbum:[image CGImage]
-                                                     orientation:(ALAssetOrientation) [image imageOrientation]
-                                                 completionBlock:^(NSURL *assetURL, NSError *error) {
-                                                     if (error != nil) {
-                                                         [self showError:@"Failed to write to Image Library."];
-                                                         return;
-                                                     }
-                                                 }];
+    ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+    [library writeImageToSavedPhotosAlbum:[image CGImage]
+                              orientation:(ALAssetOrientation) [image imageOrientation]
+                          completionBlock:nil];
 }
 
 - (void)onTossPhotoPressed {
@@ -178,7 +174,7 @@ BOOL isShowingSettingsBeforeUpload = NO;
 
     [self showUploadProgress];
     NSString *filePath = [workingDir stringByAppendingPathComponent:fileName];
-    NSString *installationId = [((AppDelegate*)[[UIApplication sharedApplication] delegate]) installationId];
+    NSString *installationId = [((AppDelegate *) [[UIApplication sharedApplication] delegate]) installationId];
     self.currentUploadingImageUrl = [NSURL fileURLWithPath:filePath];
     [[UploadManager instance] uploadImageUrl:_currentUploadingImageUrl withEmail:[UserSession getEmail] andDeviceId:installationId];
 }
@@ -188,32 +184,36 @@ BOOL isShowingSettingsBeforeUpload = NO;
 }
 
 - (void)dismissCameraAndShowUpload {
-    [_imagePickerController dismissViewControllerAnimated:NO completion:^{
-        [self presentViewController:_uploadProgressController animated:NO completion:NULL];
+    [_imagePickerController dismissViewControllerAnimated:YES completion:^{
+        [self presentViewController:_uploadProgressController animated:YES completion:NULL];
     }];
 }
 
 - (void)dismissCameraAndShowSettings {
-    [_imagePickerController dismissViewControllerAnimated:NO completion:^{
-        [self presentViewController:_settingsController animated:NO completion:NULL];
+    [_imagePickerController dismissViewControllerAnimated:YES completion:^{
+        [self presentViewController:_settingsController animated:YES completion:NULL];
     }];
 }
 
 - (void)dismissSettingsAndStartUpload {
-    [_settingsController dismissViewControllerAnimated:NO completion:^{
-        [self presentViewController:_imagePickerController animated:NO completion:^{
+    [_settingsController dismissViewControllerAnimated:YES completion:^{
+        [self presentViewController:_imagePickerController animated:YES completion:^{
             [self saveAndUploadCroppedImage];
         }];
     }];
 }
 
 - (void)dismissSettingsAndShowCamera {
-    [_settingsController dismissViewControllerAnimated:NO completion:^{
-        [self presentViewController:_imagePickerController animated:NO completion:NULL];
+    [_settingsController dismissViewControllerAnimated:YES completion:^{
+        [self presentViewController:_imagePickerController animated:YES completion:NULL];
     }];
 }
 
 - (void)onUploadSuccess {
+    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(afterAnimationDelay) userInfo:nil repeats:NO];
+}
+
+-(void)afterAnimationDelay{
     [self deleteTempImageIfExists];
     [_overlayController clearReviewImage];
     [_uploadProgressController setForSuccess];
@@ -237,7 +237,7 @@ BOOL isShowingSettingsBeforeUpload = NO;
     }];
 }
 
--(void)deleteTempImageIfExists{
+- (void)deleteTempImageIfExists {
     NSFileManager *fileManager = [NSFileManager defaultManager];
 
     if (_currentUploadingImageUrl != nil &&
