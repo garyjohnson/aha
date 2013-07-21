@@ -93,6 +93,7 @@ BOOL isShowingSettingsBeforeUpload = NO;
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    image = [UIImage imageWithCGImage:[image CGImage] scale:image.scale orientation:UIImageOrientationRight];
     [_overlayController setReviewImage:image];
 }
 
@@ -184,9 +185,16 @@ BOOL isShowingSettingsBeforeUpload = NO;
 }
 
 - (void)dismissCameraAndShowUpload {
-    [_imagePickerController dismissViewControllerAnimated:YES completion:^{
+    [_uploadProgressController setForUploading];
+
+    if(self.presentedViewController == _imagePickerController){
+        [_imagePickerController dismissViewControllerAnimated:YES completion:^{
+            [self presentViewController:_uploadProgressController animated:YES completion:nil];
+        }];
+    }
+    else if(self.presentedViewController != _uploadProgressController){
         [self presentViewController:_uploadProgressController animated:YES completion:NULL];
-    }];
+    }
 }
 
 - (void)dismissCameraAndShowSettings {
@@ -246,10 +254,9 @@ BOOL isShowingSettingsBeforeUpload = NO;
 }
 
 - (void)onUploadRetry {
-    UIImage *image = _overlayController.reviewImage;
-    CGRect cropRect = [self getImageCropBounds:image];
-    UIImage *croppedImage = [self cropImage:image toBounds:cropRect];
-    [self uploadImage:croppedImage];
+    [self showUploadProgress];
+    NSString *installationId = [((AppDelegate *) [[UIApplication sharedApplication] delegate]) installationId];
+    [[UploadManager instance] uploadImageUrl:_currentUploadingImageUrl withEmail:[UserSession getEmail] andDeviceId:installationId];
 }
 
 - (BOOL)isCameraAvailable {
@@ -315,7 +322,12 @@ BOOL isShowingSettingsBeforeUpload = NO;
 - (void)onSettingsSaved {
     if (isShowingSettingsBeforeUpload) {
         isShowingSettingsBeforeUpload = NO;
-        [self dismissSettingsAndStartUpload];
+        //[self dismissSettingsAndStartUpload];
+        [_settingsController dismissViewControllerAnimated:YES completion:^{
+          //  [self presentViewController:_imagePickerController animated:YES completion:^{
+                [self saveAndUploadCroppedImage];
+           // }];
+        }];
     }
     else {
         [self dismissSettingsAndShowCamera];
