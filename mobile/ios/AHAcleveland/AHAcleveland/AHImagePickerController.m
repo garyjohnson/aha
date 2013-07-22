@@ -111,6 +111,7 @@ BOOL isShowingSettingsBeforeUpload = NO;
     }
     else {
         isShowingSettingsBeforeUpload = YES;
+        [self prepareUpload:_overlayController.reviewImage];
         [self dismissCameraAndShowSettings];
     }
 }
@@ -162,6 +163,13 @@ BOOL isShowingSettingsBeforeUpload = NO;
 }
 
 - (void)uploadImage:(UIImage *)image {
+    [self prepareUpload:image];
+    [self showUploadProgress];
+    NSString *installationId = [((AppDelegate *) [[UIApplication sharedApplication] delegate]) installationId];
+    [[UploadManager instance] uploadImageUrl:_currentUploadingImageUrl withEmail:[UserSession getEmail] andDeviceId:installationId];
+}
+
+- (void)prepareUpload:(UIImage *)image {
     NSString *workingDir = [self getWorkingImagesPath];
     NSString *fileName = [self getTemporaryFileName];
 
@@ -169,15 +177,11 @@ BOOL isShowingSettingsBeforeUpload = NO;
 
     NSError *saveError;
     [self saveImage:image toPath:workingDir withFileName:fileName error:&saveError];
-
     if (saveError != nil)
         return;
 
-    [self showUploadProgress];
     NSString *filePath = [workingDir stringByAppendingPathComponent:fileName];
-    NSString *installationId = [((AppDelegate *) [[UIApplication sharedApplication] delegate]) installationId];
     self.currentUploadingImageUrl = [NSURL fileURLWithPath:filePath];
-    [[UploadManager instance] uploadImageUrl:_currentUploadingImageUrl withEmail:[UserSession getEmail] andDeviceId:installationId];
 }
 
 - (void)showUploadProgress {
@@ -322,11 +326,10 @@ BOOL isShowingSettingsBeforeUpload = NO;
 - (void)onSettingsSaved {
     if (isShowingSettingsBeforeUpload) {
         isShowingSettingsBeforeUpload = NO;
-        //[self dismissSettingsAndStartUpload];
         [_settingsController dismissViewControllerAnimated:YES completion:^{
-          //  [self presentViewController:_imagePickerController animated:YES completion:^{
-                [self saveAndUploadCroppedImage];
-           // }];
+            [self showUploadProgress];
+            NSString *installationId = [((AppDelegate *) [[UIApplication sharedApplication] delegate]) installationId];
+            [[UploadManager instance] uploadImageUrl:_currentUploadingImageUrl withEmail:[UserSession getEmail] andDeviceId:installationId];
         }];
     }
     else {
