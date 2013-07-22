@@ -6,21 +6,23 @@ require_once '../source/config.php';
 require_once('../source/MySQLi.class.php');
 
 //::TODO:: Remove this is some testing
-//var_dump($_REQUEST,$_FILES);
+var_dump($_REQUEST,$_FILES);
 
 //log each request
-//$file = 'log.txt';
-//$current = file_get_contents($file);
-//file_put_contents($file, $current.  date("F j, Y, g:i a")."\n"
-        //."==FILES==".print_r($_FILES, TRUE)
-        //."==REQUEST==".print_r($_REQUEST, TRUE)
-        //."==GetAllHeaders==".print_r(getallheaders(), TRUE)."\n");
+$file = 'log.txt';
+$current = file_get_contents($file);
+file_put_contents($file, $current.  date("F j, Y, g:i a")."\n"
+        ."==FILES==".print_r($_FILES, TRUE)
+        ."==REQUEST==".print_r($_REQUEST, TRUE)
+        ."==GetAllHeaders==".print_r(getallheaders(), TRUE)."\n");
 
 
 // -------------------------------------------
 // - Save metadata to the database
 // -------------------------------------------
 
+if ((!is_null($_FILES["file"]["error"])) && ($_FILES["file"]["error"] == 0)  && (!is_null($_FILES["file"]["size"])) && ($_FILES["file"]["size"] > 0 ))
+{
 //::TODO:: use config file for DB connection
 //$db = new SQL(Config::$mysql);
 $db = new SQL($host = "localhost", $user = "ahauser", $pass = "hahafunny1!", $db = "aha", $prefix = "", $debug = FALSE);
@@ -39,7 +41,7 @@ if($row = $db->fetch())
 else 
     {
     //insert device into databaes
-    $db->insert('devices', array('guid'=>$_REQUEST['device'],'email'=>$_REQUEST['email']));
+    $db->insert('device', array('guid'=>$_REQUEST['device'],'email'=>$_REQUEST['email']));
 }
 
 
@@ -57,6 +59,7 @@ else
     move_uploaded_file($_FILES["file"]["tmp_name"],
     "../images/". $_REQUEST['device'] . "_" . $_FILES["file"]["name"]);
     echo "Stored in: " . "../images/" . $_REQUEST['device'] . "_" . $_FILES["file"]["name"];
+}
 }
 
 ?>
